@@ -1,0 +1,7 @@
+parameters:
+#    blacklog_product.example.class: Suiviprojet\Bundle\Example
+
+services:
+#    blacklog_product.example:
+#        class: %blacklog_product.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

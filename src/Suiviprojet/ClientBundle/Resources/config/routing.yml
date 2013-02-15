@@ -1,0 +1,7 @@
+client_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ClientBundle:Default:index }
+
+client_devis:
+    pattern:  /devis
+    defaults: { _controller: ClientBundle:FacturationDevis:consultdevis }

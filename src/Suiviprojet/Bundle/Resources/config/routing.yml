@@ -1,0 +1,7 @@
+#blacklog_product_homepage:
+#    pattern:  /hello/{name}
+#    defaults: { _controller: blacklogProductBundle:Default:index }
+
+blacklog_product_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: blacklogProductBundle:BlacklogProduct:test }
