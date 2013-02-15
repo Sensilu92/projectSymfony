@@ -105,8 +105,8 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // suiviprojet_administrateur_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+)$#s', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SuiviprojetAdministrateurBundle:Default:index',)), array('_route' => 'suiviprojet_administrateur_homepage'));
+        if ($pathinfo === '/hello') {
+            return array (  '_controller' => 'Suiviprojet\\AdministrateurBundle\\Controller\\DefaultController::indexAction',  '_route' => 'suiviprojet_administrateur_homepage',);
         }
 
         // client_homepage

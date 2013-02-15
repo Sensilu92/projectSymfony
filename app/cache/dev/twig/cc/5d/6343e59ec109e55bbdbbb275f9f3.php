@@ -40,10 +40,10 @@ class __TwigTemplate_cc5d6343e59ec109e55bbdbbb275f9f3 extends Twig_Template
         ";
         // line 10
         $this->displayBlock('body', $context, $blocks);
-        // line 17
+        // line 11
         echo "        ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 18
+        // line 12
         echo "    </body>
 </html>
 ";
@@ -63,16 +63,9 @@ class __TwigTemplate_cc5d6343e59ec109e55bbdbbb275f9f3 extends Twig_Template
     // line 10
     public function block_body($context, array $blocks = array())
     {
-        // line 11
-        echo "            
-               <form method=\"post\" action=\"e\">
-                <input type='text'  name='name' id='name' size=\"20px\" /> <br /><br />';
-            </form>
-
-        ";
     }
 
-    // line 17
+    // line 11
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -89,6 +82,6 @@ class __TwigTemplate_cc5d6343e59ec109e55bbdbbb275f9f3 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  76 => 17,  67 => 11,  64 => 10,  59 => 6,  53 => 5,  47 => 18,  44 => 17,  42 => 10,  35 => 7,  33 => 6,  29 => 5,  23 => 1,  31 => 5,  28 => 4,);
+        return array (  69 => 11,  64 => 10,  59 => 6,  53 => 5,  47 => 12,  44 => 11,  42 => 10,  33 => 6,  29 => 5,  23 => 1,  61 => 19,  52 => 16,  49 => 15,  45 => 14,  35 => 7,  31 => 5,  28 => 4,);
     }
 }
