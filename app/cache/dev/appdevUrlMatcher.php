@@ -104,6 +104,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // suiviprojet_administrateur_homepage
+        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+)$#s', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'SuiviprojetAdministrateurBundle:Default:index',)), array('_route' => 'suiviprojet_administrateur_homepage'));
+        }
+
         // client_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+)$#s', $pathinfo, $matches)) {
             return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Suiviprojet\\ClientBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'client_homepage'));
@@ -116,7 +121,7 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         // blacklog_product_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]+)$#s', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Suiviprojet\\Bundle\\Controller\\BlacklogProductController::testAction',)), array('_route' => 'blacklog_product_homepage'));
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Suiviprojet\\BlacklogBundle\\Controller\\BlacklogProductController::testAction',)), array('_route' => 'blacklog_product_homepage'));
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

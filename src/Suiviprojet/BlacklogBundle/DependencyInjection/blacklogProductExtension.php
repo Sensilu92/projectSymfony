@@ -1,6 +1,6 @@
 <?php
 
-namespace Suiviprojet\Bundle\DependencyInjection;
+namespace Suiviprojet\BlacklogBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Suiviprojet\Bundle;
+namespace Suiviprojet\BlacklogBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
