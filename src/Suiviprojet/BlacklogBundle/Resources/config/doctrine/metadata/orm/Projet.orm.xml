@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Projet" table="projet">
+    <id name="idprojet" type="integer" column="idprojet">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idclient" type="string" column="idclient" length="45" nullable="true"/>
+    <many-to-one field="clientclient" target-entity="Client">
+      <join-columns>
+        <join-column name="client_idClient" referenced-column-name="idClient"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

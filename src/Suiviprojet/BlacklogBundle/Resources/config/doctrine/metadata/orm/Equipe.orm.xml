@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Equipe" table="equipe">
+    <id name="idequipe" type="integer" column="idEquipe">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nbdifficulte" type="integer" column="nbDifficulte" nullable="true"/>
+    <many-to-many field="developperdevelopper" target-entity="Developper" inversed-by="equipeequipe">
+      <join-table name="equipe_has_developper">
+        <join-columns>
+          <join-column name="equipe_idEquipe" referenced-column-name="idEquipe"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="developper_idDevelopper" referenced-column-name="idDevelopper"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>
