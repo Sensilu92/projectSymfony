@@ -1,3 +1,7 @@
+suiviprojet_administrateur:
+    resource: "@SuiviprojetAdministrateurBundle/Resources/config/routing.yml"
+    prefix:   /
+
 client:
     resource: "@ClientBundle/Resources/config/routing.yml"
     prefix:   /
