@@ -24,35 +24,28 @@ class UserStoriesTechnique
     /**
      * @var string
      *
-     * @ORM\Column(name="role", type="string", length=45, nullable=true)
+     * @ORM\Column(name="role", type="string", length=45, nullable=false)
      */
     private $role;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="action", type="text", nullable=true)
+     * @ORM\Column(name="action", type="text", nullable=false)
      */
     private $action;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="but", type="string", length=45, nullable=true)
+     * @ORM\Column(name="but", type="string", length=45, nullable=false)
      */
     private $but;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="idPriorite", type="integer", nullable=true)
-     */
-    private $idpriorite;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="idStatusUS", type="integer", nullable=true)
+     * @ORM\Column(name="idStatusUS", type="integer", nullable=false)
      */
     private $idstatusus;
 
@@ -65,6 +58,16 @@ class UserStoriesTechnique
      * })
      */
     private $idstatut;
+
+    /**
+     * @var \Priorite
+     *
+     * @ORM\ManyToOne(targetEntity="Priorite")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="priorite_idpriorite", referencedColumnName="idpriorite")
+     * })
+     */
+    private $prioritepriorite;
 
     /**
      * @var \UserStorie
@@ -158,29 +161,6 @@ class UserStoriesTechnique
     }
 
     /**
-     * Set idpriorite
-     *
-     * @param integer $idpriorite
-     * @return UserStoriesTechnique
-     */
-    public function setIdpriorite($idpriorite)
-    {
-        $this->idpriorite = $idpriorite;
-    
-        return $this;
-    }
-
-    /**
-     * Get idpriorite
-     *
-     * @return integer 
-     */
-    public function getIdpriorite()
-    {
-        return $this->idpriorite;
-    }
-
-    /**
      * Set idstatusus
      *
      * @param integer $idstatusus
@@ -206,10 +186,10 @@ class UserStoriesTechnique
     /**
      * Set idstatut
      *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\Statut $idstatut
+     * @param \Suiviprojet\ClientBundle\Entity\Statut $idstatut
      * @return UserStoriesTechnique
      */
-    public function setIdstatut(\Suiviprojet\AdministrateurBundle\Entity\Statut $idstatut = null)
+    public function setIdstatut(\Suiviprojet\ClientBundle\Entity\Statut $idstatut = null)
     {
         $this->idstatut = $idstatut;
     
@@ -219,7 +199,7 @@ class UserStoriesTechnique
     /**
      * Get idstatut
      *
-     * @return \Suiviprojet\AdministrateurBundle\Entity\Statut 
+     * @return \Suiviprojet\ClientBundle\Entity\Statut 
      */
     public function getIdstatut()
     {
@@ -227,12 +207,35 @@ class UserStoriesTechnique
     }
 
     /**
-     * Set userStorieUserStorie
+     * Set prioritepriorite
      *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\UserStorie $userStorieUserStorie
+     * @param \Suiviprojet\ClientBundle\Entity\Priorite $prioritepriorite
      * @return UserStoriesTechnique
      */
-    public function setUserStorieUserStorie(\Suiviprojet\AdministrateurBundle\Entity\UserStorie $userStorieUserStorie = null)
+    public function setPrioritepriorite(\Suiviprojet\ClientBundle\Entity\Priorite $prioritepriorite = null)
+    {
+        $this->prioritepriorite = $prioritepriorite;
+    
+        return $this;
+    }
+
+    /**
+     * Get prioritepriorite
+     *
+     * @return \Suiviprojet\ClientBundle\Entity\Priorite 
+     */
+    public function getPrioritepriorite()
+    {
+        return $this->prioritepriorite;
+    }
+
+    /**
+     * Set userStorieUserStorie
+     *
+     * @param \Suiviprojet\ClientBundle\Entity\UserStorie $userStorieUserStorie
+     * @return UserStoriesTechnique
+     */
+    public function setUserStorieUserStorie(\Suiviprojet\ClientBundle\Entity\UserStorie $userStorieUserStorie = null)
     {
         $this->userStorieUserStorie = $userStorieUserStorie;
     
@@ -242,7 +245,7 @@ class UserStoriesTechnique
     /**
      * Get userStorieUserStorie
      *
-     * @return \Suiviprojet\AdministrateurBundle\Entity\UserStorie 
+     * @return \Suiviprojet\ClientBundle\Entity\UserStorie 
      */
     public function getUserStorieUserStorie()
     {

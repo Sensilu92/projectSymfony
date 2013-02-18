@@ -24,14 +24,14 @@ class Statut
     /**
      * @var string
      *
-     * @ORM\Column(name="intitule", type="string", length=45, nullable=true)
+     * @ORM\Column(name="intitule", type="string", length=45, nullable=false)
      */
     private $intitule;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="destination", type="string", length=45, nullable=true)
+     * @ORM\Column(name="destination", type="string", length=45, nullable=false)
      */
     private $destination;
 

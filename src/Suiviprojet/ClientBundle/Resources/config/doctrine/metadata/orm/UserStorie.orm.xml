@@ -4,7 +4,7 @@
     <id name="idUserStorie" type="integer" column="id_user_storie">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="fonctionnalite" type="string" column="fonctionnalite" length="45" nullable="true"/>
+    <field name="fonctionnalite" type="string" column="fonctionnalite" length="45" nullable="false"/>
     <many-to-one field="idprojet" target-entity="Projet">
       <join-columns>
         <join-column name="idProjet" referenced-column-name="idprojet"/>

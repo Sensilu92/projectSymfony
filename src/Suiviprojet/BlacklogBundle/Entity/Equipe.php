@@ -24,7 +24,7 @@ class Equipe
     /**
      * @var integer
      *
-     * @ORM\Column(name="nbDifficulte", type="integer", nullable=true)
+     * @ORM\Column(name="nbDifficulte", type="integer", nullable=false)
      */
     private $nbdifficulte;
 
@@ -88,10 +88,10 @@ class Equipe
     /**
      * Add developperdevelopper
      *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\Developper $developperdevelopper
+     * @param \Suiviprojet\BlacklogBundle\Entity\Developper $developperdevelopper
      * @return Equipe
      */
-    public function addDevelopperdevelopper(\Suiviprojet\AdministrateurBundle\Entity\Developper $developperdevelopper)
+    public function addDevelopperdevelopper(\Suiviprojet\BlacklogBundle\Entity\Developper $developperdevelopper)
     {
         $this->developperdevelopper[] = $developperdevelopper;
     
@@ -101,9 +101,9 @@ class Equipe
     /**
      * Remove developperdevelopper
      *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\Developper $developperdevelopper
+     * @param \Suiviprojet\BlacklogBundle\Entity\Developper $developperdevelopper
      */
-    public function removeDevelopperdevelopper(\Suiviprojet\AdministrateurBundle\Entity\Developper $developperdevelopper)
+    public function removeDevelopperdevelopper(\Suiviprojet\BlacklogBundle\Entity\Developper $developperdevelopper)
     {
         $this->developperdevelopper->removeElement($developperdevelopper);
     }
