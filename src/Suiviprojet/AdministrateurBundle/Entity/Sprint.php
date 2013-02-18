@@ -24,21 +24,21 @@ class Sprint
     /**
      * @var integer
      *
-     * @ORM\Column(name="nbDifficulteMax", type="integer", nullable=true)
+     * @ORM\Column(name="nbDifficulteMax", type="integer", nullable=false)
      */
     private $nbdifficultemax;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateDebut", type="date", nullable=true)
+     * @ORM\Column(name="dateDebut", type="date", nullable=false)
      */
     private $datedebut;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateFin", type="date", nullable=true)
+     * @ORM\Column(name="dateFin", type="date", nullable=false)
      */
     private $datefin;
 

@@ -24,35 +24,28 @@ class UserStoriesTechnique
     /**
      * @var string
      *
-     * @ORM\Column(name="role", type="string", length=45, nullable=true)
+     * @ORM\Column(name="role", type="string", length=45, nullable=false)
      */
     private $role;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="action", type="text", nullable=true)
+     * @ORM\Column(name="action", type="text", nullable=false)
      */
     private $action;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="but", type="string", length=45, nullable=true)
+     * @ORM\Column(name="but", type="string", length=45, nullable=false)
      */
     private $but;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="idPriorite", type="integer", nullable=true)
-     */
-    private $idpriorite;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="idStatusUS", type="integer", nullable=true)
+     * @ORM\Column(name="idStatusUS", type="integer", nullable=false)
      */
     private $idstatusus;
 
@@ -65,6 +58,16 @@ class UserStoriesTechnique
      * })
      */
     private $idstatut;
+
+    /**
+     * @var \Priorite
+     *
+     * @ORM\ManyToOne(targetEntity="Priorite")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="priorite_idpriorite", referencedColumnName="idpriorite")
+     * })
+     */
+    private $prioritepriorite;
 
     /**
      * @var \UserStorie
@@ -158,29 +161,6 @@ class UserStoriesTechnique
     }
 
     /**
-     * Set idpriorite
-     *
-     * @param integer $idpriorite
-     * @return UserStoriesTechnique
-     */
-    public function setIdpriorite($idpriorite)
-    {
-        $this->idpriorite = $idpriorite;
-    
-        return $this;
-    }
-
-    /**
-     * Get idpriorite
-     *
-     * @return integer 
-     */
-    public function getIdpriorite()
-    {
-        return $this->idpriorite;
-    }
-
-    /**
      * Set idstatusus
      *
      * @param integer $idstatusus
@@ -224,6 +204,29 @@ class UserStoriesTechnique
     public function getIdstatut()
     {
         return $this->idstatut;
+    }
+
+    /**
+     * Set prioritepriorite
+     *
+     * @param \Suiviprojet\AdministrateurBundle\Entity\Priorite $prioritepriorite
+     * @return UserStoriesTechnique
+     */
+    public function setPrioritepriorite(\Suiviprojet\AdministrateurBundle\Entity\Priorite $prioritepriorite = null)
+    {
+        $this->prioritepriorite = $prioritepriorite;
+    
+        return $this;
+    }
+
+    /**
+     * Get prioritepriorite
+     *
+     * @return \Suiviprojet\AdministrateurBundle\Entity\Priorite 
+     */
+    public function getPrioritepriorite()
+    {
+        return $this->prioritepriorite;
     }
 
     /**

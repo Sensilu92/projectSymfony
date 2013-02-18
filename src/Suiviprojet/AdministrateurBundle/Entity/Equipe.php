@@ -24,7 +24,7 @@ class Equipe
     /**
      * @var integer
      *
-     * @ORM\Column(name="nbDifficulte", type="integer", nullable=true)
+     * @ORM\Column(name="nbDifficulte", type="integer", nullable=false)
      */
     private $nbdifficulte;
 

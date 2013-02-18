@@ -24,7 +24,7 @@ class UserStorie
     /**
      * @var string
      *
-     * @ORM\Column(name="fonctionnalite", type="string", length=45, nullable=true)
+     * @ORM\Column(name="fonctionnalite", type="string", length=45, nullable=false)
      */
     private $fonctionnalite;
 
