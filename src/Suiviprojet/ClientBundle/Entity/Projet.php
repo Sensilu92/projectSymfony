@@ -22,11 +22,25 @@ class Projet
     private $idprojet;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_debut", type="date", nullable=false)
+     */
+    private $dateDebut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_fin", type="date", nullable=false)
+     */
+    private $dateFin;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="idclient", type="string", length=45, nullable=true)
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
-    private $idclient;
+    private $description;
 
     /**
      * @var \Client
@@ -51,35 +65,81 @@ class Projet
     }
 
     /**
-     * Set idclient
+     * Set dateDebut
      *
-     * @param string $idclient
+     * @param \DateTime $dateDebut
      * @return Projet
      */
-    public function setIdclient($idclient)
+    public function setDateDebut($dateDebut)
     {
-        $this->idclient = $idclient;
+        $this->dateDebut = $dateDebut;
     
         return $this;
     }
 
     /**
-     * Get idclient
+     * Get dateDebut
+     *
+     * @return \DateTime 
+     */
+    public function getDateDebut()
+    {
+        return $this->dateDebut;
+    }
+
+    /**
+     * Set dateFin
+     *
+     * @param \DateTime $dateFin
+     * @return Projet
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateFin
+     *
+     * @return \DateTime 
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Projet
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
      *
      * @return string 
      */
-    public function getIdclient()
+    public function getDescription()
     {
-        return $this->idclient;
+        return $this->description;
     }
 
     /**
      * Set clientclient
      *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\Client $clientclient
+     * @param \Suiviprojet\ClientBundle\Entity\Client $clientclient
      * @return Projet
      */
-    public function setClientclient(\Suiviprojet\AdministrateurBundle\Entity\Client $clientclient = null)
+    public function setClientclient(\Suiviprojet\ClientBundle\Entity\Client $clientclient = null)
     {
         $this->clientclient = $clientclient;
     
@@ -89,7 +149,7 @@ class Projet
     /**
      * Get clientclient
      *
-     * @return \Suiviprojet\AdministrateurBundle\Entity\Client 
+     * @return \Suiviprojet\ClientBundle\Entity\Client 
      */
     public function getClientclient()
     {

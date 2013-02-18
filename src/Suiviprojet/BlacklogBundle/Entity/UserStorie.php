@@ -24,7 +24,7 @@ class UserStorie
     /**
      * @var string
      *
-     * @ORM\Column(name="fonctionnalite", type="string", length=45, nullable=true)
+     * @ORM\Column(name="fonctionnalite", type="string", length=45, nullable=false)
      */
     private $fonctionnalite;
 
@@ -98,10 +98,10 @@ class UserStorie
     /**
      * Add sprintsprint
      *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\Sprint $sprintsprint
+     * @param \Suiviprojet\BlacklogBundle\Entity\Sprint $sprintsprint
      * @return UserStorie
      */
-    public function addSprintsprint(\Suiviprojet\AdministrateurBundle\Entity\Sprint $sprintsprint)
+    public function addSprintsprint(\Suiviprojet\BlacklogBundle\Entity\Sprint $sprintsprint)
     {
         $this->sprintsprint[] = $sprintsprint;
     
@@ -111,9 +111,9 @@ class UserStorie
     /**
      * Remove sprintsprint
      *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\Sprint $sprintsprint
+     * @param \Suiviprojet\BlacklogBundle\Entity\Sprint $sprintsprint
      */
-    public function removeSprintsprint(\Suiviprojet\AdministrateurBundle\Entity\Sprint $sprintsprint)
+    public function removeSprintsprint(\Suiviprojet\BlacklogBundle\Entity\Sprint $sprintsprint)
     {
         $this->sprintsprint->removeElement($sprintsprint);
     }
@@ -131,10 +131,10 @@ class UserStorie
     /**
      * Set idprojet
      *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\Projet $idprojet
+     * @param \Suiviprojet\BlacklogBundle\Entity\Projet $idprojet
      * @return UserStorie
      */
-    public function setIdprojet(\Suiviprojet\AdministrateurBundle\Entity\Projet $idprojet = null)
+    public function setIdprojet(\Suiviprojet\BlacklogBundle\Entity\Projet $idprojet = null)
     {
         $this->idprojet = $idprojet;
     
@@ -144,7 +144,7 @@ class UserStorie
     /**
      * Get idprojet
      *
-     * @return \Suiviprojet\AdministrateurBundle\Entity\Projet 
+     * @return \Suiviprojet\BlacklogBundle\Entity\Projet 
      */
     public function getIdprojet()
     {

@@ -24,21 +24,21 @@ class Sprint
     /**
      * @var integer
      *
-     * @ORM\Column(name="nbDifficulteMax", type="integer", nullable=true)
+     * @ORM\Column(name="nbDifficulteMax", type="integer", nullable=false)
      */
     private $nbdifficultemax;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateDebut", type="date", nullable=true)
+     * @ORM\Column(name="dateDebut", type="date", nullable=false)
      */
     private $datedebut;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateFin", type="date", nullable=true)
+     * @ORM\Column(name="dateFin", type="date", nullable=false)
      */
     private $datefin;
 
@@ -150,10 +150,10 @@ class Sprint
     /**
      * Add userStorieUserStorie
      *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\UserStorie $userStorieUserStorie
+     * @param \Suiviprojet\ClientBundle\Entity\UserStorie $userStorieUserStorie
      * @return Sprint
      */
-    public function addUserStorieUserStorie(\Suiviprojet\AdministrateurBundle\Entity\UserStorie $userStorieUserStorie)
+    public function addUserStorieUserStorie(\Suiviprojet\ClientBundle\Entity\UserStorie $userStorieUserStorie)
     {
         $this->userStorieUserStorie[] = $userStorieUserStorie;
     
@@ -163,9 +163,9 @@ class Sprint
     /**
      * Remove userStorieUserStorie
      *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\UserStorie $userStorieUserStorie
+     * @param \Suiviprojet\ClientBundle\Entity\UserStorie $userStorieUserStorie
      */
-    public function removeUserStorieUserStorie(\Suiviprojet\AdministrateurBundle\Entity\UserStorie $userStorieUserStorie)
+    public function removeUserStorieUserStorie(\Suiviprojet\ClientBundle\Entity\UserStorie $userStorieUserStorie)
     {
         $this->userStorieUserStorie->removeElement($userStorieUserStorie);
     }
@@ -183,10 +183,10 @@ class Sprint
     /**
      * Set equipeequipe
      *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\Equipe $equipeequipe
+     * @param \Suiviprojet\ClientBundle\Entity\Equipe $equipeequipe
      * @return Sprint
      */
-    public function setEquipeequipe(\Suiviprojet\AdministrateurBundle\Entity\Equipe $equipeequipe = null)
+    public function setEquipeequipe(\Suiviprojet\ClientBundle\Entity\Equipe $equipeequipe = null)
     {
         $this->equipeequipe = $equipeequipe;
     
@@ -196,7 +196,7 @@ class Sprint
     /**
      * Get equipeequipe
      *
-     * @return \Suiviprojet\AdministrateurBundle\Entity\Equipe 
+     * @return \Suiviprojet\ClientBundle\Entity\Equipe 
      */
     public function getEquipeequipe()
     {

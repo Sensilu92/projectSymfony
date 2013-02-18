@@ -4,10 +4,10 @@
     <id name="iddevelopper" type="integer" column="idDevelopper">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="nom" type="string" column="nom" length="45" nullable="true"/>
-    <field name="prenom" type="string" column="prenom" length="45" nullable="true"/>
-    <field name="login" type="string" column="login" length="45" nullable="true"/>
-    <field name="password" type="string" column="password" length="45" nullable="true"/>
+    <field name="nom" type="string" column="nom" length="45" nullable="false"/>
+    <field name="prenom" type="string" column="prenom" length="45" nullable="false"/>
+    <field name="login" type="string" column="login" length="45" nullable="false"/>
+    <field name="password" type="string" column="password" length="45" nullable="false"/>
     <many-to-many field="equipeequipe" target-entity="Equipe" mapped-by="developperdevelopper"/>
   </entity>
 </doctrine-mapping>

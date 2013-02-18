@@ -4,7 +4,9 @@
     <id name="idprojet" type="integer" column="idprojet">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="idclient" type="string" column="idclient" length="45" nullable="true"/>
+    <field name="dateDebut" type="date" column="date_debut" nullable="false"/>
+    <field name="dateFin" type="date" column="date_fin" nullable="false"/>
+    <field name="description" type="text" column="description" nullable="true"/>
     <many-to-one field="clientclient" target-entity="Client">
       <join-columns>
         <join-column name="client_idClient" referenced-column-name="idClient"/>

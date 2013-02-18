@@ -24,28 +24,28 @@ class Developper
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=45, nullable=true)
+     * @ORM\Column(name="nom", type="string", length=45, nullable=false)
      */
     private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=45, nullable=true)
+     * @ORM\Column(name="prenom", type="string", length=45, nullable=false)
      */
     private $prenom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="login", type="string", length=45, nullable=true)
+     * @ORM\Column(name="login", type="string", length=45, nullable=false)
      */
     private $login;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=45, nullable=true)
+     * @ORM\Column(name="password", type="string", length=45, nullable=false)
      */
     private $password;
 
@@ -170,10 +170,10 @@ class Developper
     /**
      * Add equipeequipe
      *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\Equipe $equipeequipe
+     * @param \Suiviprojet\ClientBundle\Entity\Equipe $equipeequipe
      * @return Developper
      */
-    public function addEquipeequipe(\Suiviprojet\AdministrateurBundle\Entity\Equipe $equipeequipe)
+    public function addEquipeequipe(\Suiviprojet\ClientBundle\Entity\Equipe $equipeequipe)
     {
         $this->equipeequipe[] = $equipeequipe;
     
@@ -183,9 +183,9 @@ class Developper
     /**
      * Remove equipeequipe
      *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\Equipe $equipeequipe
+     * @param \Suiviprojet\ClientBundle\Entity\Equipe $equipeequipe
      */
-    public function removeEquipeequipe(\Suiviprojet\AdministrateurBundle\Entity\Equipe $equipeequipe)
+    public function removeEquipeequipe(\Suiviprojet\ClientBundle\Entity\Equipe $equipeequipe)
     {
         $this->equipeequipe->removeElement($equipeequipe);
     }
