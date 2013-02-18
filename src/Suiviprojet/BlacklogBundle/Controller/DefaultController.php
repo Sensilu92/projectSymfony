@@ -1,6 +1,6 @@
 <?php
 
-namespace Suiviprojet\Bundle\Controller;
+namespace Suiviprojet\BlacklogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 

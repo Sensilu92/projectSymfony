@@ -3,5 +3,13 @@
 #    defaults: { _controller: blacklogProductBundle:Default:index }
 
 blacklog_product_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: blacklogProductBundle:BlacklogProduct:test }
+    pattern:  /test/{name}
+    defaults: { _controller: blacklogProductBundle:Default:index }
+
+blacklog_product_creation_userstories:
+      pattern:  /creation_user_stories
+      defaults: { _controller: blacklogProductBundle:BlacklogProduct:selectAll }
+      
+blacklog_product_creation_userstories_technique:
+      pattern:  /creation_user_stories_tech
+      defaults: { _controller: blacklogProductBundle:BlacklogProduct:creationUserStoriesTech }

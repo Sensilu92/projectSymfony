@@ -1,0 +1,51 @@
+{# empty Twig template #}
+{% extends "::modele.html.twig" %}
+
+ {% block menu %}{{parent()}}Création user stories <br /><br />{% endblock %}
+
+ {% block contentLeft %}
+            
+    <form method="post" action="e"> 
+        <fieldset style="border-color: #000000;"> <legend>Nouvelle fonctionnalité</legend>
+                 
+            <label>Projet : </label><SELECT name='projet'>
+            {#{% for p in projet%}
+                <OPTION>{{p.idProjet}}
+            {%endfor%}#}
+            </SELECT></br></br>
+            <label>Fonction : <input type='text'  name='fonction' id='fonction' size="20px" /> <br /><br />
+
+            <input type='submit' value='Enregistrer' name='enregistrer'/>    <br />
+            <input type='submit' value='Ajouter des tâches' name='ajoutTache'/>  <br />
+            <input type='submit' value='Ajouter des fonctions' name='ajoutFonction'/> <br /> 
+                    
+        </fieldset>
+    </form>
+        
+    {% endblock %}
+
+    {% block contentRight %}    
+        
+        <table border ="1" cellspacing ="0" align="center" height="500px">
+        {% for i in 0..3 %}
+
+            <tr><td>
+            <table><tr><td style="background-color:#FF0000"># <br> 
+                                                    Rôle : <br>
+                                                    But : <br>
+                                                    Action :</td>
+            </table></td>
+                <td style="background-color:#FFFFFF">Cellule 2</td >
+                
+            </tr>  
+   
+        {%endfor%}
+        </table>
+    {% endblock %}
+
+
+
+
+
+
+  

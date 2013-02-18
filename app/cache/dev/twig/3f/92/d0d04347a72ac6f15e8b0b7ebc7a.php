@@ -7,58 +7,19 @@ class __TwigTemplate_3f92d0d04347a72ac6f15e8b0b7ebc7a extends Twig_Template
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("::base.html.twig");
+        $this->parent = false;
 
         $this->blocks = array(
-            'body' => array($this, 'block_body'),
         );
-    }
-
-    protected function doGetParent(array $context)
-    {
-        return "::base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $this->parent->display($context, array_merge($this->blocks, $blocks));
-    }
-
-    // line 4
-    public function block_body($context, array $blocks = array())
-    {
-        // line 5
-        echo "
-    Création d'un projet
-
-    <form method=\"post\" action=\"e\">
-                
-        <label>Nom : <input type='text'  name='name' id='name' size=\"20px\" /> <br /><br />
-            <label>Client : </label><SELECT name='client'>
-            ";
-        // line 12
-        $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($this->getContext($context, "client"));
-        foreach ($context['_seq'] as $context["_key"] => $context["c"]) {
-            // line 13
-            echo "                <OPTION>";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "c"), "identifiantconnection"), "html", null, true);
-            echo "
-            ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['c'], $context['_parent'], $context['loop']);
-        $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 15
-        echo "        </SELECT></br></br>
-        <label>Prénom du contact : <input type='text'  name='prenomContact' id='prenomContact' size=\"20px\" /> <br /><br />
-        <label>Téléphone du contact : <input type='text'  name='telephoneContact' id='telephoneContacth' size=\"20px\" /> <br /><br />
-        <label>Identifiant : <input type='text'  name='identifiant' id='identifiant' size=\"20px\" /> <br /><br />
-        <label>Mot de passe : <input type='text'  name='password' id='password' size=\"20px\" /> <br /><br />
-        <input type='submit' value='Créer' name='creer'/>    
-   </form>
-    
- ";
+        // line 1
+        echo "Hello ";
+        echo twig_escape_filter($this->env, $this->getContext($context, "name"), "html", null, true);
+        echo "!
+";
     }
 
     public function getTemplateName()
@@ -73,6 +34,6 @@ class __TwigTemplate_3f92d0d04347a72ac6f15e8b0b7ebc7a extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  53 => 15,  44 => 13,  40 => 12,  31 => 5,  28 => 4,);
+        return array (  19 => 1,);
     }
 }

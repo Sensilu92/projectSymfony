@@ -1,3 +1,11 @@
 suiviprojet_administrateur_homepage:
     pattern:  /hello
     defaults: { _controller: SuiviprojetAdministrateurBundle:Default:index }
+    
+suiviprojet_administrateur_creation_projet:
+    pattern:  /creation_projet
+    defaults: { _controller: SuiviprojetAdministrateurBundle:Administratrateur:index }
+    
+suiviprojet_administrateur_creation_compte_client:
+    pattern:  /creation_compte_client
+    defaults: { _controller: SuiviprojetAdministrateurBundle:Administrateur:index }
