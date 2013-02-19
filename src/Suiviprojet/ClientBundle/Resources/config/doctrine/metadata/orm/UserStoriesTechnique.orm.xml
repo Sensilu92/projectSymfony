@@ -4,23 +4,10 @@
     <id name="idUserStoriesTechnique" type="integer" column="id_user_stories_technique">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="role" type="string" column="role" length="45" nullable="false"/>
-    <field name="action" type="text" column="action" nullable="false"/>
-    <field name="but" type="string" column="but" length="45" nullable="false"/>
-    <field name="idstatusus" type="integer" column="idStatusUS" nullable="false"/>
+    <field name="descriptionTechnique" type="text" column="description_technique" nullable="false"/>
     <many-to-one field="userStorieUserStorie" target-entity="UserStorie">
       <join-columns>
         <join-column name="user_storie_id_user_storie" referenced-column-name="id_user_storie"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="prioritepriorite" target-entity="Priorite">
-      <join-columns>
-        <join-column name="priorite_idpriorite" referenced-column-name="idpriorite"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idstatut" target-entity="Statut">
-      <join-columns>
-        <join-column name="idStatut" referenced-column-name="idStatut"/>
       </join-columns>
     </many-to-one>
   </entity>

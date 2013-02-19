@@ -5,6 +5,20 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="fonctionnalite" type="string" column="fonctionnalite" length="45" nullable="false"/>
+    <field name="role" type="string" column="role" length="45" nullable="false"/>
+    <field name="action" type="text" column="action" nullable="false"/>
+    <field name="but" type="string" column="but" length="45" nullable="false"/>
+    <field name="points" type="integer" column="points" nullable="false"/>
+    <many-to-one field="statutstatut" target-entity="Statut">
+      <join-columns>
+        <join-column name="statut_idStatut" referenced-column-name="idStatut"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="prioritepriorite" target-entity="Priorite">
+      <join-columns>
+        <join-column name="priorite_idpriorite" referenced-column-name="idpriorite"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idprojet" target-entity="Projet">
       <join-columns>
         <join-column name="idProjet" referenced-column-name="idprojet"/>

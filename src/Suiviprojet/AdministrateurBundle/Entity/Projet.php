@@ -22,6 +22,13 @@ class Projet
     private $idprojet;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=45, nullable=false)
+     */
+    private $nom;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_debut", type="date", nullable=false)
@@ -62,6 +69,29 @@ class Projet
     public function getIdprojet()
     {
         return $this->idprojet;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Projet
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
     }
 
     /**

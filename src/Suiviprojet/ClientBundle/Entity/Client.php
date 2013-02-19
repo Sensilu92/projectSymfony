@@ -24,21 +24,21 @@ class Client
     /**
      * @var string
      *
-     * @ORM\Column(name="societe", type="string", length=25, nullable=false)
+     * @ORM\Column(name="societe", type="string", length=45, nullable=false)
      */
     private $societe;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nom_contact", type="string", length=25, nullable=false)
+     * @ORM\Column(name="nom_contact", type="string", length=45, nullable=false)
      */
     private $nomContact;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom_contact", type="string", length=25, nullable=false)
+     * @ORM\Column(name="prenom_contact", type="string", length=45, nullable=false)
      */
     private $prenomContact;
 

@@ -24,50 +24,9 @@ class UserStoriesTechnique
     /**
      * @var string
      *
-     * @ORM\Column(name="role", type="string", length=45, nullable=false)
+     * @ORM\Column(name="description_technique", type="text", nullable=false)
      */
-    private $role;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="action", type="text", nullable=false)
-     */
-    private $action;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="but", type="string", length=45, nullable=false)
-     */
-    private $but;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="idStatusUS", type="integer", nullable=false)
-     */
-    private $idstatusus;
-
-    /**
-     * @var \Statut
-     *
-     * @ORM\ManyToOne(targetEntity="Statut")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idStatut", referencedColumnName="idStatut")
-     * })
-     */
-    private $idstatut;
-
-    /**
-     * @var \Priorite
-     *
-     * @ORM\ManyToOne(targetEntity="Priorite")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="priorite_idpriorite", referencedColumnName="idpriorite")
-     * })
-     */
-    private $prioritepriorite;
+    private $descriptionTechnique;
 
     /**
      * @var \UserStorie
@@ -92,141 +51,26 @@ class UserStoriesTechnique
     }
 
     /**
-     * Set role
+     * Set descriptionTechnique
      *
-     * @param string $role
+     * @param string $descriptionTechnique
      * @return UserStoriesTechnique
      */
-    public function setRole($role)
+    public function setDescriptionTechnique($descriptionTechnique)
     {
-        $this->role = $role;
+        $this->descriptionTechnique = $descriptionTechnique;
     
         return $this;
     }
 
     /**
-     * Get role
+     * Get descriptionTechnique
      *
      * @return string 
      */
-    public function getRole()
+    public function getDescriptionTechnique()
     {
-        return $this->role;
-    }
-
-    /**
-     * Set action
-     *
-     * @param string $action
-     * @return UserStoriesTechnique
-     */
-    public function setAction($action)
-    {
-        $this->action = $action;
-    
-        return $this;
-    }
-
-    /**
-     * Get action
-     *
-     * @return string 
-     */
-    public function getAction()
-    {
-        return $this->action;
-    }
-
-    /**
-     * Set but
-     *
-     * @param string $but
-     * @return UserStoriesTechnique
-     */
-    public function setBut($but)
-    {
-        $this->but = $but;
-    
-        return $this;
-    }
-
-    /**
-     * Get but
-     *
-     * @return string 
-     */
-    public function getBut()
-    {
-        return $this->but;
-    }
-
-    /**
-     * Set idstatusus
-     *
-     * @param integer $idstatusus
-     * @return UserStoriesTechnique
-     */
-    public function setIdstatusus($idstatusus)
-    {
-        $this->idstatusus = $idstatusus;
-    
-        return $this;
-    }
-
-    /**
-     * Get idstatusus
-     *
-     * @return integer 
-     */
-    public function getIdstatusus()
-    {
-        return $this->idstatusus;
-    }
-
-    /**
-     * Set idstatut
-     *
-     * @param \Suiviprojet\ClientBundle\Entity\Statut $idstatut
-     * @return UserStoriesTechnique
-     */
-    public function setIdstatut(\Suiviprojet\ClientBundle\Entity\Statut $idstatut = null)
-    {
-        $this->idstatut = $idstatut;
-    
-        return $this;
-    }
-
-    /**
-     * Get idstatut
-     *
-     * @return \Suiviprojet\ClientBundle\Entity\Statut 
-     */
-    public function getIdstatut()
-    {
-        return $this->idstatut;
-    }
-
-    /**
-     * Set prioritepriorite
-     *
-     * @param \Suiviprojet\ClientBundle\Entity\Priorite $prioritepriorite
-     * @return UserStoriesTechnique
-     */
-    public function setPrioritepriorite(\Suiviprojet\ClientBundle\Entity\Priorite $prioritepriorite = null)
-    {
-        $this->prioritepriorite = $prioritepriorite;
-    
-        return $this;
-    }
-
-    /**
-     * Get prioritepriorite
-     *
-     * @return \Suiviprojet\ClientBundle\Entity\Priorite 
-     */
-    public function getPrioritepriorite()
-    {
-        return $this->prioritepriorite;
+        return $this->descriptionTechnique;
     }
 
     /**

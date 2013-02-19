@@ -4,6 +4,7 @@
     <id name="idprojet" type="integer" column="idprojet">
       <generator strategy="IDENTITY"/>
     </id>
+    <field name="nom" type="string" column="nom" length="45" nullable="false"/>
     <field name="dateDebut" type="date" column="date_debut" nullable="false"/>
     <field name="dateFin" type="date" column="date_fin" nullable="false"/>
     <field name="description" type="text" column="description" nullable="true"/>

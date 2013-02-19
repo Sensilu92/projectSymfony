@@ -29,6 +29,34 @@ class UserStorie
     private $fonctionnalite;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="role", type="string", length=45, nullable=false)
+     */
+    private $role;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="action", type="text", nullable=false)
+     */
+    private $action;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="but", type="string", length=45, nullable=false)
+     */
+    private $but;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="points", type="integer", nullable=false)
+     */
+    private $points;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Sprint", inversedBy="userStorieUserStorie")
@@ -52,6 +80,26 @@ class UserStorie
      * })
      */
     private $idprojet;
+
+    /**
+     * @var \Priorite
+     *
+     * @ORM\ManyToOne(targetEntity="Priorite")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="priorite_idpriorite", referencedColumnName="idpriorite")
+     * })
+     */
+    private $prioritepriorite;
+
+    /**
+     * @var \Statut
+     *
+     * @ORM\ManyToOne(targetEntity="Statut")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="statut_idStatut", referencedColumnName="idStatut")
+     * })
+     */
+    private $statutstatut;
 
     /**
      * Constructor
@@ -93,6 +141,98 @@ class UserStorie
     public function getFonctionnalite()
     {
         return $this->fonctionnalite;
+    }
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     * @return UserStorie
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+    
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string 
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Set action
+     *
+     * @param string $action
+     * @return UserStorie
+     */
+    public function setAction($action)
+    {
+        $this->action = $action;
+    
+        return $this;
+    }
+
+    /**
+     * Get action
+     *
+     * @return string 
+     */
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    /**
+     * Set but
+     *
+     * @param string $but
+     * @return UserStorie
+     */
+    public function setBut($but)
+    {
+        $this->but = $but;
+    
+        return $this;
+    }
+
+    /**
+     * Get but
+     *
+     * @return string 
+     */
+    public function getBut()
+    {
+        return $this->but;
+    }
+
+    /**
+     * Set points
+     *
+     * @param integer $points
+     * @return UserStorie
+     */
+    public function setPoints($points)
+    {
+        $this->points = $points;
+    
+        return $this;
+    }
+
+    /**
+     * Get points
+     *
+     * @return integer 
+     */
+    public function getPoints()
+    {
+        return $this->points;
     }
 
     /**
@@ -149,5 +289,51 @@ class UserStorie
     public function getIdprojet()
     {
         return $this->idprojet;
+    }
+
+    /**
+     * Set prioritepriorite
+     *
+     * @param \Suiviprojet\ClientBundle\Entity\Priorite $prioritepriorite
+     * @return UserStorie
+     */
+    public function setPrioritepriorite(\Suiviprojet\ClientBundle\Entity\Priorite $prioritepriorite = null)
+    {
+        $this->prioritepriorite = $prioritepriorite;
+    
+        return $this;
+    }
+
+    /**
+     * Get prioritepriorite
+     *
+     * @return \Suiviprojet\ClientBundle\Entity\Priorite 
+     */
+    public function getPrioritepriorite()
+    {
+        return $this->prioritepriorite;
+    }
+
+    /**
+     * Set statutstatut
+     *
+     * @param \Suiviprojet\ClientBundle\Entity\Statut $statutstatut
+     * @return UserStorie
+     */
+    public function setStatutstatut(\Suiviprojet\ClientBundle\Entity\Statut $statutstatut = null)
+    {
+        $this->statutstatut = $statutstatut;
+    
+        return $this;
+    }
+
+    /**
+     * Get statutstatut
+     *
+     * @return \Suiviprojet\ClientBundle\Entity\Statut 
+     */
+    public function getStatutstatut()
+    {
+        return $this->statutstatut;
     }
 }
