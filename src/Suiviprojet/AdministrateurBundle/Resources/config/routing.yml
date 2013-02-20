@@ -9,3 +9,11 @@ suiviprojet_administrateur_creation_projet:
 suiviprojet_administrateur_creation_compte_client:
     pattern:  /creation_compte_client
     defaults: { _controller: SuiviprojetAdministrateurBundle:Administrateur:creationCompteClient }
+    
+suiviprojet_administrateur_create_compte_client:
+    pattern:  /create_compte_client
+    defaults: { _controller: SuiviprojetAdministrateurBundle:Default:createCompteClient }
+
+suiviprojet_administrateur_create_project:
+    pattern:  /create_projet
+    defaults: { _controller: SuiviprojetAdministrateurBundle:Default:createProjet}
