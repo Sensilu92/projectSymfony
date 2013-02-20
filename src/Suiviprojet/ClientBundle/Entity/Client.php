@@ -43,9 +43,9 @@ class Client
     private $prenomContact;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="telephone_contact", type="integer", nullable=false)
+     * @ORM\Column(name="telephone_contact", type="string",length=10, nullable=false)
      */
     private $telephoneContact;
 
