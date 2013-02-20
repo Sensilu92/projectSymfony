@@ -31,82 +31,97 @@ class __TwigTemplate_af6c38d996cc9bb29696c8286f668984 extends Twig_Template
     public function block_menu($context, array $blocks = array())
     {
         $this->displayParentBlock("menu", $context, $blocks);
-        echo "Création user stories <br /><br />";
+        echo "Création user stories";
     }
 
-    // line 8
+    // line 7
     public function block_contentCenter($context, array $blocks = array())
     {
         echo " 
-    <label>Projet : </label><SELECT name='projet'>
-    ";
-        // line 13
-        echo "    </SELECT>
-            
-    <label>Fonctionnalité : </label><SELECT name='fonctionnalite'>
-    ";
-        // line 19
-        echo "    </SELECT>
 
-        <input type='submit' value='Charger' name='charger'/> 
    ";
     }
 
-    // line 24
+    // line 11
     public function block_contentLeft($context, array $blocks = array())
     {
-        // line 25
+        // line 12
         echo "            
         <form method=\"post\" action=\"e\"> 
-            <fieldset style=\"border-color: #000000;\"> <legend>Nouvelle tâches</legend>
-                 
-                <label>Rôle : </label><input type='text'  name='role' id='fonction' size=\"20px\" /> <br /><br />
-                <label>Action : </label><br />
-                <textarea rows=\"5\" cols=\"30\" style=\"border:solid 1px black; font-family:tahoma;\"></textarea> <br /><br />
-                <label>But : </label><input type='text'  name='but' id='but' size=\"20px\" /> <br /><br />
-                <label>Priorité : </label><SELECT name='priorite'>
-                ";
-        // line 37
-        echo "                 </SELECT> <br /><br />
-                <label>Statut : <input type='text'  value=\"non assigné\" name='statut' id='statut' size=\"20px\" disabled=\"true\"/> <br /><br />
-                <input type='submit' value='Ajouter' name='ajoutTache'/>
-                    
+            <fieldset style=\"border-color: #000000;\"> <legend>Nouveau détail techniques</legend>
+                <label>Description technique :</label><br>
+                <textarea rows=\"5\" cols=\"30\" name=\"description\"></textarea> <br /><br />
+                <input type='submit' value='Ajouter' name='ajoutTache'/>  
              </fieldset>
         </form>
         
     ";
     }
 
-    // line 46
+    // line 23
     public function block_contentRight($context, array $blocks = array())
     {
-        echo "    
-        
-        <table border =\"1\" cellspacing =\"0\" align=\"center\" height=\"500px\">
+        echo " 
+ 
+        <table><tr>
         ";
-        // line 49
+        // line 26
+        $context["counter"] = 0;
+        // line 27
+        echo "        ";
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable(range(0, 3));
-        foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-            // line 50
+        $context['_seq'] = twig_ensure_traversable($this->getContext($context, "userStoriesTechnique"));
+        foreach ($context['_seq'] as $context["_key"] => $context["userStory"]) {
+            // line 28
             echo "
-            <tr><td>
-            <table><tr><td style=\"background-color:#FF0000\"># <br> 
-                                                    Rôle : <br>
-                                                    But : <br>
-                                                    Action :</td>
-            </table></td>
-                <td style=\"background-color:#FFFFFF\">Cellule 2</td >
-                
-            </tr>  
+        ";
+            // line 30
+            echo "         ";
+            $context["counter"] = ($this->getContext($context, "counter") + 1);
+            // line 31
+            echo "
+           <td>#";
+            // line 32
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "userStory"), "userStorieUserStorie"), "idUserStorie"), "html", null, true);
+            echo ".";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStoriesTechnique"), "html", null, true);
+            echo "<br>
+                    Fonctionnalité : ";
+            // line 33
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "userStory"), "userStorieUserStorie"), "fonctionnalite"), "html", null, true);
+            echo " <br>
+                    Description : ";
+            // line 34
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "descriptionTechnique"), "html", null, true);
+            echo " <br>
+               
+           </td >
+
+          ";
+            // line 38
+            if (($this->getContext($context, "counter") == 4)) {
+                // line 39
+                echo "            </tr>
+            <tr>
+            ";
+                // line 41
+                $context["counter"] = 0;
+                echo "   
+          ";
+            }
+            // line 43
+            echo "              
+          
    
         ";
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['userStory'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 62
-        echo "        </table>
+        // line 47
+        echo "                </tr>
+        </table>
+    
     ";
     }
 
@@ -122,6 +137,6 @@ class __TwigTemplate_af6c38d996cc9bb29696c8286f668984 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  109 => 62,  92 => 50,  88 => 49,  81 => 46,  70 => 37,  59 => 25,  56 => 24,  49 => 19,  44 => 13,  38 => 8,  31 => 5,);
+        return array (  122 => 47,  113 => 43,  108 => 41,  104 => 39,  102 => 38,  95 => 34,  91 => 33,  85 => 32,  82 => 31,  79 => 30,  76 => 28,  71 => 27,  69 => 26,  62 => 23,  49 => 12,  46 => 11,  38 => 7,  31 => 5,);
     }
 }

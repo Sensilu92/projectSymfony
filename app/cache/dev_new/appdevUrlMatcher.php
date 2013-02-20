@@ -111,12 +111,12 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         // suiviprojet_administrateur_creation_projet
         if ($pathinfo === '/creation_projet') {
-            return array (  '_controller' => 'SuiviprojetAdministrateurBundle:Administratrateur:index',  '_route' => 'suiviprojet_administrateur_creation_projet',);
+            return array (  '_controller' => 'SuiviprojetAdministrateurBundle:Administratrateur:creationProjet',  '_route' => 'suiviprojet_administrateur_creation_projet',);
         }
 
         // suiviprojet_administrateur_creation_compte_client
         if ($pathinfo === '/creation_compte_client') {
-            return array (  '_controller' => 'SuiviprojetAdministrateurBundle:Administrateur:index',  '_route' => 'suiviprojet_administrateur_creation_compte_client',);
+            return array (  '_controller' => 'Suiviprojet\\AdministrateurBundle\\Controller\\AdministrateurController::creationCompteClientAction',  '_route' => 'suiviprojet_administrateur_creation_compte_client',);
         }
 
         // client_homepage
@@ -136,12 +136,12 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         // blacklog_product_creation_userstories
         if ($pathinfo === '/creation_user_stories') {
-            return array (  '_controller' => 'Suiviprojet\\BlacklogBundle\\Controller\\BlacklogProductController::selectAllAction',  '_route' => 'blacklog_product_creation_userstories',);
+            return array (  '_controller' => 'Suiviprojet\\BlacklogBundle\\Controller\\BlacklogProductController::afficheUserStoriesVueAction',  '_route' => 'blacklog_product_creation_userstories',);
         }
 
         // blacklog_product_creation_userstories_technique
-        if ($pathinfo === '/creation_user_stories_tech') {
-            return array (  '_controller' => 'Suiviprojet\\BlacklogBundle\\Controller\\BlacklogProductController::creationUserStoriesTechAction',  '_route' => 'blacklog_product_creation_userstories_technique',);
+        if (0 === strpos($pathinfo, '/creation_user_stories_tech') && preg_match('#^/creation_user_stories_tech/(?P<idUserStorie>[^/]+)$#s', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Suiviprojet\\BlacklogBundle\\Controller\\BlacklogProductController::afficheUserStoriesTechniqueVueAction',)), array('_route' => 'blacklog_product_creation_userstories_technique'));
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

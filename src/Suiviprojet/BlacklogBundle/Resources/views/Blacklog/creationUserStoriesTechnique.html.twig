@@ -2,64 +2,51 @@
 {% extends "::modele.html.twig" %}
 
 
- {% block menu %}{{parent()}}Création user stories <br /><br />{% endblock %}
-
-
+ {% block menu %}{{parent()}}Création user stories{% endblock %}
+ 
   {% block contentCenter %} 
-    <label>Projet : </label><SELECT name='projet'>
-    {#{% for p in projet%}
-        <OPTION>{{p}}
-    {%endfor%}#}
-    </SELECT>
-            
-    <label>Fonctionnalité : </label><SELECT name='fonctionnalite'>
-    {#{% for p in projet%}
-        <OPTION>{{p.idProjet}}
-    {%endfor%}#}
-    </SELECT>
 
-        <input type='submit' value='Charger' name='charger'/> 
    {% endblock %}
 
     {% block contentLeft %}
             
         <form method="post" action="e"> 
-            <fieldset style="border-color: #000000;"> <legend>Nouvelle tâches</legend>
-                 
-                <label>Rôle : </label><input type='text'  name='role' id='fonction' size="20px" /> <br /><br />
-                <label>Action : </label><br />
-                <textarea rows="5" cols="30" style="border:solid 1px black; font-family:tahoma;"></textarea> <br /><br />
-                <label>But : </label><input type='text'  name='but' id='but' size="20px" /> <br /><br />
-                <label>Priorité : </label><SELECT name='priorite'>
-                {#{% for p in projet%}
-                    <OPTION>{{p.idProjet}}
-                 {%endfor%}#}
-                 </SELECT> <br /><br />
-                <label>Statut : <input type='text'  value="non assigné" name='statut' id='statut' size="20px" disabled="true"/> <br /><br />
-                <input type='submit' value='Ajouter' name='ajoutTache'/>
-                    
+            <fieldset style="border-color: #000000;"> <legend>Nouveau détail techniques</legend>
+                <label>Description technique :</label><br>
+                <textarea rows="5" cols="30" name="description"></textarea> <br /><br />
+                <input type='submit' value='Ajouter' name='ajoutTache'/>  
              </fieldset>
         </form>
         
     {% endblock %}
 
-    {% block contentRight %}    
-        
-        <table border ="1" cellspacing ="0" align="center" height="500px">
-        {% for i in 0..3 %}
+    {% block contentRight %} 
+ 
+        <table><tr>
+        {% set counter = 0 %}
+        {% for userStory in userStoriesTechnique %}
 
-            <tr><td>
-            <table><tr><td style="background-color:#FF0000"># <br> 
-                                                    Rôle : <br>
-                                                    But : <br>
-                                                    Action :</td>
-            </table></td>
-                <td style="background-color:#FFFFFF">Cellule 2</td >
-                
-            </tr>  
+        {# {% counter++ %}#}
+         {% set counter = counter + 1 %}
+
+           <td>#{{userStory.userStorieUserStorie.idUserStorie}}.{{userStory.idUserStoriesTechnique}}<br>
+                    Fonctionnalité : {{userStory.userStorieUserStorie.fonctionnalite}} <br>
+                    Description : {{userStory.descriptionTechnique}} <br>
+               
+           </td >
+
+          {%if counter == 4%}
+            </tr>
+            <tr>
+            {% set counter = 0 %}   
+          {% endif %}
+              
+          
    
         {%endfor%}
+                </tr>
         </table>
+    
     {% endblock %}
        
   

@@ -3,21 +3,41 @@
 
  {% block menu %}{{parent()}}Création user stories <br /><br />{% endblock %}
 
+ {% block contentCenter %} 
+
+    <form method="post" action="creation_user_stories"> 
+                 
+        <label>Projet : </label><SELECT name='projet'>
+        {% for p in projet%}
+        <OPTION>{{p.nom}}
+        {%endfor%}
+        </SELECT>
+        <input type='submit' value='Charger' name='charger'/> <br /> 
+    </form>
+ 
+ {% endblock %}
+ 
  {% block contentLeft %}
             
-    <form method="post" action="e"> 
+    {#{% test %}#}
+    <form method="post" action="creation_user_stories"> 
+    {#<form method="post" action="{{test}}"> #}
         <fieldset style="border-color: #000000;"> <legend>Nouvelle fonctionnalité</legend>
-                 
-            <label>Projet : </label><SELECT name='projet'>
-            {#{% for p in projet%}
-                <OPTION>{{p.idProjet}}
-            {%endfor%}#}
+
             </SELECT></br></br>
             <label>Fonction : <input type='text'  name='fonction' id='fonction' size="20px" /> <br /><br />
+            <label>Rôle : </label><input type='text'  name='role' id='fonction' size="20px" /> <br /><br />
+            <label>Action : </label><br />
+            <textarea rows="5" cols="30" style="border:solid 1px black; font-family:tahoma;"></textarea> <br /><br />
+            <label>But : </label><input type='text'  name='but' id='but' size="20px" /> <br /><br />
+            <label>Priorité : </label><SELECT name='priorite'>
+            {% for pr in priorite%}
+                <OPTION>{{pr.nom}}
+            {%endfor%}
+            </SELECT> <br /><br />
+            <label>Statut : <input type='text'  value="non assigné" name='statut' id='statut' size="20px" disabled="true"/> <br /><br />
 
-            <input type='submit' value='Enregistrer' name='enregistrer'/>    <br />
-            <input type='submit' value='Ajouter des tâches' name='ajoutTache'/>  <br />
-            <input type='submit' value='Ajouter des fonctions' name='ajoutFonction'/> <br /> 
+            <input type='submit' value='Enregistrer' name='enregistrer'/> <br />
                     
         </fieldset>
     </form>
@@ -25,22 +45,41 @@
     {% endblock %}
 
     {% block contentRight %}    
+        {% set counter = 0 %} 
         
-        <table border ="1" cellspacing ="0" align="center" height="500px">
-        {% for i in 0..3 %}
+    {% if userStories is defined %}
+ 
+        <table><tr>
+        {% for userStorie in userStories %}
 
-            <tr><td>
-            <table><tr><td style="background-color:#FF0000"># <br> 
-                                                    Rôle : <br>
-                                                    But : <br>
-                                                    Action :</td>
-            </table></td>
-                <td style="background-color:#FFFFFF">Cellule 2</td >
-                
-            </tr>  
+        {# {% counter++ %}#}
+         {% set counter = counter + 1 %}
+
+            {%for couleur in priorite%}
+                    
+                {%if couleur.idpriorite == userStorie.prioritepriorite.idpriorite %}
+                   <td style=" width:25%; background-color:{{couleur.couleur}}">
+                       <a href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStorie.idUserStorie}) }}"><b>#{{userStorie.idUserStorie}}</b></a><br> 
+                       <b>Rôle : </b>{{userStorie.role}}<br>
+                       <b>But : </b> {{userStorie.but}}<br>
+                       <b>Action : </b>{{userStorie.action}}</td>
+                    {#</table></td>  #}
+                    {%if counter == 4%}
+                    </tr>
+                    <tr>
+                      {% set counter = 0 %}   
+                    {% endif %}
+                {% endif %}
+            {%endfor %}
    
-        {%endfor%}
+        {%endfor%}</tr>
         </table>
+ 
+ 
+    {% endif %}
+
+ 
+       
     {% endblock %}
 
 

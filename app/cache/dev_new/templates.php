@@ -76,6 +76,8 @@
   'DoctrineBundle:Collector:explain.html.twig' => 'C:\\wamp\\www\\projectSymfony\\vendor\\doctrine\\doctrine-bundle\\Doctrine\\Bundle\\DoctrineBundle/Resources/views/Collector/explain.html.twig',
   'blacklogProductBundle:Blacklog:creationUserStories.html.twig' => 'C:\\wamp\\www\\projectSymfony\\src\\Suiviprojet\\BlacklogBundle/Resources/views/Blacklog/creationUserStories.html.twig',
   'blacklogProductBundle:Blacklog:creationUserStoriesTechnique.html.twig' => 'C:\\wamp\\www\\projectSymfony\\src\\Suiviprojet\\BlacklogBundle/Resources/views/Blacklog/creationUserStoriesTechnique.html.twig',
+  'blacklogProductBundle:Blacklog:test1.html.twig' => 'C:\\wamp\\www\\projectSymfony\\src\\Suiviprojet\\BlacklogBundle/Resources/views/Blacklog/test1.html.twig',
+  'blacklogProductBundle:Blacklog:test2.html.twig' => 'C:\\wamp\\www\\projectSymfony\\src\\Suiviprojet\\BlacklogBundle/Resources/views/Blacklog/test2.html.twig',
   'blacklogProductBundle:Default:index.html.twig' => 'C:\\wamp\\www\\projectSymfony\\src\\Suiviprojet\\BlacklogBundle/Resources/views/Default/index.html.twig',
   'ClientBundle:Client:accesDevisVue.html.twig' => 'C:\\wamp\\www\\projectSymfony\\src\\Suiviprojet\\ClientBundle/Resources/views/Client/accesDevisVue.html.twig',
   'ClientBundle:Client:accesFactureVue.html.twig' => 'C:\\wamp\\www\\projectSymfony\\src\\Suiviprojet\\ClientBundle/Resources/views/Client/accesFactureVue.html.twig',

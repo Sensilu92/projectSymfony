@@ -8,8 +8,8 @@ blacklog_product_homepage:
 
 blacklog_product_creation_userstories:
       pattern:  /creation_user_stories
-      defaults: { _controller: blacklogProductBundle:BlacklogProduct:selectAll }
+      defaults: { _controller: blacklogProductBundle:BlacklogProduct:afficheUserStoriesVue }
       
 blacklog_product_creation_userstories_technique:
-      pattern:  /creation_user_stories_tech
-      defaults: { _controller: blacklogProductBundle:BlacklogProduct:creationUserStoriesTech }
+      pattern:  /creation_user_stories_tech/{idUserStorie}
+      defaults: { _controller: blacklogProductBundle:BlacklogProduct:afficheUserStoriesTechniqueVue }

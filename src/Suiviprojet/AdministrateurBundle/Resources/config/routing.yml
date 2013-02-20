@@ -4,8 +4,8 @@ suiviprojet_administrateur_homepage:
     
 suiviprojet_administrateur_creation_projet:
     pattern:  /creation_projet
-    defaults: { _controller: SuiviprojetAdministrateurBundle:Administratrateur:index }
+    defaults: { _controller: SuiviprojetAdministrateurBundle:Administratrateur:creationProjet }
     
 suiviprojet_administrateur_creation_compte_client:
     pattern:  /creation_compte_client
-    defaults: { _controller: SuiviprojetAdministrateurBundle:Administrateur:index }
+    defaults: { _controller: SuiviprojetAdministrateurBundle:Administrateur:creationCompteClient }

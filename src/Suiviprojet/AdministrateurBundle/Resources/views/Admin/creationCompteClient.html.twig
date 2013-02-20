@@ -1,16 +1,18 @@
 {# empty Twig template #}
 {% extends "::modele.html.twig" %}
+{% block menu %}{{parent()}}Création compte client <br /><br />{% endblock %}
+ {#{% block body %}#}
+  {% block contentCenter %} 
 
- {% block body %}
+ 
 
-    Création compte client
+    
 
     <form method="post" action="e">
                 
-        <label>Nom : <input type='text'  name='name' id='name' size="20px" /> <br /><br />
             <label>Client : </label><SELECT name='client'>
-            {% for c in client%}
-                <OPTION>{{c.identifiantconnection}}
+            {% for c in clients%}
+                <OPTION>{{c.societe}}
             {%endfor%}
         </SELECT></br></br>
         <label>Prénom du contact : <input type='text'  name='prenomContact' id='prenomContact' size="20px" /> <br /><br />
