@@ -1,25 +1,11 @@
 {# empty Twig template #}
-{% extends "::modele.html.twig" %}
-
- {% block body %}
-
-    Création projet
-
-    <form method="post" action="e">
-                
-        <label>Nom : <input type='text'  name='name' id='name' size="20px" /> <br /><br />
-            <label>Client : </label><SELECT name='client'>
-            {% for c in client%}
-                <OPTION>{{c.identifiantconnection}}
-            {%endfor%}
-        </SELECT></br></br>
-        <label>Date de début : </label><input type='text'  name='prenomContact' id='prenomContact'/> 
-        <label>Date de fin : </label><input type='text'  name='telephoneContact' id='telephoneContacth'/> <br /><br />
-        <label>Action : </label><br />
-        <textarea rows="5" cols="30" style="border:solid 1px black; font-family:tahoma;"></textarea> <br /><br />
-        <input type='submit' value='Créer' name='creer'/>    
-   </form>
-    
- {% endblock %}
 
 
+<h3>Ajout projet</h3>
+ 
+<div class="well">
+    <form method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <input type="submit" class="btn btn-primary" />
+    </form>
+</div>

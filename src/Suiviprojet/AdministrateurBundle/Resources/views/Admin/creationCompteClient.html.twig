@@ -1,26 +1,11 @@
 {# empty Twig template #}
-{% extends "::modele.html.twig" %}
-{% block menu %}{{parent()}}Création compte client <br /><br />{% endblock %}
- {#{% block body %}#}
-  {% block contentCenter %} 
 
+
+<h3>Ajout client</h3>
  
-
-    
-
-    <form method="post" action="e">
-                
-            <label>Client : </label><SELECT name='client'>
-            {% for c in clients%}
-                <OPTION>{{c.societe}}
-            {%endfor%}
-        </SELECT></br></br>
-        <label>Prénom du contact : <input type='text'  name='prenomContact' id='prenomContact' size="20px" /> <br /><br />
-        <label>Téléphone du contact : <input type='text'  name='telephoneContact' id='telephoneContacth' size="20px" /> <br /><br />
-        <label>Identifiant : <input type='text'  name='identifiant' id='identifiant' size="20px" /> <br /><br />
-        <label>Mot de passe : <input type='text'  name='password' id='password' size="20px" /> <br /><br />
-        <input type='submit' value='Créer' name='creer'/>    
-   </form>
-    
- {% endblock %}
-
+<div class="well">
+    <form method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <input type="submit" class="btn btn-primary" />
+    </form>
+</div>
