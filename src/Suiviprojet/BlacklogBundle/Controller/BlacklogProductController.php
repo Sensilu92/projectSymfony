@@ -3,6 +3,7 @@
 namespace Suiviprojet\BlacklogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Suiviprojet\AdministrateurBundle\Entity;
 /**
  * Description of BlacklogProductController
  *
@@ -15,20 +16,20 @@ class BlacklogProductController extends Controller{
         $request = $this->getRequest();
         $charger=$request->get('charger'); 
         $enregistrer=$request->get('enregistrer');
-        $projet=$this->getDoctrine()->getRepository("blacklogProductBundle:Projet")->findAll();
+        $projet=$this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Projet")->findAll();
         
         if($this->getRequest()->getSession()->get('role') == 'user'){
             
-            $projet = $this->getDoctrine()->getRepository("blacklogProductBundle:Projet")->findBy(array('clientclient' => $this->getRequest()->getSession()->get('id')));
+            $projet = $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Projet")->findBy(array('clientclient' => $this->getRequest()->getSession()->get('id')));
         }
         
-        $priorite = $this->getDoctrine()->getRepository("blacklogProductBundle:Priorite")->findAll();
+        $priorite = $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Priorite")->findAll();
       
         //Si on clique pour charger un autre projet
         if($charger){ //if (isset($charger))
             
-            $projetTmp =  $this->getDoctrine()->getRepository("blacklogProductBundle:Projet")->findBy(array('nom'=>$request->get('projet')));
-            $userStories = $this->getDoctrine()->getRepository('Suiviprojet\BlacklogBundle\Entity\UserStorie')->findBy(array('idprojet'=>$projetTmp));
+            $projetTmp =  $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Projet")->findBy(array('nom'=>$request->get('projet')));
+            $userStories = $this->getDoctrine()->getRepository('Suiviprojet\AdministrateurBundle\Entity\UserStorie')->findBy(array('idprojet'=>$projetTmp));
             
             return $this->render('blacklogProductBundle:Blacklog:creationUserStories.html.twig',
                                  array('projet' => $projet ,'userStories'=>$userStories,'priorite'=>$priorite,'id' => $projetTmp));
@@ -37,17 +38,17 @@ class BlacklogProductController extends Controller{
        } else if($enregistrer){
            
             //Ajout dans la db
-            $userStory = new \Suiviprojet\BlacklogBundle\Entity\UserStorie();
-            $projetTmp1 =  $this->getDoctrine()->getRepository("blacklogProductBundle:Projet")->findBy(array('nom'=>$request->get('projet')));
+            $userStory = new \Suiviprojet\AdministrateurBundle\Entity\UserStorie();
+            $projetTmp1 = $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Projet")->findBy(array('nom'=>$request->get('projet')));
             $userStory->setIdprojet($projetTmp1[0]);
             $userStory->setFonctionnalite($request->get('fonction'));
             $userStory->setRole($request->get('role'));
             $userStory->setAction($request->get('action'));
             $userStory->setBut($request->get('but'));
-            $prioriteTmp =  $this->getDoctrine()->getRepository("blacklogProductBundle:Priorite")->findBy(array('nom'=>$request->get('priorite')));
+            $prioriteTmp =  $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Priorite")->findBy(array('nom'=>$request->get('priorite')));
             $userStory->setPrioritepriorite($prioriteTmp[0]);
             //Créer un statut non assigné par défaut
-            $statutTmp =  $this->getDoctrine()->getRepository("blacklogProductBundle:Statut")->findBy(array('intitule'=>"à faire"));
+            $statutTmp =  $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Statut")->findBy(array('intitule'=>"à faire"));
             //$stat=$statutTmp[0];
             $userStory->setStatutstatut($statutTmp[0]);
             $userStory->setPoints(0);
@@ -55,7 +56,7 @@ class BlacklogProductController extends Controller{
             $this->getDoctrine()->getManager()->persist($userStory);
             $this->getDoctrine()->getManager()->flush();
             
-             $userStories = $this->getDoctrine()->getRepository('Suiviprojet\BlacklogBundle\Entity\UserStorie')->findBy(array('idprojet'=>$projetTmp1));
+             $userStories = $this->getDoctrine()->getRepository('Suiviprojet\AdministrateurBundle\Entity\UserStorie')->findBy(array('idprojet'=>$projetTmp1));
              
             return $this->render('blacklogProductBundle:Blacklog:creationUserStories.html.twig',
                                  array('projet' => $projet ,'userStories'=>$userStories,'priorite'=>$priorite));
@@ -63,7 +64,7 @@ class BlacklogProductController extends Controller{
        
        //Affichage du 1er projet par défaut avec ses user stories
        } else {
-            $userStories = $this->getDoctrine()->getRepository("blacklogProductBundle:UserStorie")->findBy(array('idprojet' => $projet[0]->getIdProjet()));
+            $userStories = $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:UserStorie")->findBy(array('idprojet' => $projet[0]->getIdProjet(1)));
             
             return $this->render('blacklogProductBundle:Blacklog:creationUserStories.html.twig',
                                  array('projet' => $projet ,'userStories'=>$userStories,'priorite'=>$priorite));
@@ -78,8 +79,8 @@ class BlacklogProductController extends Controller{
         if(isset ($id)){
          
             //Ajout dans la db
-            $userStoryTech = new \Suiviprojet\BlacklogBundle\Entity\UserStoriesTechnique();
-            $userStory = $this->getDoctrine()->getRepository("blacklogProductBundle:UserStorie")->find($idUserStorie);
+            $userStoryTech = new \Suiviprojet\AdministrateurBundle\Entity\UserStoriesTechnique();
+            $userStory = $this->getDoctrine()->getRepository("suiviprojetAdministrateurBundle:UserStorie")->find($idUserStorie);
             $userStoryTech->setUserStorieUserStorie($userStory);
             $userStoryTech->setDescriptionTechnique($request->get('description'));
             
@@ -88,7 +89,7 @@ class BlacklogProductController extends Controller{
             $this->getDoctrine()->getManager()->flush();
         } 
         
-         $userStoriesTechnique = $this->getDoctrine()->getRepository("blacklogProductBundle:UserStoriesTechnique")->findBy(array('userStorieUserStorie' => $idUserStorie));
+         $userStoriesTechnique = $this->getDoctrine()->getRepository("AdministrateurBundle:UserStoriesTechnique")->findBy(array('userStorieUserStorie' => $idUserStorie));
          
         return $this->render('blacklogProductBundle:Blacklog:creationUserStoriesTechnique.html.twig', 
                               array('userStoriesTechnique'=>$userStoriesTechnique,'idUserStory' => $idUserStorie));
