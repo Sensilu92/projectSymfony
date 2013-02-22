@@ -1,41 +1,51 @@
-{# empty Twig template #}
 {% extends "::modele.html.twig" %}
 
  {% block menu %}{{parent()}}Création user stories <br /><br />{% endblock %}
 
  {% block contentCenter %} 
-
-    <form method="post" action="creation_user_stories"> 
+ 
+    <form method="post" action=""> {# pas besoin de mettre le nom si c'est la meme route#}
                  
         <label>Projet : </label><SELECT name='projet'>
-        {% for p in projet%}
-        <OPTION>{{p.nom}}
-        {%endfor%}
-        </SELECT>
+        {% if id is defined %}
+            {% for p in projet%}
+                {%for t in id%}
+                    {%if p.idProjet == t.idProjet%}
+                        <OPTION selected="selected">{{p.nom}}
+                             {%else%}
+                        <OPTION>{{p.nom}}
+                    {% endif %}
+                {%endfor%}
+            {%endfor%}
+        {%else%}
+            {% for p in projet%}
+                <OPTION>{{p.nom}}
+            {%endfor%}
+        {% endif %}
+        </SELECT> 
+     
         <input type='submit' value='Charger' name='charger'/> <br /> 
-    </form>
+    {#</form>#}
  
  {% endblock %}
  
  {% block contentLeft %}
-            
-    {#{% test %}#}
-    <form method="post" action="creation_user_stories"> 
-    {#<form method="post" action="{{test}}"> #}
-        <fieldset style="border-color: #000000;"> <legend>Nouvelle fonctionnalité</legend>
-
-            </SELECT></br></br>
+ 
+    {#<form method="post" action="creation_user_stories"> #}
+        <fieldset {% if app.session.get('role') != 'user' %} disabled="disabled" {%endif%}> 
+            <legend>Nouvelle fonctionnalité</legend></br></br>
+           
             <label>Fonction : <input type='text'  name='fonction' id='fonction' size="20px" /> <br /><br />
-            <label>Rôle : </label><input type='text'  name='role' id='fonction' size="20px" /> <br /><br />
+            <label>Rôle : </label><input type='text'  name='role' id='role' size="20px" /> <br /><br />
             <label>Action : </label><br />
-            <textarea rows="5" cols="30" style="border:solid 1px black; font-family:tahoma;"></textarea> <br /><br />
+            <textarea name="action" rows="5" cols="30" style="border:solid 1px black; font-family:tahoma;"></textarea> <br /><br />
             <label>But : </label><input type='text'  name='but' id='but' size="20px" /> <br /><br />
             <label>Priorité : </label><SELECT name='priorite'>
             {% for pr in priorite%}
                 <OPTION>{{pr.nom}}
             {%endfor%}
             </SELECT> <br /><br />
-            <label>Statut : <input type='text'  value="non assigné" name='statut' id='statut' size="20px" disabled="true"/> <br /><br />
+            <label>Statut : <input type='text'  value="à faire" name='statut' id='statut' size="20px" disabled="true"/> <br /><br />
 
             <input type='submit' value='Enregistrer' name='enregistrer'/> <br />
                     
@@ -44,41 +54,39 @@
         
     {% endblock %}
 
-    {% block contentRight %}    
+    {% block contentRight %}  
+ 
         {% set counter = 0 %} 
         
-    {% if userStories is defined %}
+        {% if userStories is defined %}
  
-        <table><tr>
-        {% for userStorie in userStories %}
+            <table><tr>
+            {% for userStorie in userStories %}
 
-        {# {% counter++ %}#}
-         {% set counter = counter + 1 %}
+                {# {% counter++ %}#}
+                {% set counter = counter + 1 %}
 
-            {%for couleur in priorite%}
+                    {%for couleur in priorite%}
                     
-                {%if couleur.idpriorite == userStorie.prioritepriorite.idpriorite %}
-                   <td style=" width:25%; background-color:{{couleur.couleur}}">
-                       <a href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStorie.idUserStorie}) }}"><b>#{{userStorie.idUserStorie}}</b></a><br> 
-                       <b>Rôle : </b>{{userStorie.role}}<br>
-                       <b>But : </b> {{userStorie.but}}<br>
-                       <b>Action : </b>{{userStorie.action}}</td>
-                    {#</table></td>  #}
-                    {%if counter == 4%}
-                    </tr>
-                    <tr>
-                      {% set counter = 0 %}   
-                    {% endif %}
-                {% endif %}
-            {%endfor %}
-   
-        {%endfor%}</tr>
-        </table>
+                        {%if couleur.idpriorite == userStorie.prioritepriorite.idpriorite %}
+                            <td style=" width:25%; background-color:{{couleur.couleur}}">
+                            <a href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStorie.idUserStorie}) }}"><b>#{{userStorie.idUserStorie}}</b></a><br> 
+                            <b>Rôle : </b>{{userStorie.role}}<br>
+                            <b>But : </b> {{userStorie.but}}<br>
+                            <b>Action : </b>{{userStorie.action}}<br>
+                            <b>Statut : </b> {{userStorie.statutstatut.intitule}}<br>
+                            <b>Points : </b> {{userStorie.points}}<br></td>
+                            
+                            {%if counter == 4%}
+                                </tr><tr>
+                                {% set counter = 0 %}   
+                            {% endif %}
+                        {% endif %}
+                    {%endfor %}
+            {%endfor%}
+            </tr></table>
  
- 
-    {% endif %}
-
- 
+        {% endif %}
        
     {% endblock %}
 

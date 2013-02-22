@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Symfony project{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/css/css.css') }}" />
+    </head>
+    <body>
+      
+        {% block body %}  
+        
+            {% block menu %} 
+                <div class="menu">
+                    
+                    {% if app.session.get('role') == 'user' %}
+                        <a href="{{ path('sprint_validation_user_stories_sprint') }}">Validation user storie</a>
+                        
+                    {% elseif app.session.get('role') == 'admin' %}
+                        <a href="{{ path('suiviprojet_administrateur_creation_compte_client') }}">Création compte client</a>
+                        <a href="{{ path('suiviprojet_administrateur_creation_projet') }}">Création projet</a>
+                        
+                    {% elseif app.session.get('role') == 'dev'%}
+                        <a href="{{ path('sprint_tableau_de_bord_sprint') }}">CRA</a>
+                        <a href="{{ path('sprint_tableau_de_bord_sprint') }}">Tableau de bord sprint</a>
+                        
+                    {% endif %}
+                        
+                    <a href="{{ path('blacklog_product_creation_userstories') }}">User storie</a>
+                    <a href="{{ path('suiviprojet_administrateur_connexion') }}">Deconnexion</a>
+                        
+                </div> 
+            {% endblock %}
+           
+        {% endblock %}
+        
+        {% block javascripts %}{% endblock %}
+        
+    </body>
+    
+</html>

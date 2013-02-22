@@ -11,7 +11,6 @@ class __TwigTemplate_af6c38d996cc9bb29696c8286f668984 extends Twig_Template
 
         $this->blocks = array(
             'menu' => array($this, 'block_menu'),
-            'contentCenter' => array($this, 'block_contentCenter'),
             'contentLeft' => array($this, 'block_contentLeft'),
             'contentRight' => array($this, 'block_contentRight'),
         );
@@ -27,100 +26,90 @@ class __TwigTemplate_af6c38d996cc9bb29696c8286f668984 extends Twig_Template
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 5
+    // line 3
     public function block_menu($context, array $blocks = array())
     {
         $this->displayParentBlock("menu", $context, $blocks);
-        echo "Création user stories";
+        echo "Création user stories Tech";
     }
 
-    // line 7
-    public function block_contentCenter($context, array $blocks = array())
-    {
-        echo " 
-
-   ";
-    }
-
-    // line 11
+    // line 5
     public function block_contentLeft($context, array $blocks = array())
     {
-        // line 12
+        // line 6
         echo "            
-        <form method=\"post\" action=\"e\"> 
-            <fieldset style=\"border-color: #000000;\"> <legend>Nouveau détail techniques</legend>
-                <label>Description technique :</label><br>
-                <textarea rows=\"5\" cols=\"30\" name=\"description\"></textarea> <br /><br />
-                <input type='submit' value='Ajouter' name='ajoutTache'/>  
+        <form method=\"post\" action=\"";
+        // line 7
+        echo twig_escape_filter($this->env, $this->getContext($context, "idUserStory"), "html", null, true);
+        echo "\"> 
+            <fieldset style=\"height: 350px;\"> <legend>Nouveau détail technique</legend>
+                <br><label>Description :</label><br>
+                <textarea rows=\"10\" cols=\"50\" name=\"description\"></textarea> <br /><br />
+                <input type='submit' value='Ajouter' name='ajoutDetailTechnique'/>
              </fieldset>
         </form>
         
     ";
     }
 
-    // line 23
+    // line 17
     public function block_contentRight($context, array $blocks = array())
     {
         echo " 
  
         <table><tr>
         ";
-        // line 26
+        // line 20
         $context["counter"] = 0;
-        // line 27
+        // line 21
         echo "        ";
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "userStoriesTechnique"));
         foreach ($context['_seq'] as $context["_key"] => $context["userStory"]) {
-            // line 28
+            // line 22
             echo "
-        ";
-            // line 30
-            echo "         ";
+            ";
+            // line 23
             $context["counter"] = ($this->getContext($context, "counter") + 1);
-            // line 31
+            // line 24
             echo "
-           <td>#";
-            // line 32
+            <td>#";
+            // line 25
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "userStory"), "userStorieUserStorie"), "idUserStorie"), "html", null, true);
             echo ".";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStoriesTechnique"), "html", null, true);
             echo "<br>
                     Fonctionnalité : ";
-            // line 33
+            // line 26
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "userStory"), "userStorieUserStorie"), "fonctionnalite"), "html", null, true);
             echo " <br>
                     Description : ";
-            // line 34
+            // line 27
             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "descriptionTechnique"), "html", null, true);
             echo " <br>
                
            </td >
 
           ";
-            // line 38
+            // line 31
             if (($this->getContext($context, "counter") == 4)) {
-                // line 39
-                echo "            </tr>
-            <tr>
+                // line 32
+                echo "            </tr><tr>
             ";
-                // line 41
+                // line 33
                 $context["counter"] = 0;
                 echo "   
           ";
             }
-            // line 43
-            echo "              
-          
-   
+            // line 35
+            echo "   
         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['userStory'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 47
-        echo "                </tr>
-        </table>
+        // line 37
+        echo "            </tr></table>
     
     ";
     }
@@ -137,6 +126,6 @@ class __TwigTemplate_af6c38d996cc9bb29696c8286f668984 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  122 => 47,  113 => 43,  108 => 41,  104 => 39,  102 => 38,  95 => 34,  91 => 33,  85 => 32,  82 => 31,  79 => 30,  76 => 28,  71 => 27,  69 => 26,  62 => 23,  49 => 12,  46 => 11,  38 => 7,  31 => 5,);
+        return array (  112 => 37,  105 => 35,  100 => 33,  97 => 32,  95 => 31,  88 => 27,  84 => 26,  78 => 25,  75 => 24,  73 => 23,  70 => 22,  65 => 21,  63 => 20,  56 => 17,  43 => 7,  40 => 6,  37 => 5,  30 => 3,);
     }
 }

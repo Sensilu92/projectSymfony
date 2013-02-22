@@ -5,6 +5,13 @@ suiviprojet_administrateur_creation_projet:
 suiviprojet_administrateur_creation_compte_client:
     pattern:  /creation_compte_client
     defaults: { _controller: SuiviprojetAdministrateurBundle:Administrateur:creationCompteClient }
+ 
+suiviprojet_administrateur_connexion:
+    pattern:  /connexion
+    defaults: { _controller: SuiviprojetAdministrateurBundle:Administrateur:afficheConnexionVue }
     
+suiviprojet_administrateur_accueil:
+    pattern:  /accueil
+    defaults: { _controller: SuiviprojetAdministrateurBundle:Administrateur:afficheAccueilVue }
 
 

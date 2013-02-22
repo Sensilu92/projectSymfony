@@ -108,9 +108,20 @@ class UserStorie
     {
         $this->sprintsprint = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
 
-    /**
+     /**
+     * Set idUserStorie
+     *
+     * @param integer $idUserStorie
+     * @return UserStorie
+     */
+    public function setIdUserStorie($idUserStorie) {
+        $this->idUserStorie = $idUserStorie;
+        
+         return $this;
+    }
+
+     /**
      * Get idUserStorie
      *
      * @return integer 

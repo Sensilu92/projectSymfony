@@ -1,0 +1,7 @@
+parameters:
+#    sprint.example.class: Suiviprojet\SprintBundle\Example
+
+services:
+#    sprint.example:
+#        class: %sprint.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

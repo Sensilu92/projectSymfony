@@ -80,6 +80,48 @@ class AdministrateurController extends Controller {
 
     }
     
+    public function afficheConnexionVueAction(){
+        
+        $request = $this->getRequest();
+        $connexion=$request->get('connexion'); 
+        
+
+        //Si on clique pour charger un autre projet
+        if($connexion){ 
+            
+            $client =  $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Client")->findBy(array('identifiantconnection'=>$request->get('identifiant'),'passwordconnection'=>$request->get('password')));
+       
+            if(empty($client)){
+                
+                $developpeur =  $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Developper")->findBy(array('login'=>$request->get('identifiant'),'password'=>$request->get('password')));
+            
+                if(empty($developpeur)){
+                    
+                } else {
+                    $session = $this->get('request')->getSession();
+                    $session->set('identifiant',$request->get('identifiant'));
+                    $session->set('id',$developpeur[0]->getIddevelopper());
+                    $session->set('role','dev');
+                }
+                
+            } else {
+                $session = $this->get('request')->getSession();
+                $session->set('identifiant',$request->get('identifiant'));
+                $session->set('id',$client[0]->getIdclient());
+                $session->set('role','user');
+            }
+            
+            if(!empty($client) || !empty($developpeur)){
+                return $this->render('SuiviprojetAdministrateurBundle:Admin:accueilVue.html.twig', array());
+            } else{
+                echo 'Revoir les identifiants <br/><br/>';
+            }
+            
+        }
+        return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig', array());
+    }
+
+    
 }
 
 ?>

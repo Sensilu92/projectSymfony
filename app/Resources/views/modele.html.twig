@@ -1,4 +1,4 @@
-<html>
+{#<html>
     
     {% block stylesheets %}
         <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/css/css.css') }}" />
@@ -13,6 +13,8 @@
         {% block menu %} 
            <a href="{{ path('blacklog_product_creation_userstories') }}">User storie</a>
            <a href="{{ path('suiviprojet_administrateur_creation_compte_client') }}">Compte client</a>
+           <a href="{{ path('sprint_validation_user_stories_sprint') }}">Validation user storie</a>
+           <a href="{{ path('sprint_tableau_de_bord_sprint') }}">Tableau de bord sprint</a>
         {% endblock %}
     </div>
     
@@ -28,4 +30,25 @@
       
     {% endblock %}
     </body>
-</html>
+</html>#}
+
+{% extends "::modeleParent.html.twig" %}
+
+
+    {% block body %}
+       
+            {% block stylesheets %}{{parent()}}{% endblock %}
+           
+{% block contentCenter2 %}<div class="center">    {% block menu %} {{parent()}} {% endblock %}
+    
+    <div class="center1">{% block contentCenter %}{% endblock %}</div> 
+    
+    <div class="left" >{% block contentLeft %}{% endblock %}</div> 
+    
+    <div class="right">{% block contentRight %}{% endblock %} </div></div>{% endblock %} 
+        
+
+        {% block javascripts %}{% endblock %}
+  
+      
+    {% endblock %}

@@ -7,7 +7,7 @@ class __TwigTemplate_d69538f999e588dd8bc5c6b3157b77f2 extends Twig_Template
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("::modele.html.twig");
+        $this->parent = $this->env->loadTemplate("::modele2.html.twig");
 
         $this->blocks = array(
             'menu' => array($this, 'block_menu'),
@@ -17,7 +17,7 @@ class __TwigTemplate_d69538f999e588dd8bc5c6b3157b77f2 extends Twig_Template
 
     protected function doGetParent(array $context)
     {
-        return "::modele.html.twig";
+        return "::modele2.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -35,38 +35,21 @@ class __TwigTemplate_d69538f999e588dd8bc5c6b3157b77f2 extends Twig_Template
     // line 5
     public function block_contentCenter($context, array $blocks = array())
     {
-        echo " 
-
+        // line 6
+        echo "
+    <div class=\"well\">
+        <form method=\"post\" ";
+        // line 8
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getContext($context, "form"), 'enctype');
+        echo ">
+            ";
+        // line 9
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getContext($context, "form"), 'widget');
+        echo "
+            <input type=\"submit\" class=\"btn btn-primary\" />
+        </form>
+    </div>
  
-
-    
-
-    <form method=\"post\" action=\"e\">
-                
-            <label>Client : </label><SELECT name='client'>
-            ";
-        // line 14
-        $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($this->getContext($context, "clients"));
-        foreach ($context['_seq'] as $context["_key"] => $context["c"]) {
-            // line 15
-            echo "                <OPTION>";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "c"), "societe"), "html", null, true);
-            echo "
-            ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['c'], $context['_parent'], $context['loop']);
-        $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 17
-        echo "        </SELECT></br></br>
-        <label>Prénom du contact : <input type='text'  name='prenomContact' id='prenomContact' size=\"20px\" /> <br /><br />
-        <label>Téléphone du contact : <input type='text'  name='telephoneContact' id='telephoneContacth' size=\"20px\" /> <br /><br />
-        <label>Identifiant : <input type='text'  name='identifiant' id='identifiant' size=\"20px\" /> <br /><br />
-        <label>Mot de passe : <input type='text'  name='password' id='password' size=\"20px\" /> <br /><br />
-        <input type='submit' value='Créer' name='creer'/>    
-   </form>
-    
  ";
     }
 
@@ -82,6 +65,6 @@ class __TwigTemplate_d69538f999e588dd8bc5c6b3157b77f2 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  62 => 17,  53 => 15,  49 => 14,  36 => 5,  29 => 3,);
+        return array (  47 => 9,  43 => 8,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

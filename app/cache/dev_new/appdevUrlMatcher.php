@@ -104,19 +104,34 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // suiviprojet_administrateur_homepage
-        if ($pathinfo === '/hello') {
-            return array (  '_controller' => 'Suiviprojet\\AdministrateurBundle\\Controller\\DefaultController::indexAction',  '_route' => 'suiviprojet_administrateur_homepage',);
+        // sprint_validation_user_stories_sprint
+        if ($pathinfo === '/validation_user_stories_sprint') {
+            return array (  '_controller' => 'Suiviprojet\\SprintBundle\\Controller\\SprintController::afficheValidationUserStoriesSprintVueAction',  '_route' => 'sprint_validation_user_stories_sprint',);
+        }
+
+        // sprint_tableau_de_bord_sprint
+        if ($pathinfo === '/tableau_de_bord_sprint') {
+            return array (  '_controller' => 'Suiviprojet\\SprintBundle\\Controller\\SprintController::afficheTableauDeBordSprintVueAction',  '_route' => 'sprint_tableau_de_bord_sprint',);
         }
 
         // suiviprojet_administrateur_creation_projet
         if ($pathinfo === '/creation_projet') {
-            return array (  '_controller' => 'SuiviprojetAdministrateurBundle:Administratrateur:creationProjet',  '_route' => 'suiviprojet_administrateur_creation_projet',);
+            return array (  '_controller' => 'Suiviprojet\\AdministrateurBundle\\Controller\\AdministrateurController::creationProjetAction',  '_route' => 'suiviprojet_administrateur_creation_projet',);
         }
 
         // suiviprojet_administrateur_creation_compte_client
         if ($pathinfo === '/creation_compte_client') {
             return array (  '_controller' => 'Suiviprojet\\AdministrateurBundle\\Controller\\AdministrateurController::creationCompteClientAction',  '_route' => 'suiviprojet_administrateur_creation_compte_client',);
+        }
+
+        // suiviprojet_administrateur_connexion
+        if ($pathinfo === '/connexion') {
+            return array (  '_controller' => 'Suiviprojet\\AdministrateurBundle\\Controller\\AdministrateurController::afficheConnexionVueAction',  '_route' => 'suiviprojet_administrateur_connexion',);
+        }
+
+        // suiviprojet_administrateur_accueil
+        if ($pathinfo === '/accueil') {
+            return array (  '_controller' => 'Suiviprojet\\AdministrateurBundle\\Controller\\AdministrateurController::afficheAccueilVueAction',  '_route' => 'suiviprojet_administrateur_accueil',);
         }
 
         // client_homepage
@@ -127,11 +142,6 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // client_devis
         if ($pathinfo === '/devis') {
             return array (  '_controller' => 'Suiviprojet\\ClientBundle\\Controller\\FacturationDevisController::consultdevisAction',  '_route' => 'client_devis',);
-        }
-
-        // blacklog_product_homepage
-        if (0 === strpos($pathinfo, '/test') && preg_match('#^/test/(?P<name>[^/]+)$#s', $pathinfo, $matches)) {
-            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'Suiviprojet\\BlacklogBundle\\Controller\\DefaultController::indexAction',)), array('_route' => 'blacklog_product_homepage'));
         }
 
         // blacklog_product_creation_userstories

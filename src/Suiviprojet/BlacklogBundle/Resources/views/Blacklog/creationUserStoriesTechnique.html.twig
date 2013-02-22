@@ -1,20 +1,14 @@
-{# empty Twig template #}
 {% extends "::modele.html.twig" %}
 
-
- {% block menu %}{{parent()}}Création user stories{% endblock %}
- 
-  {% block contentCenter %} 
-
-   {% endblock %}
+ {% block menu %}{{parent()}}Création user stories Tech{% endblock %}
 
     {% block contentLeft %}
             
-        <form method="post" action="e"> 
-            <fieldset style="border-color: #000000;"> <legend>Nouveau détail techniques</legend>
-                <label>Description technique :</label><br>
-                <textarea rows="5" cols="30" name="description"></textarea> <br /><br />
-                <input type='submit' value='Ajouter' name='ajoutTache'/>  
+        <form method="post" action="{{idUserStory}}"> 
+            <fieldset style="height: 350px;"> <legend>Nouveau détail technique</legend>
+                <br><label>Description :</label><br>
+                <textarea rows="10" cols="50" name="description"></textarea> <br /><br />
+                <input type='submit' value='Ajouter' name='ajoutDetailTechnique'/>
              </fieldset>
         </form>
         
@@ -26,26 +20,21 @@
         {% set counter = 0 %}
         {% for userStory in userStoriesTechnique %}
 
-        {# {% counter++ %}#}
-         {% set counter = counter + 1 %}
+            {% set counter = counter + 1 %}
 
-           <td>#{{userStory.userStorieUserStorie.idUserStorie}}.{{userStory.idUserStoriesTechnique}}<br>
+            <td>#{{userStory.userStorieUserStorie.idUserStorie}}.{{userStory.idUserStoriesTechnique}}<br>
                     Fonctionnalité : {{userStory.userStorieUserStorie.fonctionnalite}} <br>
                     Description : {{userStory.descriptionTechnique}} <br>
                
            </td >
 
           {%if counter == 4%}
-            </tr>
-            <tr>
+            </tr><tr>
             {% set counter = 0 %}   
           {% endif %}
-              
-          
    
         {%endfor%}
-                </tr>
-        </table>
+            </tr></table>
     
     {% endblock %}
        

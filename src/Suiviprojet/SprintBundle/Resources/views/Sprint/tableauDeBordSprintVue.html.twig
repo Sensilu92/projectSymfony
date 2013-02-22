@@ -1,0 +1,95 @@
+{% extends "::modele2.html.twig" %}
+
+{#VISIBLE QUE PAR LES MEMBRE DE L'EQUIPE#}
+ {% block menu %}{{parent()}}Tableau de bord<br /><br />{% endblock %}
+
+ {% block contentCenter %} 
+ METTRE LES SOUS TACHES
+    <form method="post" action=""> {# pas besoin de mettre le nom si c'est la meme route#}
+                 
+        <label>Projet : </label><SELECT name='projet'>
+        {% if id is defined %}
+            {% for p in projet%}
+                {%for t in id%}
+                    {%if p.idProjet == t.idProjet%}
+                        <OPTION selected="selected">{{p.nom}}
+                             {%else%}
+                        <OPTION>{{p.nom}}
+                    {% endif %}
+                {%endfor%}
+            {%endfor%}
+        {%else%}
+            {% for p in projet%}
+                <OPTION>{{p.nom}}
+            {%endfor%}
+        {% endif %}
+        </SELECT> 
+        
+        <label>Sprint : </label><SELECT name='sprint'>
+        {% if sprint is defined %}
+            {% for s in sprint%}
+                <OPTION>{{s.idsprint}}
+            {%endfor%}
+         {% endif %}
+        </SELECT> 
+        
+        <input type='submit' value='Charger' name='charger'/> <br /> <br /> 
+    </form>
+        
+       
+ 
+        {% set counter = 0 %} 
+        
+        {% if sprintTab is defined %}
+ 
+        <table style="border: solid;
+    border-width: 1px;"><tr>
+            {#{% for sprint in sprintTab %}#}
+                             <td> Tâches </td><td> A faire </td><td> En cours </td><td> A valider </td><td> Valider </td></tr>
+                {% for userStory in sprintTab.getUserStorieUserStorie() %}
+
+            <tr>
+                <td>{{userStory.fonctionnalite}}</td>
+                {#  {% if userStory.statutstatut.intitule == 'en cours' %}
+                        <input checked="checked" type="checkbox" name="question[{{ userStory.idUserStorie }}]"/>
+                    {%else%}
+                        <input type="checkbox" name="question[{{ userStory.idUserStorie }}]"/>
+                    {%endif%}#}
+                
+                <td>
+                    <input {% if userStory.statutstatut.intitule == 'à faire' %} checked="checked" {%endif%} type="checkbox" name="question[{{ userStory.idUserStorie }}]" disabled="disabled"/>  
+                </td>
+                <td>
+                    <input {% if userStory.statutstatut.intitule == 'en cours' %} checked="checked" {%endif%} type="checkbox" name="question[{{ userStory.idUserStorie }}]" disabled="disabled"/>  
+                </td>
+                <td>
+                    <input {% if userStory.statutstatut.intitule == 'à valider' %} checked="checked" {%endif%} type="checkbox" name="question[{{ userStory.idUserStorie }}]" disabled="disabled"/>  
+                </td>
+                <td>
+                    <input {% if userStory.statutstatut.intitule == 'terminé' %} checked="checked" {%endif%} type="checkbox" name="question[{{ userStory.idUserStorie }}]" disabled="disabled"/>  
+                </td>
+            </tr>
+
+
+                {# {% counter++ %}#}
+                {% set counter = counter + 1 %}
+
+                            
+                            {%if counter == 4%}
+                                </tr><tr>
+                                {% set counter = 0 %}   
+                            {% endif %}
+                    {%endfor %}
+                                         {# {%endfor %}#}
+            </tr></table>
+ 
+        {% endif %}
+ {% endblock %}
+
+
+
+
+
+
+
+  

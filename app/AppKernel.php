@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Suiviprojet\BlacklogBundle\blacklogProductBundle(),
             new Suiviprojet\ClientBundle\ClientBundle(),
             new Suiviprojet\AdministrateurBundle\SuiviprojetAdministrateurBundle(),
+            new Suiviprojet\SprintBundle\SprintBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

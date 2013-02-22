@@ -11,49 +11,39 @@ class __TwigTemplate_266abbe761625cfd78649fb5d166ab6d extends Twig_Template
 
         $this->blocks = array(
             'menu' => array($this, 'block_menu'),
-            'body' => array($this, 'block_body'),
-            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "<html>
-
-    <menu style=\"background-color:#FF0000; width:1000px; height:50px;\">";
+        echo "<div class=\"menu\">
+        
+        ";
         // line 3
         $this->displayBlock('menu', $context, $blocks);
-        echo "</menu>
-    <body style=\"background-color:#000000; width:1000px; height:50px;\" >
-        ";
-        // line 5
-        $this->displayBlock('body', $context, $blocks);
         // line 8
-        echo "        ";
-        $this->displayBlock('javascripts', $context, $blocks);
-        // line 9
-        echo "    </body>
-</html>
+        echo "    </div>
 ";
     }
 
     // line 3
     public function block_menu($context, array $blocks = array())
     {
-    }
-
-    // line 5
-    public function block_body($context, array $blocks = array())
-    {
+        echo " 
+           <a href=\"";
+        // line 4
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blacklog_product_creation_userstories"), "html", null, true);
+        echo "\">User storie</a>
+           <a href=\"";
+        // line 5
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_creation_compte_client"), "html", null, true);
+        echo "\">Compte client</a>
+           <a href=\"";
         // line 6
-        echo "            LE MENU
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sprint_validation_user_stories_sprint"), "html", null, true);
+        echo "\">Validation user storie</a>
         ";
-    }
-
-    // line 8
-    public function block_javascripts($context, array $blocks = array())
-    {
     }
 
     public function getTemplateName()
@@ -63,6 +53,6 @@ class __TwigTemplate_266abbe761625cfd78649fb5d166ab6d extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  55 => 8,  50 => 6,  47 => 5,  42 => 3,  36 => 9,  33 => 8,  31 => 5,  26 => 3,  22 => 1,);
+        return array (  40 => 5,  36 => 4,  31 => 3,  26 => 8,  24 => 3,  20 => 1,  121 => 29,  116 => 26,  111 => 24,  106 => 22,  98 => 13,  93 => 26,  88 => 24,  83 => 22,  80 => 21,  75 => 13,  68 => 6,  65 => 5,  59 => 30,  57 => 29,  52 => 26,  49 => 13,  44 => 6,  42 => 5,  38 => 3,  35 => 2,);
     }
 }

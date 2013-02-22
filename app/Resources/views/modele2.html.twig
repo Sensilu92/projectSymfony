@@ -1,21 +1,17 @@
-<html>
-    
-    {% block stylesheets %}
-        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/css/css.css') }}" />
-    {% endblock %}
-    
-    <div class="menu">{% block menu %} LE MENU {% endblock %}</menu>
-    
-    <body>
+{% extends "::modeleParent.html.twig" %}
+
     {% block body %}
 
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/css/css.css') }}" />
+        {% endblock %}
+        
+<div class="center">{% block contentCenter2 %}   {% block menu %}{{parent()}}{% endblock %} 
     
-   <div class="center">{% block contentCenter %}{% endblock %} </div>
+    <div class="center1">{% block contentCenter %}{% endblock %}</div>
         
 
         {% block javascripts %}{% endblock %}
   
-      
+      {% endblock %} 
     {% endblock %}
-    </body>
-</html>

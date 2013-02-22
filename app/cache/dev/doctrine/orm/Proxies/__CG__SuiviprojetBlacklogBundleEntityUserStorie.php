@@ -42,6 +42,12 @@ class UserStorie extends \Suiviprojet\BlacklogBundle\Entity\UserStorie implement
     }
 
     
+    public function setIdUserStorie($idUserStorie)
+    {
+        $this->__load();
+        return parent::setIdUserStorie($idUserStorie);
+    }
+
     public function getIdUserStorie()
     {
         if ($this->__isInitialized__ === false) {

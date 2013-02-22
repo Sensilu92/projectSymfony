@@ -1,3 +1,7 @@
+sprint:
+    resource: "@SprintBundle/Resources/config/routing.yml"
+    prefix:   /
+
 suiviprojet_administrateur:
     resource: "@SuiviprojetAdministrateurBundle/Resources/config/routing.yml"
     prefix:   /
