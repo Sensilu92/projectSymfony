@@ -10,5 +10,6 @@
     <field name="login" type="string" column="login" length="45" nullable="false"/>
     <field name="password" type="string" column="password" length="45" nullable="false"/>
     <many-to-many field="equipeequipe" target-entity="Equipe" mapped-by="developperdevelopper"/>
+    <many-to-many field="craHebdomadairecraHebdomadaire" target-entity="CraHebdomadaire" mapped-by="developperdevelopper"/>
   </entity>
 </doctrine-mapping>

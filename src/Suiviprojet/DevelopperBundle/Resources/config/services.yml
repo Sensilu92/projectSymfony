@@ -1,0 +1,7 @@
+parameters:
+#    suivi_projet_developper.example.class: suiviProjet\DevelopperBundle\Example
+
+services:
+#    suivi_projet_developper.example:
+#        class: %suivi_projet_developper.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
