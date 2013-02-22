@@ -38,6 +38,13 @@ class Developper
     /**
      * @var string
      *
+     * @ORM\Column(name="role", type="string", length=45, nullable=false)
+     */
+    private $role;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="login", type="string", length=45, nullable=false)
      */
     private $login;
@@ -52,6 +59,13 @@ class Developper
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
+     * @ORM\ManyToMany(targetEntity="CraHebdomadaire", mappedBy="developperdevelopper")
+     */
+    private $craHebdomadairecraHebdomadaire;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
      * @ORM\ManyToMany(targetEntity="Equipe", mappedBy="developperdevelopper")
      */
     private $equipeequipe;
@@ -61,6 +75,7 @@ class Developper
      */
     public function __construct()
     {
+        $this->craHebdomadairecraHebdomadaire = new \Doctrine\Common\Collections\ArrayCollection();
         $this->equipeequipe = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -122,6 +137,29 @@ class Developper
     }
 
     /**
+     * Set role
+     *
+     * @param string $role
+     * @return Developper
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+    
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string 
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
      * Set login
      *
      * @param string $login
@@ -165,6 +203,39 @@ class Developper
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Add craHebdomadairecraHebdomadaire
+     *
+     * @param \Suiviprojet\AdministrateurBundle\Entity\CraHebdomadaire $craHebdomadairecraHebdomadaire
+     * @return Developper
+     */
+    public function addCraHebdomadairecraHebdomadaire(\Suiviprojet\AdministrateurBundle\Entity\CraHebdomadaire $craHebdomadairecraHebdomadaire)
+    {
+        $this->craHebdomadairecraHebdomadaire[] = $craHebdomadairecraHebdomadaire;
+    
+        return $this;
+    }
+
+    /**
+     * Remove craHebdomadairecraHebdomadaire
+     *
+     * @param \Suiviprojet\AdministrateurBundle\Entity\CraHebdomadaire $craHebdomadairecraHebdomadaire
+     */
+    public function removeCraHebdomadairecraHebdomadaire(\Suiviprojet\AdministrateurBundle\Entity\CraHebdomadaire $craHebdomadairecraHebdomadaire)
+    {
+        $this->craHebdomadairecraHebdomadaire->removeElement($craHebdomadairecraHebdomadaire);
+    }
+
+    /**
+     * Get craHebdomadairecraHebdomadaire
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCraHebdomadairecraHebdomadaire()
+    {
+        return $this->craHebdomadairecraHebdomadaire;
     }
 
     /**
