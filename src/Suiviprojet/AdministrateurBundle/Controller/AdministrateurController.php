@@ -95,13 +95,16 @@ class AdministrateurController extends Controller {
                 
                 $developpeur =  $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Developper")->findBy(array('login'=>$request->get('identifiant'),'password'=>$request->get('password')));
             
-                if(empty($developpeur)){
-                    
-                } else {
+                if(!empty($developpeur)){
                     $session = $this->get('request')->getSession();
                     $session->set('identifiant',$request->get('identifiant'));
                     $session->set('id',$developpeur[0]->getIddevelopper());
-                    $session->set('role','dev');
+                    
+//                    if($developpeur[0]->getRole() == 'admin'){
+//                        $session->set('role','dev');
+//                    } else {
+//                        $session->set('role','admin');
+//                    }
                 }
                 
             } else {

@@ -6,16 +6,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class SprintController extends Controller {
     
-    public function afficheValidationUserStoriesSprintVueAction(){
-        
-        return $this->render('SprintBundle:Sprint:validationUserStoriesSprintVue.html.twig', array());
-    }
-    
     public function afficheTableauDeBordSprintVueAction(){
         //Selectionner tous les sprints en fonction d'un projet
         $request = $this->getRequest();
-        $charger=$request->get('charger'); 
+        $charger = $request->get('charger'); 
         $projet =  $this->getDoctrine()->getRepository("blacklogProductBundle:Projet")->findAll();
+        
+        //Si c'est un client afficher juste les sprints lié à ses projets
+        if($this->getRequest()->getSession()->get('role') == 'user'){
+            
+            $projet = $this->getDoctrine()->getRepository("blacklogProductBundle:Projet")->findBy(array('clientclient' => $this->getRequest()->getSession()->get('id')));
+    
+        } else {
+            
+        }
+        
+        //$projet =  $this->getDoctrine()->getRepository("blacklogProductBundle:Projet")->findAll();
         $sprint =  $this->getDoctrine()->getRepository("blacklogProductBundle:Sprint")->findAll();
 
         //Si on clique pour charger un autre projet

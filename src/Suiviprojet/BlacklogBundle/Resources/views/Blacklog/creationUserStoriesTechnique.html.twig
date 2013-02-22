@@ -5,7 +5,8 @@
     {% block contentLeft %}
             
         <form method="post" action="{{idUserStory}}"> 
-            <fieldset style="height: 350px;"> <legend>Nouveau détail technique</legend>
+            {{app.session.get('role')}}
+            <fieldset  {% if app.session.get('role') != 'admin' %} disabled="disabled" {%endif%} style="height: 350px;"> <legend>Nouveau détail technique</legend>
                 <br><label>Description :</label><br>
                 <textarea rows="10" cols="50" name="description"></textarea> <br /><br />
                 <input type='submit' value='Ajouter' name='ajoutDetailTechnique'/>

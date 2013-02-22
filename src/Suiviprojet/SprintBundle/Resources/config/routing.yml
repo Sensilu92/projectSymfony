@@ -1,7 +1,3 @@
-sprint_validation_user_stories_sprint:
-    pattern:  /validation_user_stories_sprint
-    defaults: { _controller: SprintBundle:Sprint:afficheValidationUserStoriesSprintVue }
-
 sprint_tableau_de_bord_sprint:
     pattern:  /tableau_de_bord_sprint
     defaults: { _controller: SprintBundle:Sprint:afficheTableauDeBordSprintVue }

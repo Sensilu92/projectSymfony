@@ -89,37 +89,26 @@ class __TwigTemplate_61460eb660955afb1551db4e2f39b489 extends Twig_Template
                 <div class=\"menu\">
                     
                     ";
-        // line 17
-        if (($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "get", array(0 => "role"), "method") == "user")) {
-            // line 18
-            echo "                        <a href=\"";
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sprint_validation_user_stories_sprint"), "html", null, true);
-            echo "\">Validation user storie</a>
-                        
-                    ";
-        } elseif (($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "get", array(0 => "role"), "method") == "admin")) {
-            // line 21
-            echo "                        <a href=\"";
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_creation_compte_client"), "html", null, true);
-            echo "\">Création compte client</a>
+        // line 21
+        echo "                        <a href=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_creation_compte_client"), "html", null, true);
+        echo "\">Création compte client</a>
                         <a href=\"";
-            // line 22
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_creation_projet"), "html", null, true);
-            echo "\">Création projet</a>
+        // line 22
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_creation_projet"), "html", null, true);
+        echo "\">Création projet</a>
                         
-                    ";
-        } elseif (($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "get", array(0 => "role"), "method") == "dev")) {
-            // line 25
-            echo "                        <a href=\"";
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sprint_tableau_de_bord_sprint"), "html", null, true);
-            echo "\">CRA</a>
+                   ";
+        // line 25
+        echo "                        <a href=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sprint_tableau_de_bord_sprint"), "html", null, true);
+        echo "\">CRA</a>
                         <a href=\"";
-            // line 26
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sprint_tableau_de_bord_sprint"), "html", null, true);
-            echo "\">Tableau de bord sprint</a>
+        // line 26
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sprint_tableau_de_bord_sprint"), "html", null, true);
+        echo "\">Tableau de bord sprint</a>
                         
                     ";
-        }
         // line 29
         echo "                        
                     <a href=\"";
@@ -152,6 +141,6 @@ class __TwigTemplate_61460eb660955afb1551db4e2f39b489 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  139 => 38,  131 => 31,  127 => 30,  124 => 29,  118 => 26,  113 => 25,  107 => 22,  102 => 21,  95 => 18,  93 => 17,  86 => 14,  81 => 35,  79 => 14,  73 => 12,  68 => 6,  62 => 5,  55 => 39,  53 => 38,  50 => 37,  48 => 12,  41 => 8,  36 => 7,  34 => 6,  30 => 5,  24 => 1,);
+        return array (  128 => 38,  120 => 31,  116 => 30,  113 => 29,  108 => 26,  103 => 25,  98 => 22,  93 => 21,  86 => 14,  81 => 35,  79 => 14,  73 => 12,  68 => 6,  62 => 5,  55 => 39,  53 => 38,  50 => 37,  48 => 12,  41 => 8,  36 => 7,  34 => 6,  30 => 5,  24 => 1,);
     }
 }
