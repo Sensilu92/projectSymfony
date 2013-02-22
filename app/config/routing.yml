@@ -1,3 +1,7 @@
+suivi_projet_developper:
+    resource: "@suiviProjetDevelopperBundle/Resources/config/routing.yml"
+    prefix:   /
+
 sprint:
     resource: "@SprintBundle/Resources/config/routing.yml"
     prefix:   /

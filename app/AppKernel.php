@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Suiviprojet\ClientBundle\ClientBundle(),
             new Suiviprojet\AdministrateurBundle\SuiviprojetAdministrateurBundle(),
             new Suiviprojet\SprintBundle\SprintBundle(),
+            new suiviProjet\DevelopperBundle\suiviProjetDevelopperBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
