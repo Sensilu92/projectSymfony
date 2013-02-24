@@ -7,7 +7,7 @@
     <field name="societe" type="string" column="societe" length="45" nullable="false"/>
     <field name="nomContact" type="string" column="nom_contact" length="45" nullable="false"/>
     <field name="prenomContact" type="string" column="prenom_contact" length="45" nullable="false"/>
-    <field name="telephoneContact" type="integer" column="telephone_contact" nullable="false"/>
+    <field name="telephoneContact" type="string" column="telephone_contact" length="10" nullable="false"/>
     <field name="identifiantconnection" type="string" column="identifiantConnection" length="45" nullable="false"/>
     <field name="passwordconnection" type="string" column="passwordConnection" length="45" nullable="false"/>
   </entity>

@@ -1,11 +1,6 @@
-{# empty Twig template #}
+<h3>Ajout de client</h3>
+<form action="{{ path('suiviprojet_administrateur_creation_compte_client') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
 
-
-<h3>Ajout client</h3>
- 
-<div class="well">
-    <form method="post" {{ form_enctype(form) }}>
-        {{ form_widget(form) }}
-        <input type="submit" class="btn btn-primary" />
-    </form>
-</div>
+    <input type="submit" />
+</form>
