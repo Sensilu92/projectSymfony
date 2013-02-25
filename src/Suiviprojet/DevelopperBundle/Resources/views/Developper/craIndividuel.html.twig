@@ -1,0 +1,109 @@
+{% extends "::modele2.html.twig" %}
+
+{% block menu %}{{parent()}}Compte rendu d'activité individuel<br /><br />{% endblock %}
+
+{% block content %} 
+ 
+<script src = "http://code.jquery.com/jquery-1.9.1.js" > </script>
+<script src = "http://code.jquery.com/ui/1.10.1/jquery-ui.js" > </script>
+<link rel = "stylesheet" href = "http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+<link rel = "stylesheet" href = "/resources/demos/style.css"/>
+
+    <form method="post" action=""> {# pas besoin de mettre le nom si c'est la meme route#}
+                 
+       {# <label>Projet : </label><SELECT name='projet'>
+        {% if id is defined %}
+            {% for p in projet%}
+                {%for t in id%}
+                    {%if p.idProjet == t.idProjet%}
+                        <OPTION selected="selected">{{p.nom}}
+                             {%else%}
+                        <OPTION>{{p.nom}}
+                    {% endif %}
+                {%endfor%}
+            {%endfor%}
+        {%else%}
+            {% for p in projet%}
+                <OPTION>{{p.nom}}
+            {%endfor%}
+        {% endif %}
+        </SELECT> 
+        <input type='submit' value='Charger' name='charger'/> <br />#}
+        
+        <table width="50%" height="85%" cellpadding="0" cellspacing="0" border="1"><tr><td>Jours</td><td>Date</td><td>Projet</td><td>Client</td><td>Tâche</td><td>Statut</td><td>Explications</td></tr>
+        
+        {% for i in 0..4%}
+            
+        <tr>
+            <td>
+                {% if i == 0%}
+                    LUNDI
+                {% elseif i == 1%}
+                    MARDI
+                {% elseif i == 2%}
+                    MERCREDI
+                {% elseif i == 3%}
+                    JEUDI
+                {% else%}
+                    VENDREDI
+                {% endif %}
+            </td>
+            <td>
+                <script>
+                    $( function () {
+                        $("#datepicker{{i}}").datepicker();
+                    });
+                </script>
+                {% set date='1985/01/02'%}
+                <input type="datetime" name="date{{i}}" id = "datepicker{{i}}"/>
+            </td>
+             <td>
+                <SELECT name='projet{{i}}'> 
+                        <OPTION name='' value="">
+                    {% for theProjet in projet%}
+                        <OPTION>{{theProjet.nom}}
+                    {%endfor%}
+             </SELECT>
+             </td>
+             <td>
+                <SELECT name='client{{i}}'>
+                    <OPTION name='' value="">
+                    {% for clt in clients %}
+                        <OPTION>{{clt.societe}}
+                    {%endfor%}
+                </SELECT>
+             </td>
+             <td>
+                <SELECT name='tache{{i}}'>
+                    <OPTION name='' value="">
+                    {% for userStory in userStories%}
+                        <OPTION>{{userStory.fonctionnalite}}
+                    {%endfor%}
+                </SELECT>
+             </td>
+             <td>
+                <SELECT name='statut{{i}}'>
+                    <OPTION name='' value="">
+                    {% for statut in statuts%}
+                        <OPTION>{{statut.intitule}}
+                    {%endfor%}
+                </SELECT>
+             </td>
+             <td><textarea name="action" rows="2" cols="50" style="border:solid 1px black; font-family:tahoma;"></textarea></td>
+                </tr>
+                {% endfor %}
+            </table><br />
+
+            <input type='submit' value='Enregistrer' name='enregistrer'/> <br />
+    </form>
+        
+    {% endblock %}
+
+   
+
+
+
+
+
+  
+

@@ -1,3 +1,7 @@
-suivi_projet_developper_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: suiviProjetDevelopperBundle:Default:index }
+suivi_projet_developper_cra:
+    pattern:  /compte_rendu_dactivite
+    defaults: { _controller: suiviProjetDevelopperBundle:Developper:afficheCraVue }
+    
+suivi_projet_developper_cra_individuel:
+    pattern:  /compte_rendu_dactivite_individuel
+    defaults: { _controller: suiviProjetDevelopperBundle:Developper:afficheCraIndividuelVue }

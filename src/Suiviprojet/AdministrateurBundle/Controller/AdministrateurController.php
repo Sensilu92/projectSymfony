@@ -17,7 +17,7 @@ class AdministrateurController extends Controller {
         $form = $this->createForm(new ProjetType, $projet);
         // récupération la requête
         $request = $this->get('request');
-        var_dump($projet);
+       
         // vérifie qu'elle est de type POST
         if ($request->getMethod() == 'POST') { 
             
@@ -55,8 +55,6 @@ class AdministrateurController extends Controller {
                 //  return $this->redirect($this->generateUrl('client_succes'));
             }
         }
-
-
         return $this->render('SuiviprojetAdministrateurBundle:Admin:creationCompteClient.html.twig', array('form' => $form->createView(),
                 ));
     }
@@ -81,11 +79,11 @@ class AdministrateurController extends Controller {
                     $session->set('identifiant', $request->get('identifiant'));
                     $session->set('id', $developpeur[0]->getIddevelopper());
 
-//                    if($developpeur[0]->getRole() == 'admin'){
-//                        $session->set('role','dev');
-//                    } else {
-//                        $session->set('role','admin');
-//                    }
+                    if($developpeur[0]->getRole() == 'admin'){
+                        $session->set('role','admin');
+                    } else {
+                        $session->set('role','dev');
+                    }
                 }
             } else {
                 $session = $this->get('request')->getSession();
@@ -100,6 +98,16 @@ class AdministrateurController extends Controller {
                 echo 'Revoir les identifiants <br/><br/>';
             }
         }
+        return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig', array());
+    }
+    
+    public function afficheDeconnexionVueAction() {
+
+        $session = $this->get('request')->getSession();
+        $session->set('identifiant', '');
+        $session->set('id', '');
+        $session->set('role', '');
+        
         return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig', array());
     }
 

@@ -14,4 +14,7 @@ suiviprojet_administrateur_accueil:
     pattern:  /accueil
     defaults: { _controller: SuiviprojetAdministrateurBundle:Administrateur:afficheAccueilVue }
 
+suiviprojet_administrateur_deconnexion:
+    pattern:  /deconnexion
+    defaults: { _controller: SuiviprojetAdministrateurBundle:Administrateur:afficheDeconnexionVue }
 

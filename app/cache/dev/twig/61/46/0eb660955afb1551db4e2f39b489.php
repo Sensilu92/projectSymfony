@@ -46,12 +46,12 @@ class __TwigTemplate_61460eb660955afb1551db4e2f39b489 extends Twig_Template
         ";
         // line 12
         $this->displayBlock('body', $context, $blocks);
-        // line 37
+        // line 36
         echo "        
         ";
-        // line 38
+        // line 37
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 39
+        // line 38
         echo "        
     </body>
     
@@ -77,7 +77,7 @@ class __TwigTemplate_61460eb660955afb1551db4e2f39b489 extends Twig_Template
             ";
         // line 14
         $this->displayBlock('menu', $context, $blocks);
-        // line 35
+        // line 34
         echo "           
         ";
     }
@@ -87,44 +87,50 @@ class __TwigTemplate_61460eb660955afb1551db4e2f39b489 extends Twig_Template
     {
         echo " 
                 <div class=\"menu\">
-                    
+                        
                     ";
-        // line 21
+        // line 18
         echo "                        <a href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_creation_compte_client"), "html", null, true);
         echo "\">Création compte client</a>
                         <a href=\"";
-        // line 22
+        // line 19
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_creation_projet"), "html", null, true);
         echo "\">Création projet</a>
                         
                    ";
-        // line 25
+        // line 22
         echo "                        <a href=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sprint_tableau_de_bord_sprint"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suivi_projet_developper_cra"), "html", null, true);
         echo "\">CRA</a>
                         <a href=\"";
-        // line 26
+        // line 23
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suivi_projet_developper_cra_individuel"), "html", null, true);
+        echo "\">CRA individuel</a>
+                        <a href=\"";
+        // line 24
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sprint_tableau_de_bord_sprint"), "html", null, true);
         echo "\">Tableau de bord sprint</a>
                         
                     ";
-        // line 29
+        // line 27
         echo "                        
                     <a href=\"";
-        // line 30
+        // line 28
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blacklog_product_creation_userstories"), "html", null, true);
         echo "\">User storie</a>
                     <a href=\"";
-        // line 31
+        // line 29
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_connexion"), "html", null, true);
         echo "\">Deconnexion</a>
-                        
+                    ";
+        // line 31
+        echo "                        
                 </div> 
             ";
     }
 
-    // line 38
+    // line 37
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -141,6 +147,6 @@ class __TwigTemplate_61460eb660955afb1551db4e2f39b489 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  128 => 38,  120 => 31,  116 => 30,  113 => 29,  108 => 26,  103 => 25,  98 => 22,  93 => 21,  86 => 14,  81 => 35,  79 => 14,  73 => 12,  68 => 6,  62 => 5,  55 => 39,  53 => 38,  50 => 37,  48 => 12,  41 => 8,  36 => 7,  34 => 6,  30 => 5,  24 => 1,);
+        return array (  134 => 37,  128 => 31,  124 => 29,  120 => 28,  117 => 27,  112 => 24,  108 => 23,  103 => 22,  98 => 19,  93 => 18,  86 => 14,  81 => 34,  79 => 14,  73 => 12,  68 => 6,  62 => 5,  55 => 38,  53 => 37,  50 => 36,  48 => 12,  41 => 8,  36 => 7,  34 => 6,  30 => 5,  24 => 1,);
     }
 }

@@ -2,8 +2,10 @@
 
  {% block menu %}{{parent()}}Tableau de bord<br /><br />{% endblock %}
 
- {% block contentCenter %} 
- METTRE LES SOUS TACHES
+ {% block content %}
+ 
+ RAJOUETR LE BOUTON VALIDER
+ 
     <form method="post" action=""> {# pas besoin de mettre le nom si c'est la meme route#}
                  
         <label>Projet : </label><SELECT name='projet'>
@@ -33,56 +35,74 @@
         </SELECT> 
         
         <input type='submit' value='Charger' name='charger'/> <br /> <br /> 
-    </form>
-        
-       
+    {#</form>#}
  
-        {% set counter = 0 %} 
+    {% set counter = 0 %} 
         
-        {% if sprintTab is defined %}
+    {% if userStories is defined %}
  
-        <table style="border: solid;
-    border-width: 1px;"><tr>
-            {#{% for sprint in sprintTab %}#}
-                             <td> Tâches </td><td> A faire </td><td> En cours </td><td> A valider </td><td> Valider </td></tr>
-                {% for userStory in sprintTab.getUserStorieUserStorie() %}
-
-            <tr>
-                <td>{{userStory.fonctionnalite}}</td>
-                {#  {% if userStory.statutstatut.intitule == 'en cours' %}
-                        <input checked="checked" type="checkbox" name="question[{{ userStory.idUserStorie }}]"/>
-                    {%else%}
-                        <input type="checkbox" name="question[{{ userStory.idUserStorie }}]"/>
-                    {%endif%}#}
-                
-                <td>
-                    <input {% if userStory.statutstatut.intitule == 'à faire' %} checked="checked" {%endif%} type="checkbox" name="question[{{ userStory.idUserStorie }}]" disabled="disabled"/>  
-                </td>
-                <td>
-                    <input {% if userStory.statutstatut.intitule == 'en cours' %} checked="checked" {%endif%} type="checkbox" name="question[{{ userStory.idUserStorie }}]" disabled="disabled"/>  
-                </td>
-                <td>
-                    <input {% if userStory.statutstatut.intitule == 'à valider' %} checked="checked" {%endif%} type="checkbox" name="question[{{ userStory.idUserStorie }}]" disabled="disabled"/>  
-                </td>
-                <td>
-                    <input {% if userStory.statutstatut.intitule == 'terminé' %} checked="checked" {%endif%} type="checkbox" name="question[{{ userStory.idUserStorie }}]" disabled="disabled"/>  
-                </td>
-            </tr>
-
-
-                {# {% counter++ %}#}
-                {% set counter = counter + 1 %}
-
+        <table style="border-collapse: collapse; border: solid"><tr>
+           
+            <td> A faire </td><td> En cours </td><td> A valider </td><td> Valider </td></tr>
+        
+            {% for userStory in userStories%}
+            
+                <tr> {{userStory.statutstatut.intitule == 'à  faire'}}
+                    <td>
+                        {%if userStory.statutstatut.intitule == 'à faire'%}
                             
-                            {%if counter == 4%}
-                                </tr><tr>
-                                {% set counter = 0 %}   
-                            {% endif %}
-                    {%endfor %}
-                                         {# {%endfor %}#}
-            </tr></table>
+                           {# <td style=" width:25%; background-color:{{couleur.couleur}}">#}
+                            <a name="{{userStory.idUserStorie}}" href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStory.idUserStorie}) }}"><b>#{{userStory.idUserStorie}}</b></a><br> 
+                            <b name="fonctionnalite">Fonctionnalité : </b>{{userStory.fonctionnalite}}<br>
+                            <b>Action : </b>{{userStory.action}}<br>
+                            <b>DétailTechnique : </b> Afficher les userstories tech<br>
+                        {% endif %}
+                      </td>
+                      <td>
+                        {%if userStory.statutstatut.intitule == 'en cours'%}
+                           
+                            <a href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStory.idUserStorie}) }}"><b>#{{userStory.idUserStorie}}</b></a><br> 
+                            <b>Fonctionnalité : </b>{{userStory.fonctionnalite}}<br>
+                            <b>Action : </b>{{userStory.action}}<br>
+                            <b>DétailTechnique : </b> <br>
+                            <input type='checkbox' name='valider{{userStory.idUserStorie}}'/>
+                        {% endif %}
+                       </td>
+                        <td>
+                        {%if userStory.statutstatut.intitule == 'à valider'%}
+                            
+                            <a href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStory.idUserStorie}) }}"><b>#{{userStory.idUserStorie}}</b></a><br> 
+                            <b>Fonctionnalité : </b>{{userStory.fonctionnalite}}<br>
+                            <b>Action : </b>{{userStory.action}}<br>
+                            <b>DétailTechnique : </b> <br>
+                        {% endif %}
+                       </td>
+                        <td>
+                        {%if userStory.statutstatut.intitule == 'terminé'%}
+                            
+                            <a href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStory.idUserStorie}) }}"><b>#{{userStory.idUserStorie}}</b></a><br> 
+                            <b>Fonctionnalité : </b>{{userStory.fonctionnalite}}<br>
+                            <b>Action : </b>{{userStory.action}}<br>
+                            <b>DétailTechnique : </b> <br>
+                            <input type='checkbox' name='afaire{{userStory.idUserStorie}}'/>
+                        {% endif %}
+                       </td>
  
-        {% endif %}
+                    {#<td><input {% if userStory.statutstatut.intitule == 'terminé' %} checked="checked" {%endif%} type="radio" name="{{ userStory.idUserStorie }}" {% if app.session.get('role') != 'user' %} disabled="disabled" {%endif%}/></td>#}
+                </tr>
+
+                {#{% set counter = counter + 1 %}
+          
+                {%if counter == 4%}
+                    </tr><tr>
+                    {% set counter = 0 %}   
+                {% endif %}#}
+            {%endfor %} 
+            </tr></table><br /> 
+        <input type='submit' value='Enregistrer' name='enregistrer'/> <br /> <br /> 
+         </form>
+    {% endif %}
+ 
  {% endblock %}
 
 

@@ -13,6 +13,8 @@ class BlacklogProductController extends Controller{
  
     public function afficheUserStoriesVueAction(){
 
+        if($this->getRequest()->getSession()->get('identifiant') != ''){
+
         $request = $this->getRequest();
         $charger=$request->get('charger'); 
         $enregistrer=$request->get('enregistrer');
@@ -69,10 +71,13 @@ class BlacklogProductController extends Controller{
             return $this->render('blacklogProductBundle:Blacklog:creationUserStories.html.twig',
                                  array('projet' => $projet ,'userStories'=>$userStories,'priorite'=>$priorite));
        }
+        }else{
+            return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig', array());
+        }
     }
     
     public function afficheUserStoriesTechniqueVueAction($idUserStorie){
-       
+       if($this->getRequest()->getSession()->get('identifiant') != ''){
         $request = $this->getRequest();
         $id=$request->get('ajoutDetailTechnique'); 
        
@@ -89,11 +94,13 @@ class BlacklogProductController extends Controller{
             $this->getDoctrine()->getManager()->flush();
         } 
         
-         $userStoriesTechnique = $this->getDoctrine()->getRepository("AdministrateurBundle:UserStoriesTechnique")->findBy(array('userStorieUserStorie' => $idUserStorie));
+         $userStoriesTechnique = $this->getDoctrine()->getRepository("Suiviprojet\AdministrateurBundle\Entity\UserStoriesTechnique")->findBy(array('userStorieUserStorie' => $idUserStorie));
          
         return $this->render('blacklogProductBundle:Blacklog:creationUserStoriesTechnique.html.twig', 
                               array('userStoriesTechnique'=>$userStoriesTechnique,'idUserStory' => $idUserStorie));
-       
+     }else{
+            return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig', array());
+        }  
     }
 
 }

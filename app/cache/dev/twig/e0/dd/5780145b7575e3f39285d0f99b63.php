@@ -31,62 +31,62 @@ class __TwigTemplate_e0dd5780145b7575e3f39285d0f99b63 extends Twig_Template
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 38
+    // line 3
     public function block_body($context, array $blocks = array())
     {
-        // line 39
+        // line 4
         echo "       
-            ";
-        // line 40
+        ";
+        // line 5
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 41
+        // line 6
         echo "           
-";
-        // line 42
+        ";
+        // line 7
         $this->displayBlock('contentCenter2', $context, $blocks);
-        // line 48
+        // line 13
         echo " 
         
 
         ";
-        // line 51
+        // line 16
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 52
+        // line 17
         echo "  
       
     ";
     }
 
-    // line 40
+    // line 5
     public function block_stylesheets($context, array $blocks = array())
     {
         $this->displayParentBlock("stylesheets", $context, $blocks);
     }
 
-    // line 42
+    // line 7
     public function block_contentCenter2($context, array $blocks = array())
     {
         echo "<div class=\"center\">    ";
         $this->displayBlock('menu', $context, $blocks);
-        // line 43
+        // line 8
         echo "    
     <div class=\"center1\">";
-        // line 44
+        // line 9
         $this->displayBlock('contentCenter', $context, $blocks);
         echo "</div> 
     
     <div class=\"left\" >";
-        // line 46
+        // line 11
         $this->displayBlock('contentLeft', $context, $blocks);
         echo "</div> 
     
     <div class=\"right\">";
-        // line 48
+        // line 13
         $this->displayBlock('contentRight', $context, $blocks);
         echo " </div></div>";
     }
 
-    // line 42
+    // line 7
     public function block_menu($context, array $blocks = array())
     {
         echo " ";
@@ -94,22 +94,22 @@ class __TwigTemplate_e0dd5780145b7575e3f39285d0f99b63 extends Twig_Template
         echo " ";
     }
 
-    // line 44
+    // line 9
     public function block_contentCenter($context, array $blocks = array())
     {
     }
 
-    // line 46
+    // line 11
     public function block_contentLeft($context, array $blocks = array())
     {
     }
 
-    // line 48
+    // line 13
     public function block_contentRight($context, array $blocks = array())
     {
     }
 
-    // line 51
+    // line 16
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -126,6 +126,6 @@ class __TwigTemplate_e0dd5780145b7575e3f39285d0f99b63 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  113 => 51,  108 => 48,  103 => 46,  98 => 44,  90 => 42,  85 => 48,  80 => 46,  75 => 44,  72 => 43,  67 => 42,  61 => 40,  55 => 52,  53 => 51,  48 => 48,  46 => 42,  43 => 41,  41 => 40,  38 => 39,  35 => 38,);
+        return array (  113 => 16,  108 => 13,  103 => 11,  98 => 9,  90 => 7,  85 => 13,  80 => 11,  75 => 9,  72 => 8,  67 => 7,  61 => 5,  55 => 17,  53 => 16,  48 => 13,  46 => 7,  43 => 6,  41 => 5,  38 => 4,  35 => 3,);
     }
 }

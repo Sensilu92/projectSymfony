@@ -11,7 +11,7 @@ class __TwigTemplate_b27604384863bece8d598e6a67ed60de extends Twig_Template
 
         $this->blocks = array(
             'menu' => array($this, 'block_menu'),
-            'contentCenter' => array($this, 'block_contentCenter'),
+            'content' => array($this, 'block_content'),
         );
     }
 
@@ -33,63 +33,65 @@ class __TwigTemplate_b27604384863bece8d598e6a67ed60de extends Twig_Template
     }
 
     // line 5
-    public function block_contentCenter($context, array $blocks = array())
+    public function block_content($context, array $blocks = array())
     {
+        // line 6
         echo " 
- METTRE LES SOUS TACHES
+ RAJOUETR LE BOUTON VALIDER
+ 
     <form method=\"post\" action=\"\"> ";
-        // line 8
+        // line 10
         echo "                 
         <label>Projet : </label><SELECT name='projet'>
         ";
-        // line 10
+        // line 12
         if (array_key_exists("id", $context)) {
-            // line 11
+            // line 13
             echo "            ";
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getContext($context, "projet"));
             foreach ($context['_seq'] as $context["_key"] => $context["p"]) {
-                // line 12
+                // line 14
                 echo "                ";
                 $context['_parent'] = (array) $context;
                 $context['_seq'] = twig_ensure_traversable($this->getContext($context, "id"));
                 foreach ($context['_seq'] as $context["_key"] => $context["t"]) {
-                    // line 13
+                    // line 15
                     echo "                    ";
                     if (($this->getAttribute($this->getContext($context, "p"), "idProjet") == $this->getAttribute($this->getContext($context, "t"), "idProjet"))) {
-                        // line 14
+                        // line 16
                         echo "                        <OPTION selected=\"selected\">";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "p"), "nom"), "html", null, true);
                         echo "
                              ";
                     } else {
-                        // line 16
+                        // line 18
                         echo "                        <OPTION>";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "p"), "nom"), "html", null, true);
                         echo "
                     ";
                     }
-                    // line 18
+                    // line 20
                     echo "                ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['t'], $context['_parent'], $context['loop']);
                 $context = array_merge($_parent, array_intersect_key($context, $_parent));
-                // line 19
+                // line 21
                 echo "            ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 20
+            // line 22
             echo "        ";
         } else {
-            // line 21
+            // line 23
             echo "            ";
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getContext($context, "projet"));
             foreach ($context['_seq'] as $context["_key"] => $context["p"]) {
-                // line 22
+                // line 24
                 echo "                <OPTION>";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "p"), "nom"), "html", null, true);
                 echo "
@@ -98,22 +100,22 @@ class __TwigTemplate_b27604384863bece8d598e6a67ed60de extends Twig_Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 24
+            // line 26
             echo "        ";
         }
-        // line 25
+        // line 27
         echo "        </SELECT> 
         
         <label>Sprint : </label><SELECT name='sprint'>
         ";
-        // line 28
+        // line 30
         if (array_key_exists("sprint", $context)) {
-            // line 29
+            // line 31
             echo "            ";
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getContext($context, "sprint"));
             foreach ($context['_seq'] as $context["_key"] => $context["s"]) {
-                // line 30
+                // line 32
                 echo "                <OPTION>";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "s"), "idsprint"), "html", null, true);
                 echo "
@@ -122,123 +124,173 @@ class __TwigTemplate_b27604384863bece8d598e6a67ed60de extends Twig_Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['s'], $context['_parent'], $context['loop']);
             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 32
+            // line 34
             echo "         ";
         }
-        // line 33
+        // line 35
         echo "        </SELECT> 
         
         <input type='submit' value='Charger' name='charger'/> <br /> <br /> 
-    </form>
-        
-       
- 
-        ";
+    ";
+        // line 39
+        echo " 
+    ";
         // line 40
         $context["counter"] = 0;
         echo " 
         
-        ";
+    ";
         // line 42
-        if (array_key_exists("sprintTab", $context)) {
+        if (array_key_exists("userStories", $context)) {
             // line 43
             echo " 
-        <table style=\"border: solid;
-    border-width: 1px;\"><tr>
+        <table style=\"border-collapse: collapse; border: solid\"><tr>
+           
+            <td> A faire </td><td> En cours </td><td> A valider </td><td> Valider </td></tr>
+        
             ";
-            // line 47
-            echo "                             <td> Tâches </td><td> A faire </td><td> En cours </td><td> A valider </td><td> Valider </td></tr>
-                ";
             // line 48
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getContext($context, "sprintTab"), "getUserStorieUserStorie", array(), "method"));
+            $context['_seq'] = twig_ensure_traversable($this->getContext($context, "userStories"));
             foreach ($context['_seq'] as $context["_key"] => $context["userStory"]) {
                 // line 49
+                echo "            
+                <tr> ";
+                // line 50
+                echo twig_escape_filter($this->env, ($this->getAttribute($this->getAttribute($this->getContext($context, "userStory"), "statutstatut"), "intitule") == "à  faire"), "html", null, true);
                 echo "
-            <tr>
-                <td>";
-                // line 51
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "fonctionnalite"), "html", null, true);
-                echo "</td>
-                ";
-                // line 57
-                echo "                
-                <td>
-                    <input ";
-                // line 59
+                    <td>
+                        ";
+                // line 52
                 if (($this->getAttribute($this->getAttribute($this->getContext($context, "userStory"), "statutstatut"), "intitule") == "à faire")) {
-                    echo " checked=\"checked\" ";
+                    // line 53
+                    echo "                            
+                           ";
+                    // line 55
+                    echo "                            <a name=\"";
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"), "html", null, true);
+                    echo "\" href=\"";
+                    echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blacklog_product_creation_userstories_technique", array("idUserStorie" => $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"))), "html", null, true);
+                    echo "\"><b>#";
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"), "html", null, true);
+                    echo "</b></a><br> 
+                            <b name=\"fonctionnalite\">Fonctionnalité : </b>";
+                    // line 56
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "fonctionnalite"), "html", null, true);
+                    echo "<br>
+                            <b>Action : </b>";
+                    // line 57
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "action"), "html", null, true);
+                    echo "<br>
+                            <b>DétailTechnique : </b> Afficher les userstories tech<br>
+                        ";
                 }
-                echo " type=\"checkbox\" name=\"question[";
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"), "html", null, true);
-                echo "]\" disabled=\"disabled\"/>  
-                </td>
-                <td>
-                    <input ";
+                // line 60
+                echo "                      </td>
+                      <td>
+                        ";
                 // line 62
                 if (($this->getAttribute($this->getAttribute($this->getContext($context, "userStory"), "statutstatut"), "intitule") == "en cours")) {
-                    echo " checked=\"checked\" ";
+                    // line 63
+                    echo "                           
+                            <a href=\"";
+                    // line 64
+                    echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blacklog_product_creation_userstories_technique", array("idUserStorie" => $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"))), "html", null, true);
+                    echo "\"><b>#";
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"), "html", null, true);
+                    echo "</b></a><br> 
+                            <b>Fonctionnalité : </b>";
+                    // line 65
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "fonctionnalite"), "html", null, true);
+                    echo "<br>
+                            <b>Action : </b>";
+                    // line 66
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "action"), "html", null, true);
+                    echo "<br>
+                            <b>DétailTechnique : </b> <br>
+                            <input type='checkbox' name='valider";
+                    // line 68
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"), "html", null, true);
+                    echo "'/>
+                        ";
                 }
-                echo " type=\"checkbox\" name=\"question[";
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"), "html", null, true);
-                echo "]\" disabled=\"disabled\"/>  
-                </td>
-                <td>
-                    <input ";
-                // line 65
+                // line 70
+                echo "                       </td>
+                        <td>
+                        ";
+                // line 72
                 if (($this->getAttribute($this->getAttribute($this->getContext($context, "userStory"), "statutstatut"), "intitule") == "à valider")) {
-                    echo " checked=\"checked\" ";
+                    // line 73
+                    echo "                            
+                            <a href=\"";
+                    // line 74
+                    echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blacklog_product_creation_userstories_technique", array("idUserStorie" => $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"))), "html", null, true);
+                    echo "\"><b>#";
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"), "html", null, true);
+                    echo "</b></a><br> 
+                            <b>Fonctionnalité : </b>";
+                    // line 75
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "fonctionnalite"), "html", null, true);
+                    echo "<br>
+                            <b>Action : </b>";
+                    // line 76
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "action"), "html", null, true);
+                    echo "<br>
+                            <b>DétailTechnique : </b> <br>
+                        ";
                 }
-                echo " type=\"checkbox\" name=\"question[";
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"), "html", null, true);
-                echo "]\" disabled=\"disabled\"/>  
-                </td>
-                <td>
-                    <input ";
-                // line 68
+                // line 79
+                echo "                       </td>
+                        <td>
+                        ";
+                // line 81
                 if (($this->getAttribute($this->getAttribute($this->getContext($context, "userStory"), "statutstatut"), "intitule") == "terminé")) {
-                    echo " checked=\"checked\" ";
+                    // line 82
+                    echo "                            
+                            <a href=\"";
+                    // line 83
+                    echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blacklog_product_creation_userstories_technique", array("idUserStorie" => $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"))), "html", null, true);
+                    echo "\"><b>#";
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"), "html", null, true);
+                    echo "</b></a><br> 
+                            <b>Fonctionnalité : </b>";
+                    // line 84
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "fonctionnalite"), "html", null, true);
+                    echo "<br>
+                            <b>Action : </b>";
+                    // line 85
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "action"), "html", null, true);
+                    echo "<br>
+                            <b>DétailTechnique : </b> <br>
+                            <input type='checkbox' name='afaire";
+                    // line 87
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"), "html", null, true);
+                    echo "'/>
+                        ";
                 }
-                echo " type=\"checkbox\" name=\"question[";
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"), "html", null, true);
-                echo "]\" disabled=\"disabled\"/>  
-                </td>
-            </tr>
-
+                // line 89
+                echo "                       </td>
+ 
+                    ";
+                // line 92
+                echo "                </tr>
 
                 ";
-                // line 74
-                echo "                ";
-                $context["counter"] = ($this->getContext($context, "counter") + 1);
-                // line 75
-                echo "
-                            
-                            ";
-                // line 77
-                if (($this->getContext($context, "counter") == 4)) {
-                    // line 78
-                    echo "                                </tr><tr>
-                                ";
-                    // line 79
-                    $context["counter"] = 0;
-                    echo "   
-                            ";
-                }
-                // line 81
-                echo "                    ";
+                // line 100
+                echo "            ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['userStory'], $context['_parent'], $context['loop']);
             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 82
-            echo "                                         ";
-            // line 83
-            echo "            </tr></table>
- 
-        ";
+            echo " 
+            </tr></table><br /> 
+        <input type='submit' value='Enregistrer' name='enregistrer'/> <br /> <br /> 
+         </form>
+    ";
         }
-        // line 86
-        echo " ";
+        // line 105
+        echo " 
+ ";
     }
 
     public function getTemplateName()
@@ -253,6 +305,6 @@ class __TwigTemplate_b27604384863bece8d598e6a67ed60de extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  241 => 86,  236 => 83,  234 => 82,  228 => 81,  223 => 79,  220 => 78,  218 => 77,  214 => 75,  211 => 74,  199 => 68,  189 => 65,  179 => 62,  169 => 59,  165 => 57,  161 => 51,  157 => 49,  153 => 48,  150 => 47,  145 => 43,  143 => 42,  138 => 40,  129 => 33,  126 => 32,  117 => 30,  112 => 29,  110 => 28,  105 => 25,  102 => 24,  93 => 22,  88 => 21,  85 => 20,  79 => 19,  73 => 18,  67 => 16,  61 => 14,  58 => 13,  53 => 12,  48 => 11,  46 => 10,  42 => 8,  36 => 5,  29 => 3,);
+        return array (  292 => 105,  280 => 100,  276 => 92,  272 => 89,  267 => 87,  262 => 85,  258 => 84,  252 => 83,  249 => 82,  247 => 81,  243 => 79,  237 => 76,  233 => 75,  227 => 74,  224 => 73,  222 => 72,  218 => 70,  213 => 68,  208 => 66,  204 => 65,  198 => 64,  195 => 63,  193 => 62,  189 => 60,  183 => 57,  179 => 56,  170 => 55,  167 => 53,  165 => 52,  160 => 50,  157 => 49,  153 => 48,  146 => 43,  144 => 42,  139 => 40,  136 => 39,  131 => 35,  128 => 34,  119 => 32,  114 => 31,  112 => 30,  107 => 27,  104 => 26,  95 => 24,  90 => 23,  87 => 22,  81 => 21,  75 => 20,  69 => 18,  63 => 16,  60 => 15,  55 => 14,  50 => 13,  48 => 12,  44 => 10,  39 => 6,  36 => 5,  29 => 3,);
     }
 }

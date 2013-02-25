@@ -1,11 +1,13 @@
-{# empty Twig template #}
+{% extends "::modele2.html.twig" %}
 
+{% block menu %}{{parent()}}Ajout projet<br /><br />{% endblock %}
 
-<h3>Ajout projet</h3>
- 
+{% block content %} 
 <div class="well">
     <form method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <input type="submit" class="btn btn-primary" />
     </form>
 </div>
+{% endblock %}
+ 

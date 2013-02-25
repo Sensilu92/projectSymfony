@@ -11,7 +11,7 @@ class __TwigTemplate_d69538f999e588dd8bc5c6b3157b77f2 extends Twig_Template
 
         $this->blocks = array(
             'menu' => array($this, 'block_menu'),
-            'contentCenter' => array($this, 'block_contentCenter'),
+            'content' => array($this, 'block_content'),
         );
     }
 
@@ -29,28 +29,27 @@ class __TwigTemplate_d69538f999e588dd8bc5c6b3157b77f2 extends Twig_Template
     public function block_menu($context, array $blocks = array())
     {
         $this->displayParentBlock("menu", $context, $blocks);
-        echo "Création compte client <br /><br />";
+        echo "Ajout de client<br /><br />";
     }
 
     // line 5
-    public function block_contentCenter($context, array $blocks = array())
+    public function block_content($context, array $blocks = array())
     {
+        echo " 
+<form action=\"";
         // line 6
-        echo "
-    <div class=\"well\">
-        <form method=\"post\" ";
-        // line 8
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_creation_compte_client"), "html", null, true);
+        echo "\" method=\"post\" ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getContext($context, "form"), 'enctype');
         echo ">
-            ";
-        // line 9
+    ";
+        // line 7
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getContext($context, "form"), 'widget');
         echo "
-            <input type=\"submit\" class=\"btn btn-primary\" />
-        </form>
-    </div>
- 
- ";
+
+    <input type=\"submit\" />
+</form>
+";
     }
 
     public function getTemplateName()
@@ -65,6 +64,6 @@ class __TwigTemplate_d69538f999e588dd8bc5c6b3157b77f2 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  47 => 9,  43 => 8,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  47 => 7,  41 => 6,  36 => 5,  29 => 3,);
     }
 }

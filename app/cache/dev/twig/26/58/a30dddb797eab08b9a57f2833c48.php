@@ -11,7 +11,7 @@ class __TwigTemplate_2658a30dddb797eab08b9a57f2833c48 extends Twig_Template
 
         $this->blocks = array(
             'menu' => array($this, 'block_menu'),
-            'contentCenter' => array($this, 'block_contentCenter'),
+            'content' => array($this, 'block_content'),
         );
     }
 
@@ -29,28 +29,26 @@ class __TwigTemplate_2658a30dddb797eab08b9a57f2833c48 extends Twig_Template
     public function block_menu($context, array $blocks = array())
     {
         $this->displayParentBlock("menu", $context, $blocks);
-        echo "Création projet <br /><br />";
+        echo "Ajout projet<br /><br />";
     }
 
     // line 5
-    public function block_contentCenter($context, array $blocks = array())
+    public function block_content($context, array $blocks = array())
     {
-        // line 6
-        echo "
-    <div class=\"well\">
-        <form method=\"post\" ";
-        // line 8
+        echo " 
+<div class=\"well\">
+    <form method=\"post\" ";
+        // line 7
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getContext($context, "form"), 'enctype');
         echo ">
-            ";
-        // line 9
+        ";
+        // line 8
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getContext($context, "form"), 'widget');
         echo "
-            <input type=\"submit\" class=\"btn btn-primary\" />
-        </form>
-    </div>
- 
- ";
+        <input type=\"submit\" class=\"btn btn-primary\" />
+    </form>
+</div>
+";
     }
 
     public function getTemplateName()
@@ -65,6 +63,6 @@ class __TwigTemplate_2658a30dddb797eab08b9a57f2833c48 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  47 => 9,  43 => 8,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  46 => 8,  42 => 7,  36 => 5,  29 => 3,);
     }
 }

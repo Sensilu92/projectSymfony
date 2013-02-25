@@ -1,6 +1,11 @@
-<h3>Ajout de client</h3>
+{% extends "::modele2.html.twig" %}
+
+{% block menu %}{{parent()}}Ajout de client<br /><br />{% endblock %}
+
+{% block content %} 
 <form action="{{ path('suiviprojet_administrateur_creation_compte_client') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
 
     <input type="submit" />
 </form>
+{% endblock %}

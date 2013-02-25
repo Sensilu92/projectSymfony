@@ -29,8 +29,11 @@
  
  {% endblock %}
  
+        
  {% block contentLeft %}
- 
+        
+ {%if app.session.get('role') == 'user'%}
+
     {#<form method="post" action="creation_user_stories"> #}
         <fieldset {% if app.session.get('role') != 'user' %} disabled="disabled" {%endif%}> 
             <legend>Nouvelle fonctionnalité</legend></br></br>
@@ -51,8 +54,8 @@
                     
         </fieldset>
     </form>
-        
-    {% endblock %}
+        {%endif%}
+    {% endblock %}  
 
     {% block contentRight %}  
  
@@ -70,7 +73,8 @@
                     
                         {%if couleur.idpriorite == userStorie.prioritepriorite.idpriorite %}
                             <td style=" width:25%; background-color:{{couleur.couleur}}">
-                            <a href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStorie.idUserStorie}) }}"><b>#{{userStorie.idUserStorie}}</b></a><br> 
+                            {%if app.session.get('role') != 'user'%}
+                                <a href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStorie.idUserStorie}) }}">{% endif%}<b>#{{userStorie.idUserStorie}}</b></a><br> 
                             <b>Rôle : </b>{{userStorie.role}}<br>
                             <b>But : </b> {{userStorie.but}}<br>
                             <b>Action : </b>{{userStorie.action}}<br>
@@ -87,7 +91,7 @@
             </tr></table>
  
         {% endif %}
-       
+     
     {% endblock %}
 
 
