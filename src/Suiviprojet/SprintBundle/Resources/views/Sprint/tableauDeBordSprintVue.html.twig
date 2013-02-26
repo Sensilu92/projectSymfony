@@ -4,8 +4,6 @@
 
  {% block content %}
  
- RAJOUETR LE BOUTON VALIDER
- 
     <form method="post" action=""> {# pas besoin de mettre le nom si c'est la meme route#}
                  
         <label>Projet : </label><SELECT name='projet'>
@@ -41,13 +39,13 @@
         
     {% if userStories is defined %}
  
-        <table style="border-collapse: collapse; border: solid"><tr>
+        <table style="border-collapse: collapse; border: solid; text-align: left"><tr>
            
             <td> A faire </td><td> En cours </td><td> A valider </td><td> Valider </td></tr>
         
             {% for userStory in userStories%}
             
-                <tr> {{userStory.statutstatut.intitule == 'à  faire'}}
+                <tr>
                     <td>
                         {%if userStory.statutstatut.intitule == 'à faire'%}
                             
@@ -65,7 +63,7 @@
                             <b>Fonctionnalité : </b>{{userStory.fonctionnalite}}<br>
                             <b>Action : </b>{{userStory.action}}<br>
                             <b>DétailTechnique : </b> <br>
-                            <input type='checkbox' name='valider{{userStory.idUserStorie}}'/>
+                            Changer le statut en " Valider "<input type='checkbox' name='valider{{userStory.idUserStorie}}'/>
                         {% endif %}
                        </td>
                         <td>
@@ -84,7 +82,7 @@
                             <b>Fonctionnalité : </b>{{userStory.fonctionnalite}}<br>
                             <b>Action : </b>{{userStory.action}}<br>
                             <b>DétailTechnique : </b> <br>
-                            <input type='checkbox' name='afaire{{userStory.idUserStorie}}'/>
+                            Changer le statut en " En cours "<input type='checkbox' name='afaire{{userStory.idUserStorie}}'/>
                         {% endif %}
                        </td>
  

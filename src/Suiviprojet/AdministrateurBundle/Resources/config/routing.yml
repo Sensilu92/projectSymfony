@@ -1,3 +1,6 @@
+#suiviprojet_administrateur_creation_projet:
+#    pattern:  /creation_projet
+#    defaults: { _controller: SuiviprojetAdministrateurBundle:General:isConnected, url: suiviprojet_administrateur_creation_projet }
 suiviprojet_administrateur_creation_projet:
     pattern:  /creation_projet
     defaults: { _controller: SuiviprojetAdministrateurBundle:Administrateur:creationProjet }
@@ -17,4 +20,8 @@ suiviprojet_administrateur_accueil:
 suiviprojet_administrateur_deconnexion:
     pattern:  /deconnexion
     defaults: { _controller: SuiviprojetAdministrateurBundle:Administrateur:afficheDeconnexionVue }
+    
+suiviprojet_administrateur_identification:
+    pattern:  /identification
+    defaults: { _controller: SuiviprojetAdministrateurBundle:General:isConnected, url: suiviprojet_administrateur_creation_compte_client}
 

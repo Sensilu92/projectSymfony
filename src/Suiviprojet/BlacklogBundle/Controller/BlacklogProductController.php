@@ -72,7 +72,9 @@ class BlacklogProductController extends Controller{
                                  array('projet' => $projet ,'userStories'=>$userStories,'priorite'=>$priorite));
        }
         }else{
-            return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig', array());
+                    // redirige vers la page de visualisation du client nouvellement créé
+        return $this->redirect($this->generateUrl('suiviprojet_administrateur_connexion'));
+           // return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig', array());
         }
     }
     
@@ -99,7 +101,9 @@ class BlacklogProductController extends Controller{
         return $this->render('blacklogProductBundle:Blacklog:creationUserStoriesTechnique.html.twig', 
                               array('userStoriesTechnique'=>$userStoriesTechnique,'idUserStory' => $idUserStorie));
      }else{
-            return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig', array());
+                 // redirige vers la page de visualisation du client nouvellement créé
+        return $this->redirect($this->generateUrl('suiviprojet_administrateur_connexion'));
+           // return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig', array());
         }  
     }
 

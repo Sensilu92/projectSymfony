@@ -121,7 +121,7 @@ class __TwigTemplate_61460eb660955afb1551db4e2f39b489 extends Twig_Template
         echo "\">User storie</a>
                     <a href=\"";
         // line 29
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_connexion"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_deconnexion"), "html", null, true);
         echo "\">Deconnexion</a>
                     ";
         // line 31

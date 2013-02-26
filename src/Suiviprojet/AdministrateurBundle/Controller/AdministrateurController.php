@@ -108,7 +108,9 @@ class AdministrateurController extends Controller {
         $session->set('id', '');
         $session->set('role', '');
         
-        return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig', array());
+        // redirige vers la page de visualisation du client nouvellement créé
+        return $this->redirect($this->generateUrl('suiviprojet_administrateur_connexion'));
+        //return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig', array());
     }
 
 }
