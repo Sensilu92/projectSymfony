@@ -147,7 +147,7 @@ class Client
     /**
      * Set telephoneContact
      *
-     * @param integer $telephoneContact
+     * @param string $telephoneContact
      * @return Client
      */
     public function setTelephoneContact($telephoneContact)
@@ -160,7 +160,7 @@ class Client
     /**
      * Get telephoneContact
      *
-     * @return integer 
+     * @return string 
      */
     public function getTelephoneContact()
     {

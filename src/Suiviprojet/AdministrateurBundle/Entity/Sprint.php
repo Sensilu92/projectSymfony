@@ -22,6 +22,13 @@ class Sprint
     private $idsprint;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=45, nullable=false)
+     */
+    private $nom;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="nbDifficulteMax", type="integer", nullable=false)
@@ -76,6 +83,29 @@ class Sprint
     public function getIdsprint()
     {
         return $this->idsprint;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Sprint
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
     }
 
     /**

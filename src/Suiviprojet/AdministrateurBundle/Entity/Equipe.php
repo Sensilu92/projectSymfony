@@ -22,6 +22,13 @@ class Equipe
     private $idequipe;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=45, nullable=false)
+     */
+    private $nom;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="nbDifficulte", type="integer", nullable=false)
@@ -60,6 +67,29 @@ class Equipe
     public function getIdequipe()
     {
         return $this->idequipe;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Equipe
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
     }
 
     /**

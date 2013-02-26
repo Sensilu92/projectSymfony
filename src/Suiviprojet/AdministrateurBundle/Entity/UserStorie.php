@@ -92,14 +92,24 @@ class UserStorie
     private $prioritepriorite;
 
     /**
-     * @var \Statut
+     * @var \StatutSprint
      *
-     * @ORM\ManyToOne(targetEntity="Statut")
+     * @ORM\ManyToOne(targetEntity="StatutSprint")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="statut_idStatut", referencedColumnName="idStatut")
+     *   @ORM\JoinColumn(name="statut_sprint_idstatut_sprint", referencedColumnName="idstatut_sprint")
      * })
      */
-    private $statutstatut;
+    private $statutSprintstatutSprint;
+
+    /**
+     * @var \StatutBacklog
+     *
+     * @ORM\ManyToOne(targetEntity="StatutBacklog")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="statut_backlog_idstatut_backlog", referencedColumnName="idstatut_backlog")
+     * })
+     */
+    private $statutBacklogstatutBacklog;
 
     /**
      * Constructor
@@ -315,25 +325,48 @@ class UserStorie
     }
 
     /**
-     * Set statutstatut
+     * Set statutSprintstatutSprint
      *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\Statut $statutstatut
+     * @param \Suiviprojet\AdministrateurBundle\Entity\StatutSprint $statutSprintstatutSprint
      * @return UserStorie
      */
-    public function setStatutstatut(\Suiviprojet\AdministrateurBundle\Entity\Statut $statutstatut = null)
+    public function setStatutSprintstatutSprint(\Suiviprojet\AdministrateurBundle\Entity\StatutSprint $statutSprintstatutSprint = null)
     {
-        $this->statutstatut = $statutstatut;
+        $this->statutSprintstatutSprint = $statutSprintstatutSprint;
     
         return $this;
     }
 
     /**
-     * Get statutstatut
+     * Get statutSprintstatutSprint
      *
-     * @return \Suiviprojet\AdministrateurBundle\Entity\Statut 
+     * @return \Suiviprojet\AdministrateurBundle\Entity\StatutSprint 
      */
-    public function getStatutstatut()
+    public function getStatutSprintstatutSprint()
     {
-        return $this->statutstatut;
+        return $this->statutSprintstatutSprint;
+    }
+
+    /**
+     * Set statutBacklogstatutBacklog
+     *
+     * @param \Suiviprojet\AdministrateurBundle\Entity\StatutBacklog $statutBacklogstatutBacklog
+     * @return UserStorie
+     */
+    public function setStatutBacklogstatutBacklog(\Suiviprojet\AdministrateurBundle\Entity\StatutBacklog $statutBacklogstatutBacklog = null)
+    {
+        $this->statutBacklogstatutBacklog = $statutBacklogstatutBacklog;
+    
+        return $this;
+    }
+
+    /**
+     * Get statutBacklogstatutBacklog
+     *
+     * @return \Suiviprojet\AdministrateurBundle\Entity\StatutBacklog 
+     */
+    public function getStatutBacklogstatutBacklog()
+    {
+        return $this->statutBacklogstatutBacklog;
     }
 }

@@ -24,44 +24,38 @@ class CraHebdomadaire
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date", nullable=false)
+     * @ORM\Column(name="date_debut", type="date", nullable=false)
      */
-    private $date;
+    private $dateDebut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_fin", type="date", nullable=false)
+     */
+    private $dateFin;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="intitule", type="string", length=45, nullable=false)
+     * @ORM\Column(name="commentaire", type="string", length=45, nullable=true)
      */
-    private $intitule;
+    private $commentaire;
 
     /**
-     * @var string
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\Column(name="client", type="string", length=45, nullable=false)
+     * @ORM\ManyToMany(targetEntity="CraJournalier", inversedBy="craHebdomadairecraHebdomadaire")
+     * @ORM\JoinTable(name="cra_hebdomadaire_has_cra_journalier",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="cra_hebdomadaire_idcra_hebdomadaire", referencedColumnName="idcra_hebdomadaire")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="cra_journalier_idcra_journalier", referencedColumnName="idcra_journalier")
+     *   }
+     * )
      */
-    private $client;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="tache", type="string", length=45, nullable=false)
-     */
-    private $tache;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="statut", type="string", length=45, nullable=false)
-     */
-    private $statut;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="explications", type="string", length=45, nullable=false)
-     */
-    private $explications;
+    private $craJournaliercraJournalier;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -83,6 +77,7 @@ class CraHebdomadaire
      */
     public function __construct()
     {
+        $this->craJournaliercraJournalier = new \Doctrine\Common\Collections\ArrayCollection();
         $this->developperdevelopper = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -98,141 +93,105 @@ class CraHebdomadaire
     }
 
     /**
-     * Set date
+     * Set dateDebut
      *
-     * @param \DateTime $date
+     * @param \DateTime $dateDebut
      * @return CraHebdomadaire
      */
-    public function setDate($date)
+    public function setDateDebut($dateDebut)
     {
-        $this->date = $date;
+        $this->dateDebut = $dateDebut;
     
         return $this;
     }
 
     /**
-     * Get date
+     * Get dateDebut
      *
      * @return \DateTime 
      */
-    public function getDate()
+    public function getDateDebut()
     {
-        return $this->date;
+        return $this->dateDebut;
     }
 
     /**
-     * Set intitule
+     * Set dateFin
      *
-     * @param string $intitule
+     * @param \DateTime $dateFin
      * @return CraHebdomadaire
      */
-    public function setIntitule($intitule)
+    public function setDateFin($dateFin)
     {
-        $this->intitule = $intitule;
+        $this->dateFin = $dateFin;
     
         return $this;
     }
 
     /**
-     * Get intitule
+     * Get dateFin
      *
-     * @return string 
+     * @return \DateTime 
      */
-    public function getIntitule()
+    public function getDateFin()
     {
-        return $this->intitule;
+        return $this->dateFin;
     }
 
     /**
-     * Set client
+     * Set commentaire
      *
-     * @param string $client
+     * @param string $commentaire
      * @return CraHebdomadaire
      */
-    public function setClient($client)
+    public function setCommentaire($commentaire)
     {
-        $this->client = $client;
+        $this->commentaire = $commentaire;
     
         return $this;
     }
 
     /**
-     * Get client
+     * Get commentaire
      *
      * @return string 
      */
-    public function getClient()
+    public function getCommentaire()
     {
-        return $this->client;
+        return $this->commentaire;
     }
 
     /**
-     * Set tache
+     * Add craJournaliercraJournalier
      *
-     * @param string $tache
+     * @param \Suiviprojet\AdministrateurBundle\Entity\CraJournalier $craJournaliercraJournalier
      * @return CraHebdomadaire
      */
-    public function setTache($tache)
+    public function addCraJournaliercraJournalier(\Suiviprojet\AdministrateurBundle\Entity\CraJournalier $craJournaliercraJournalier)
     {
-        $this->tache = $tache;
+        $this->craJournaliercraJournalier[] = $craJournaliercraJournalier;
     
         return $this;
     }
 
     /**
-     * Get tache
+     * Remove craJournaliercraJournalier
      *
-     * @return string 
+     * @param \Suiviprojet\AdministrateurBundle\Entity\CraJournalier $craJournaliercraJournalier
      */
-    public function getTache()
+    public function removeCraJournaliercraJournalier(\Suiviprojet\AdministrateurBundle\Entity\CraJournalier $craJournaliercraJournalier)
     {
-        return $this->tache;
+        $this->craJournaliercraJournalier->removeElement($craJournaliercraJournalier);
     }
 
     /**
-     * Set statut
+     * Get craJournaliercraJournalier
      *
-     * @param string $statut
-     * @return CraHebdomadaire
+     * @return \Doctrine\Common\Collections\Collection 
      */
-    public function setStatut($statut)
+    public function getCraJournaliercraJournalier()
     {
-        $this->statut = $statut;
-    
-        return $this;
-    }
-
-    /**
-     * Get statut
-     *
-     * @return string 
-     */
-    public function getStatut()
-    {
-        return $this->statut;
-    }
-
-    /**
-     * Set explications
-     *
-     * @param string $explications
-     * @return CraHebdomadaire
-     */
-    public function setExplications($explications)
-    {
-        $this->explications = $explications;
-    
-        return $this;
-    }
-
-    /**
-     * Get explications
-     *
-     * @return string 
-     */
-    public function getExplications()
-    {
-        return $this->explications;
+        return $this->craJournaliercraJournalier;
     }
 
     /**

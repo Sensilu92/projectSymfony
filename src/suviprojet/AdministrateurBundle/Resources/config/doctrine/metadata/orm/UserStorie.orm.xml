@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="UserStorie" table="user_storie">
+    <id name="idUserStorie" type="integer" column="id_user_storie">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fonctionnalite" type="string" column="fonctionnalite" length="45" nullable="false"/>
+    <field name="role" type="string" column="role" length="45" nullable="false"/>
+    <field name="action" type="text" column="action" nullable="false"/>
+    <field name="but" type="string" column="but" length="45" nullable="false"/>
+    <field name="points" type="integer" column="points" nullable="false"/>
+    <many-to-one field="statutBacklogstatutBacklog" target-entity="StatutBacklog">
+      <join-columns>
+        <join-column name="statut_backlog_idstatut_backlog" referenced-column-name="idstatut_backlog"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="statutSprintstatutSprint" target-entity="StatutSprint">
+      <join-columns>
+        <join-column name="statut_sprint_idstatut_sprint" referenced-column-name="idstatut_sprint"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="prioritepriorite" target-entity="Priorite">
+      <join-columns>
+        <join-column name="priorite_idpriorite" referenced-column-name="idpriorite"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idprojet" target-entity="Projet">
+      <join-columns>
+        <join-column name="idProjet" referenced-column-name="idprojet"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="sprintsprint" target-entity="Sprint" inversed-by="userStorieUserStorie">
+      <join-table name="user_storie_has_sprint">
+        <join-columns>
+          <join-column name="user_storie_id_user_storie" referenced-column-name="id_user_storie"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="sprint_idsprint" referenced-column-name="idsprint"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>
