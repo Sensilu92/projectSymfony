@@ -9,9 +9,14 @@
     <field name="action" type="text" column="action" nullable="false"/>
     <field name="but" type="string" column="but" length="45" nullable="false"/>
     <field name="points" type="integer" column="points" nullable="false"/>
-    <many-to-one field="statutstatut" target-entity="Statut">
+    <many-to-one field="statutBacklogstatutBacklog" target-entity="StatutBacklog">
       <join-columns>
-        <join-column name="statut_idStatut" referenced-column-name="idStatut"/>
+        <join-column name="statut_backlog_idstatut_backlog" referenced-column-name="idstatut_backlog"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="statutSprintstatutSprint" target-entity="StatutSprint">
+      <join-columns>
+        <join-column name="statut_sprint_idstatut_sprint" referenced-column-name="idstatut_sprint"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="prioritepriorite" target-entity="Priorite">

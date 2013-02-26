@@ -4,12 +4,9 @@
     <id name="idcraHebdomadaire" type="integer" column="idcra_hebdomadaire">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="date" type="date" column="date" nullable="false"/>
-    <field name="intitule" type="string" column="intitule" length="45" nullable="false"/>
-    <field name="client" type="string" column="client" length="45" nullable="false"/>
-    <field name="tache" type="string" column="tache" length="45" nullable="false"/>
-    <field name="statut" type="string" column="statut" length="45" nullable="false"/>
-    <field name="explications" type="string" column="explications" length="45" nullable="false"/>
+    <field name="dateDebut" type="date" column="date_debut" nullable="false"/>
+    <field name="dateFin" type="date" column="date_fin" nullable="false"/>
+    <field name="commentaire" type="string" column="commentaire" length="45" nullable="true"/>
     <many-to-many field="developperdevelopper" target-entity="Developper" inversed-by="craHebdomadairecraHebdomadaire">
       <join-table name="developper_has_cra_hebdomadaire">
         <join-columns>
@@ -17,6 +14,16 @@
         </join-columns>
         <inverse-join-columns>
           <join-column name="developper_idDevelopper" referenced-column-name="idDevelopper"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="craJournaliercraJournalier" target-entity="CraJournalier" inversed-by="craHebdomadairecraHebdomadaire">
+      <join-table name="cra_hebdomadaire_has_cra_journalier">
+        <join-columns>
+          <join-column name="cra_hebdomadaire_idcra_hebdomadaire" referenced-column-name="idcra_hebdomadaire"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="cra_journalier_idcra_journalier" referenced-column-name="idcra_journalier"/>
         </inverse-join-columns>
       </join-table>
     </many-to-many>

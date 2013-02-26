@@ -4,6 +4,7 @@
     <id name="idequipe" type="integer" column="idEquipe">
       <generator strategy="IDENTITY"/>
     </id>
+    <field name="nom" type="string" column="nom" length="45" nullable="false"/>
     <field name="nbdifficulte" type="integer" column="nbDifficulte" nullable="false"/>
     <many-to-many field="developperdevelopper" target-entity="Developper" inversed-by="equipeequipe">
       <join-table name="equipe_has_developper">
