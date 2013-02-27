@@ -13,7 +13,6 @@ class DevelopperType extends AbstractType
         $builder
             ->add('nom', 'text')
             ->add('prenom', 'text')
-            ->add ('equipe', new EquipeType())
             //->add('role')
            // ->add('login')
             //->add('password')

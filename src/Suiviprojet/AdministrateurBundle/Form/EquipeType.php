@@ -12,6 +12,7 @@ class EquipeType extends AbstractType
     {
         $builder
             ->add('nom', 'text')
+            ->add ('developper', new DevelopperType())
            
             //->add('nbdifficulte')
             //->add('developperdevelopper')
