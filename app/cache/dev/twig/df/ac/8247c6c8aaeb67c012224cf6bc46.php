@@ -7,19 +7,17 @@ class __TwigTemplate_dfac8247c6c8aaeb67c012224cf6bc46 extends Twig_Template
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("::modele.html.twig");
+        $this->parent = $this->env->loadTemplate("::base.html.twig");
 
         $this->blocks = array(
-            'menu' => array($this, 'block_menu'),
-            'contentCenter' => array($this, 'block_contentCenter'),
-            'contentLeft' => array($this, 'block_contentLeft'),
-            'contentRight' => array($this, 'block_contentRight'),
+            'title' => array($this, 'block_title'),
+            'content' => array($this, 'block_content'),
         );
     }
 
     protected function doGetParent(array $context)
     {
-        return "::modele.html.twig";
+        return "::base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -27,72 +25,82 @@ class __TwigTemplate_dfac8247c6c8aaeb67c012224cf6bc46 extends Twig_Template
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 3
-    public function block_menu($context, array $blocks = array())
+    // line 105
+    public function block_title($context, array $blocks = array())
     {
-        $this->displayParentBlock("menu", $context, $blocks);
-        echo "Création user stories <br /><br />";
+        // line 106
+        echo "    ";
+        $this->displayParentBlock("title", $context, $blocks);
+        echo " - Connexion
+";
     }
 
-    // line 5
-    public function block_contentCenter($context, array $blocks = array())
+    // line 110
+    public function block_content($context, array $blocks = array())
     {
-        echo " 
- 
-    <form method=\"post\" action=\"\"> ";
-        // line 8
-        echo "                 
-        <label>Projet : </label><SELECT name='projet'>
-        ";
-        // line 10
+        // line 111
+        echo "  <div class=\"container-fluid\">
+     <div class=\"row-fluid\">
+       <div class=\"span2 offset3\">
+       ";
+        // line 115
+        echo "               <form method=\"post\" action=\"\" > ";
+        // line 116
+        echo "             
+        <label>Projet : </label></div>
+            <div class=\"span3\"> <SELECT name='projet'>
+           ";
+        // line 120
+        echo "        ";
         if (array_key_exists("id", $context)) {
-            // line 11
+            // line 121
             echo "            ";
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getContext($context, "projet"));
             foreach ($context['_seq'] as $context["_key"] => $context["p"]) {
-                // line 12
+                // line 122
                 echo "                ";
                 $context['_parent'] = (array) $context;
                 $context['_seq'] = twig_ensure_traversable($this->getContext($context, "id"));
                 foreach ($context['_seq'] as $context["_key"] => $context["t"]) {
-                    // line 13
+                    // line 123
                     echo "                    ";
                     if (($this->getAttribute($this->getContext($context, "p"), "idProjet") == $this->getAttribute($this->getContext($context, "t"), "idProjet"))) {
-                        // line 14
+                        // line 124
                         echo "                        <OPTION selected=\"selected\">";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "p"), "nom"), "html", null, true);
                         echo "
                              ";
                     } else {
-                        // line 16
+                        // line 126
                         echo "                        <OPTION>";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "p"), "nom"), "html", null, true);
                         echo "
                     ";
                     }
-                    // line 18
+                    // line 128
                     echo "                ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['t'], $context['_parent'], $context['loop']);
                 $context = array_merge($_parent, array_intersect_key($context, $_parent));
-                // line 19
+                // line 129
                 echo "            ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 20
+            // line 130
             echo "        ";
         } else {
-            // line 21
+            // line 131
             echo "            ";
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getContext($context, "projet"));
             foreach ($context['_seq'] as $context["_key"] => $context["p"]) {
-                // line 22
-                echo "                <OPTION>";
+                echo "              
+                <OPTION>";
+                // line 132
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "p"), "nom"), "html", null, true);
                 echo "
             ";
@@ -100,50 +108,49 @@ class __TwigTemplate_dfac8247c6c8aaeb67c012224cf6bc46 extends Twig_Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 24
+            // line 134
             echo "        ";
         }
-        // line 25
-        echo "        </SELECT> 
+        // line 135
+        echo "                </SELECT> </div>
      
-        <input type='submit' value='Charger' name='charger'/> <br /> 
-    ";
-        // line 29
-        echo " 
- ";
-    }
+             <div class=\"span2\"> <input type='submit' value='Charger' name='charger'/> <br /> </div>
+     
+           </div>
+     </div>
+   </div>
+    
 
-    // line 33
-    public function block_contentLeft($context, array $blocks = array())
-    {
-        // line 34
-        echo "        
- ";
-        // line 35
+        
+ <div class=\"container-fluid\">
+    <div class=\"row-fluid\"> 
+  <div class=\"span4 offset1\">
+      ";
+        // line 148
         if (($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "get", array(0 => "role"), "method") == "user")) {
-            // line 36
+            // line 149
             echo "
-    ";
-            // line 38
-            echo "        <fieldset ";
+        <form method=\"post\" action=\"creation_user_stories\" class=\"well\"> 
+            <fieldset ";
+            // line 151
             if (($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "get", array(0 => "role"), "method") != "user")) {
                 echo " disabled=\"disabled\" ";
             }
             echo "> 
-            <legend>Nouvelle fonctionnalité</legend></br></br>
-           
-            <label>Fonction : <input type='text'  name='fonction' id='fonction' size=\"20px\" /> <br /><br />
-            <label>Rôle : </label><input type='text'  name='role' id='role' size=\"20px\" /> <br /><br />
+                <legend>Nouvelle fonctionnalité</legend></br></br>
+               
+             <label>Fonction : </label><input type='text'  name='fonction' id='fonction'/> 
+            <label>Rôle : </label><input type='text'  name='role' id='role' size=\"20px\" /> 
             <label>Action : </label><br />
-            <textarea name=\"action\" rows=\"5\" cols=\"30\" style=\"border:solid 1px black; font-family:tahoma;\"></textarea> <br /><br />
-            <label>But : </label><input type='text'  name='but' id='but' size=\"20px\" /> <br /><br />
+            <textarea name=\"action\" style=\"border:solid 1px black; font-family:tahoma;\"></textarea>
+            <label>But : </label><input type='text'  name='but' id='but'/> <br /><br />
             <label>Priorité : </label><SELECT name='priorite'>
             ";
-            // line 47
+            // line 160
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getContext($context, "priorite"));
             foreach ($context['_seq'] as $context["_key"] => $context["pr"]) {
-                // line 48
+                // line 161
                 echo "                <OPTION>";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "pr"), "nom"), "html", null, true);
                 echo "
@@ -152,67 +159,63 @@ class __TwigTemplate_dfac8247c6c8aaeb67c012224cf6bc46 extends Twig_Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pr'], $context['_parent'], $context['loop']);
             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 50
-            echo "            </SELECT> <br /><br />
-            <label>Statut : <input type='text'  value=\"à faire\" name='statut' id='statut' size=\"20px\" disabled=\"true\"/> <br /><br />
+            // line 163
+            echo "            </SELECT> 
+            <label>Statut : <input type='text'  value=\"non assigné\" name='statut' id='statut' disabled=\"true\"/> <br /><br />
 
             <input type='submit' value='Enregistrer' name='enregistrer'/> <br />
                     
         </fieldset>
-    </form>
+        </form>
         ";
         }
-        // line 58
-        echo "    ";
-    }
-
-    // line 60
-    public function block_contentRight($context, array $blocks = array())
-    {
-        echo "  
+        // line 171
+        echo "  </div>
+    
+  <div class=\"span7\"> 
  
         ";
-        // line 62
+        // line 175
         $context["counter"] = 0;
         echo " 
         
         ";
-        // line 64
+        // line 177
         if (array_key_exists("userStories", $context)) {
-            // line 65
+            // line 178
             echo " 
             <table><tr>
             ";
-            // line 67
+            // line 180
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getContext($context, "userStories"));
             foreach ($context['_seq'] as $context["_key"] => $context["userStorie"]) {
-                // line 68
+                // line 181
                 echo "
                 ";
-                // line 70
-                echo "                ";
+                // line 183
+                echo "               ";
                 $context["counter"] = ($this->getContext($context, "counter") + 1);
-                // line 71
+                // line 184
                 echo "
                     ";
-                // line 72
+                // line 185
                 $context['_parent'] = (array) $context;
                 $context['_seq'] = twig_ensure_traversable($this->getContext($context, "priorite"));
                 foreach ($context['_seq'] as $context["_key"] => $context["couleur"]) {
-                    // line 73
+                    // line 186
                     echo "                    
                         ";
-                    // line 74
+                    // line 187
                     if (($this->getAttribute($this->getContext($context, "couleur"), "idpriorite") == $this->getAttribute($this->getAttribute($this->getContext($context, "userStorie"), "prioritepriorite"), "idpriorite"))) {
-                        // line 75
+                        // line 188
                         echo "                            <td style=\" width:25%; background-color:";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "couleur"), "couleur"), "html", null, true);
                         echo "\">
                             ";
-                        // line 76
+                        // line 189
                         if (($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "get", array(0 => "role"), "method") != "user")) {
-                            // line 77
+                            // line 190
                             echo "                                <a href=\"";
                             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blacklog_product_creation_userstories_technique", array("idUserStorie" => $this->getAttribute($this->getContext($context, "userStorie"), "idUserStorie"))), "html", null, true);
                             echo "\">";
@@ -221,60 +224,77 @@ class __TwigTemplate_dfac8247c6c8aaeb67c012224cf6bc46 extends Twig_Template
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStorie"), "idUserStorie"), "html", null, true);
                         echo "</b></a><br> 
                             <b>Rôle : </b>";
-                        // line 78
+                        // line 191
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStorie"), "role"), "html", null, true);
                         echo "<br>
                             <b>But : </b> ";
-                        // line 79
+                        // line 192
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStorie"), "but"), "html", null, true);
                         echo "<br>
                             <b>Action : </b>";
-                        // line 80
+                        // line 193
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStorie"), "action"), "html", null, true);
                         echo "<br>
                             <b>Statut : </b> ";
-                        // line 81
-                        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "userStorie"), "statutstatut"), "intitule"), "html", null, true);
+                        // line 194
+                        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "userStorie"), "statutBacklogstatutBacklog"), "intitule"), "html", null, true);
                         echo "<br>
                             <b>Points : </b> ";
-                        // line 82
+                        // line 195
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStorie"), "points"), "html", null, true);
                         echo "<br></td>
                             
                             ";
-                        // line 84
+                        // line 197
                         if (($this->getContext($context, "counter") == 4)) {
-                            // line 85
+                            // line 198
                             echo "                                </tr><tr>
                                 ";
-                            // line 86
+                            // line 199
                             $context["counter"] = 0;
                             echo "   
                             ";
                         }
-                        // line 88
+                        // line 201
                         echo "                        ";
                     }
-                    // line 89
+                    // line 202
                     echo "                    ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['couleur'], $context['_parent'], $context['loop']);
                 $context = array_merge($_parent, array_intersect_key($context, $_parent));
-                // line 90
+                // line 203
                 echo "            ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['userStorie'], $context['_parent'], $context['loop']);
             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 91
+            // line 204
             echo "            </tr></table>
  
         ";
         }
-        // line 94
+        // line 207
         echo "     
+  </div></div></div>
+
+
+    
+    
     ";
+        // line 213
+        if (array_key_exists("message", $context)) {
+            // line 214
+            echo "        <a style=\"color:red\">";
+            echo twig_escape_filter($this->env, $this->getContext($context, "message"), "html", null, true);
+            echo "</a>
+    ";
+        }
+        // line 216
+        echo "
+
+ ";
     }
 
     public function getTemplateName()
@@ -289,6 +309,6 @@ class __TwigTemplate_dfac8247c6c8aaeb67c012224cf6bc46 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  276 => 94,  271 => 91,  265 => 90,  259 => 89,  256 => 88,  251 => 86,  248 => 85,  246 => 84,  241 => 82,  237 => 81,  233 => 80,  229 => 79,  225 => 78,  216 => 77,  214 => 76,  209 => 75,  207 => 74,  204 => 73,  200 => 72,  197 => 71,  194 => 70,  191 => 68,  187 => 67,  183 => 65,  181 => 64,  176 => 62,  170 => 60,  166 => 58,  156 => 50,  147 => 48,  143 => 47,  128 => 38,  125 => 36,  123 => 35,  120 => 34,  117 => 33,  112 => 29,  107 => 25,  104 => 24,  95 => 22,  90 => 21,  87 => 20,  81 => 19,  75 => 18,  69 => 16,  63 => 14,  60 => 13,  55 => 12,  50 => 11,  48 => 10,  44 => 8,  38 => 5,  31 => 3,);
+        return array (  295 => 216,  289 => 214,  287 => 213,  279 => 207,  274 => 204,  268 => 203,  262 => 202,  259 => 201,  254 => 199,  251 => 198,  249 => 197,  244 => 195,  240 => 194,  236 => 193,  232 => 192,  228 => 191,  219 => 190,  217 => 189,  212 => 188,  210 => 187,  207 => 186,  203 => 185,  200 => 184,  197 => 183,  194 => 181,  190 => 180,  186 => 178,  184 => 177,  179 => 175,  173 => 171,  163 => 163,  154 => 161,  150 => 160,  136 => 151,  132 => 149,  130 => 148,  115 => 135,  112 => 134,  104 => 132,  97 => 131,  94 => 130,  88 => 129,  82 => 128,  76 => 126,  70 => 124,  67 => 123,  62 => 122,  57 => 121,  54 => 120,  49 => 116,  47 => 115,  42 => 111,  39 => 110,  32 => 106,  29 => 105,);
     }
 }

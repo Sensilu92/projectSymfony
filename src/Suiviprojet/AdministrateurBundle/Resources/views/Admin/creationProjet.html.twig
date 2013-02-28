@@ -1,4 +1,4 @@
-{% extends "::modele2.html.twig" %}
+{#{% extends "::modele2.html.twig" %}
 
 {% block menu %}{{parent()}}Ajout projet<br /><br />{% endblock %}
 
@@ -9,5 +9,40 @@
         <input type="submit" class="btn btn-primary" />
     </form>
 </div>
-{% endblock %}
+{% endblock %}#}
  
+
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Connexion
+{% endblock %}
+    
+    
+{% block content %}
+  
+    <div class="well span6 offset3">
+    <form method="post" {{ form_enctype(form) }}>
+         <legend >Ajout projet</legend>
+        {{ form_widget(form) }}
+            <input type="submit" class="btn btn-primary" value="Créer" />
+    </form>
+</div>
+    
+    {#<div class="span4 offset4">
+        <form class="connexion form-horizontal well" action="{{ path('suiviprojet_administrateur_creation_compte_client') }}" method="POST"  {{ form_enctype(form) }} onsubmit="return check('');">
+           <legend >Ajout projet</legend>
+   
+            
+    {{ form_widget(form) }}
+
+           <input type="submit" value="Créer"/>
+</form>
+            </div>#}
+    
+    {% if message is defined %}
+        <a style="color:red">{{ message }}</a>
+    {% endif %}
+    
+   </div>
+{% endblock %}

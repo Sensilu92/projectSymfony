@@ -104,14 +104,39 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // sprint_validation_user_stories_sprint
-        if ($pathinfo === '/validation_user_stories_sprint') {
-            return array (  '_controller' => 'Suiviprojet\\SprintBundle\\Controller\\SprintController::afficheValidationUserStoriesSprintVueAction',  '_route' => 'sprint_validation_user_stories_sprint',);
+        // suivi_projet_developper_cra
+        if ($pathinfo === '/compte_rendu_dactivite') {
+            return array (  '_controller' => 'suiviProjet\\DevelopperBundle\\Controller\\DevelopperController::afficheCraHebdomadaireVueAction',  '_route' => 'suivi_projet_developper_cra',);
+        }
+
+        // suivi_projet_developper_cra_individuel
+        if ($pathinfo === '/compte_rendu_dactivite_individuel') {
+            return array (  '_controller' => 'suiviProjet\\DevelopperBundle\\Controller\\DevelopperController::afficheCraIndividuelVueAction',  '_route' => 'suivi_projet_developper_cra_individuel',);
+        }
+
+        // suivi_projet_developper_creation_notice
+        if ($pathinfo === '/creation_notice_dutilisation') {
+            return array (  '_controller' => 'suiviProjet\\DevelopperBundle\\Controller\\DevelopperController::afficheCreationNoticeVueAction',  '_route' => 'suivi_projet_developper_creation_notice',);
+        }
+
+        // suivi_projet_developper_consulte_notice
+        if (0 === strpos($pathinfo, '/consultation_notice_dutilisation') && preg_match('#^/consultation_notice_dutilisation/(?P<idNotice>[^/]+)$#s', $pathinfo, $matches)) {
+            return array_merge($this->mergeDefaults($matches, array (  '_controller' => 'suiviProjet\\DevelopperBundle\\Controller\\DevelopperController::afficheConsultationNoticeVueAction',)), array('_route' => 'suivi_projet_developper_consulte_notice'));
         }
 
         // sprint_tableau_de_bord_sprint
         if ($pathinfo === '/tableau_de_bord_sprint') {
             return array (  '_controller' => 'Suiviprojet\\SprintBundle\\Controller\\SprintController::afficheTableauDeBordSprintVueAction',  '_route' => 'sprint_tableau_de_bord_sprint',);
+        }
+
+        // sprint_assignation_user_stories
+        if ($pathinfo === '/assignation_user_stories') {
+            return array (  '_controller' => 'Suiviprojet\\SprintBundle\\Controller\\SprintController::afficheAssignationUserStoriesVueAction',  '_route' => 'sprint_assignation_user_stories',);
+        }
+
+        // sprint_creation
+        if ($pathinfo === '/creation_sprint') {
+            return array (  '_controller' => 'Suiviprojet\\SprintBundle\\Controller\\SprintController::afficheCreationSprintVueAction',  '_route' => 'sprint_creation',);
         }
 
         // suiviprojet_administrateur_creation_projet
@@ -132,6 +157,16 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // suiviprojet_administrateur_accueil
         if ($pathinfo === '/accueil') {
             return array (  '_controller' => 'Suiviprojet\\AdministrateurBundle\\Controller\\AdministrateurController::afficheAccueilVueAction',  '_route' => 'suiviprojet_administrateur_accueil',);
+        }
+
+        // suiviprojet_administrateur_deconnexion
+        if ($pathinfo === '/deconnexion') {
+            return array (  '_controller' => 'Suiviprojet\\AdministrateurBundle\\Controller\\AdministrateurController::afficheDeconnexionVueAction',  '_route' => 'suiviprojet_administrateur_deconnexion',);
+        }
+
+        // suiviprojet_administrateur_identification
+        if ($pathinfo === '/identification') {
+            return array (  '_controller' => 'Suiviprojet\\AdministrateurBundle\\Controller\\GeneralController::isConnectedAction',  'url' => 'suiviprojet_administrateur_creation_compte_client',  '_route' => 'suiviprojet_administrateur_identification',);
         }
 
         // client_homepage

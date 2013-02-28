@@ -253,13 +253,14 @@ class appDevDebugProjectContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return EntityManager51272808ba43e_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager51272808ba43e_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
+     * @return EntityManager512e835a1a36c_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager512e835a1a36c_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
      */
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
-        require_once 'C:/wamp/www/projectSymfony/app/cache/dev/jms_diextra/doctrine/EntityManager_51272808ba43e.php';
+        require_once 'C:/wamp/www/projectSymfony/app/cache/dev/jms_diextra/doctrine/EntityManager_512e835a1a36c.php';
 
-        $a = $this->get('annotation_reader');
+        $a = new \Doctrine\Common\Cache\ArrayCache();
+        $a->setNamespace('sf2orm_default_5ef885ccaf7ffa430b258c964e31db11');
 
         $b = new \Doctrine\Common\Cache\ArrayCache();
         $b->setNamespace('sf2orm_default_5ef885ccaf7ffa430b258c964e31db11');
@@ -267,33 +268,26 @@ class appDevDebugProjectContainer extends Container
         $c = new \Doctrine\Common\Cache\ArrayCache();
         $c->setNamespace('sf2orm_default_5ef885ccaf7ffa430b258c964e31db11');
 
-        $d = new \Doctrine\Common\Cache\ArrayCache();
-        $d->setNamespace('sf2orm_default_5ef885ccaf7ffa430b258c964e31db11');
+        $d = new \Doctrine\ORM\Mapping\Driver\DriverChain();
+        $d->addDriver(new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($this->get('annotation_reader'), array(0 => 'C:\\wamp\\www\\projectSymfony\\src\\Suiviprojet\\AdministrateurBundle\\Entity')), 'Suiviprojet\\AdministrateurBundle\\Entity');
 
-        $e = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => 'C:\\wamp\\www\\projectSymfony\\src\\Suiviprojet\\BlacklogBundle\\Entity', 1 => 'C:\\wamp\\www\\projectSymfony\\src\\Suiviprojet\\ClientBundle\\Entity', 2 => 'C:\\wamp\\www\\projectSymfony\\src\\Suiviprojet\\AdministrateurBundle\\Entity'));
+        $e = new \Doctrine\ORM\Configuration();
+        $e->setEntityNamespaces(array('SuiviprojetAdministrateurBundle' => 'Suiviprojet\\AdministrateurBundle\\Entity'));
+        $e->setMetadataCacheImpl($a);
+        $e->setQueryCacheImpl($b);
+        $e->setResultCacheImpl($c);
+        $e->setMetadataDriverImpl($d);
+        $e->setProxyDir('C:/wamp/www/projectSymfony/app/cache/dev/doctrine/orm/Proxies');
+        $e->setProxyNamespace('Proxies');
+        $e->setAutoGenerateProxyClasses(true);
+        $e->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+        $e->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
+        $e->setNamingStrategy(new \Doctrine\ORM\Mapping\DefaultNamingStrategy());
 
-        $f = new \Doctrine\ORM\Mapping\Driver\DriverChain();
-        $f->addDriver($e, 'Suiviprojet\\BlacklogBundle\\Entity');
-        $f->addDriver($e, 'Suiviprojet\\ClientBundle\\Entity');
-        $f->addDriver($e, 'Suiviprojet\\AdministrateurBundle\\Entity');
+        $f = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $e);
+        $this->get('doctrine.orm.default_manager_configurator')->configure($f);
 
-        $g = new \Doctrine\ORM\Configuration();
-        $g->setEntityNamespaces(array('blacklogProductBundle' => 'Suiviprojet\\BlacklogBundle\\Entity', 'ClientBundle' => 'Suiviprojet\\ClientBundle\\Entity', 'SuiviprojetAdministrateurBundle' => 'Suiviprojet\\AdministrateurBundle\\Entity'));
-        $g->setMetadataCacheImpl($b);
-        $g->setQueryCacheImpl($c);
-        $g->setResultCacheImpl($d);
-        $g->setMetadataDriverImpl($f);
-        $g->setProxyDir('C:/wamp/www/projectSymfony/app/cache/dev/doctrine/orm/Proxies');
-        $g->setProxyNamespace('Proxies');
-        $g->setAutoGenerateProxyClasses(true);
-        $g->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
-        $g->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
-        $g->setNamingStrategy(new \Doctrine\ORM\Mapping\DefaultNamingStrategy());
-
-        $h = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $g);
-        $this->get('doctrine.orm.default_manager_configurator')->configure($h);
-
-        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager51272808ba43e_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($h, $this);
+        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager512e835a1a36c_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($f, $this);
     }
 
     /**
@@ -2572,7 +2566,7 @@ class appDevDebugProjectContainer extends Container
     /**
      * Gets the doctrine.orm.entity_manager service alias.
      *
-     * @return EntityManager51272808ba43e_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
+     * @return EntityManager512e835a1a36c_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
      */
     protected function getDoctrine_Orm_EntityManagerService()
     {
@@ -2919,6 +2913,7 @@ class appDevDebugProjectContainer extends Container
                 'ClientBundle' => 'Suiviprojet\\ClientBundle\\ClientBundle',
                 'SuiviprojetAdministrateurBundle' => 'Suiviprojet\\AdministrateurBundle\\SuiviprojetAdministrateurBundle',
                 'SprintBundle' => 'Suiviprojet\\SprintBundle\\SprintBundle',
+                'suiviProjetDevelopperBundle' => 'suiviProjet\\DevelopperBundle\\suiviProjetDevelopperBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
                 'SensioGeneratorBundle' => 'Sensio\\Bundle\\GeneratorBundle\\SensioGeneratorBundle',
@@ -3383,8 +3378,8 @@ class appDevDebugProjectContainer extends Container
             ),
             'jms_di_extra.cache_dir' => 'C:/wamp/www/projectSymfony/app/cache/dev/jms_diextra',
             'jms_di_extra.doctrine_integration' => true,
-            'jms_di_extra.doctrine_integration.entity_manager.file' => 'C:/wamp/www/projectSymfony/app/cache/dev/jms_diextra/doctrine/EntityManager_51272808ba43e.php',
-            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager51272808ba43e_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
+            'jms_di_extra.doctrine_integration.entity_manager.file' => 'C:/wamp/www/projectSymfony/app/cache/dev/jms_diextra/doctrine/EntityManager_512e835a1a36c.php',
+            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager512e835a1a36c_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
             'security.secured_services' => array(
 
             ),

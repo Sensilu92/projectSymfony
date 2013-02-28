@@ -1,13 +1,15 @@
-{% extends "::modele.html.twig" %}
+{#{% extends "::modele.html.twig" %}
 
  {% block menu %}{{parent()}}Création user stories <br /><br />{% endblock %}
 
  {% block contentCenter %} 
  
     <form method="post" action=""> {# pas besoin de mettre le nom si c'est la meme route#}
-                 
-        <label>Projet : </label><SELECT name='projet'>
-        {% if id is defined %}
+             
+        {#A VOIR idProjet NEXISTE PLUS#}
+       {# <label>Projet : </label><SELECT name='projet'>
+           {# <OPTION name="" value="">#}
+       {# {% if id is defined %}
             {% for p in projet%}
                 {%for t in id%}
                     {%if p.idProjet == t.idProjet%}
@@ -18,7 +20,7 @@
                 {%endfor%}
             {%endfor%}
         {%else%}
-            {% for p in projet%}
+            {% for p in projet%}              
                 <OPTION>{{p.nom}}
             {%endfor%}
         {% endif %}
@@ -27,7 +29,7 @@
         <input type='submit' value='Charger' name='charger'/> <br /> 
     {#</form>#}
  
- {% endblock %}
+ {#{% endblock %}
  
         
  {% block contentLeft %}
@@ -35,10 +37,10 @@
  {%if app.session.get('role') == 'user'%}
 
     {#<form method="post" action="creation_user_stories"> #}
-        <fieldset {% if app.session.get('role') != 'user' %} disabled="disabled" {%endif%}> 
+        {#<fieldset {% if app.session.get('role') != 'user' %} disabled="disabled" {%endif%}> 
             <legend>Nouvelle fonctionnalité</legend></br></br>
            
-            <label>Fonction : <input type='text'  name='fonction' id='fonction' size="20px" /> <br /><br />
+            <label>Fonction : </label><input type='text'  name='fonction' id='fonction' size="20px" /> <br /><br />
             <label>Rôle : </label><input type='text'  name='role' id='role' size="20px" /> <br /><br />
             <label>Action : </label><br />
             <textarea name="action" rows="5" cols="30" style="border:solid 1px black; font-family:tahoma;"></textarea> <br /><br />
@@ -48,7 +50,7 @@
                 <OPTION>{{pr.nom}}
             {%endfor%}
             </SELECT> <br /><br />
-            <label>Statut : <input type='text'  value="à faire" name='statut' id='statut' size="20px" disabled="true"/> <br /><br />
+            <label>Statut : <input type='text'  value="non assigné" name='statut' id='statut' size="20px" disabled="true"/> <br /><br />
 
             <input type='submit' value='Enregistrer' name='enregistrer'/> <br />
                     
@@ -67,7 +69,7 @@
             {% for userStorie in userStories %}
 
                 {# {% counter++ %}#}
-                {% set counter = counter + 1 %}
+               {# {% set counter = counter + 1 %}
 
                     {%for couleur in priorite%}
                     
@@ -78,7 +80,7 @@
                             <b>Rôle : </b>{{userStorie.role}}<br>
                             <b>But : </b> {{userStorie.but}}<br>
                             <b>Action : </b>{{userStorie.action}}<br>
-                            <b>Statut : </b> {{userStorie.statutstatut.intitule}}<br>
+                            <b>Statut : </b> {{userStorie.statutBacklogstatutBacklog.intitule}}<br>
                             <b>Points : </b> {{userStorie.points}}<br></td>
                             
                             {%if counter == 4%}
@@ -92,11 +94,127 @@
  
         {% endif %}
      
-    {% endblock %}
+    {% endblock %}#}
 
 
 
 
 
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Connexion
+{% endblock %}
+    
+    
+{% block content %}
+  <div class="container-fluid">
+     <div class="row-fluid">
+       <div class="span2 offset3">
+       {#<div class="span4 offset4">#}
+               <form method="post" action="" > {# pas besoin de mettre le nom si c'est la meme route#}
+             
+        <label>Projet : </label></div>
+            <div class="span3"> <SELECT name='projet'>
+           {# <OPTION name="" value="">#}
+        {% if id is defined %}
+            {% for p in projet%}
+                {%for t in id%}
+                    {%if p.idProjet == t.idProjet%}
+                        <OPTION selected="selected">{{p.nom}}
+                             {%else%}
+                        <OPTION>{{p.nom}}
+                    {% endif %}
+                {%endfor%}
+            {%endfor%}
+        {%else%}
+            {% for p in projet%}              
+                <OPTION>{{p.nom}}
+            {%endfor%}
+        {% endif %}
+                </SELECT> </div>
+     
+             <div class="span2"> <input type='submit' value='Charger' name='charger'/> <br /> </div>
+     
+           </div>
+     </div>
+   </div>
+    
+
+        
+ <div class="container-fluid">
+    <div class="row-fluid"> 
+  <div class="span4 offset1">
+      {%if app.session.get('role') == 'user'%}
+
+        <form method="post" action="creation_user_stories" class="well"> 
+            <fieldset {% if app.session.get('role') != 'user' %} disabled="disabled" {%endif%}> 
+                <legend>Nouvelle fonctionnalité</legend></br></br>
+               
+             <label>Fonction : </label><input type='text'  name='fonction' id='fonction'/> 
+            <label>Rôle : </label><input type='text'  name='role' id='role' size="20px" /> 
+            <label>Action : </label><br />
+            <textarea name="action" style="border:solid 1px black; font-family:tahoma;"></textarea>
+            <label>But : </label><input type='text'  name='but' id='but'/> <br /><br />
+            <label>Priorité : </label><SELECT name='priorite'>
+            {% for pr in priorite%}
+                <OPTION>{{pr.nom}}
+            {%endfor%}
+            </SELECT> 
+            <label>Statut : <input type='text'  value="non assigné" name='statut' id='statut' disabled="true"/> <br /><br />
+
+            <input type='submit' value='Enregistrer' name='enregistrer'/> <br />
+                    
+        </fieldset>
+        </form>
+        {%endif%}
+  </div>
+    
+  <div class="span7"> 
+ 
+        {% set counter = 0 %} 
+        
+        {% if userStories is defined %}
+ 
+            <table><tr>
+            {% for userStorie in userStories %}
+
+                {# {% counter++ %}#}
+               {% set counter = counter + 1 %}
+
+                    {%for couleur in priorite%}
+                    
+                        {%if couleur.idpriorite == userStorie.prioritepriorite.idpriorite %}
+                            <td style=" width:25%; background-color:{{couleur.couleur}}">
+                            {%if app.session.get('role') != 'user'%}
+                                <a href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStorie.idUserStorie}) }}">{% endif%}<b>#{{userStorie.idUserStorie}}</b></a><br> 
+                            <b>Rôle : </b>{{userStorie.role}}<br>
+                            <b>But : </b> {{userStorie.but}}<br>
+                            <b>Action : </b>{{userStorie.action}}<br>
+                            <b>Statut : </b> {{userStorie.statutBacklogstatutBacklog.intitule}}<br>
+                            <b>Points : </b> {{userStorie.points}}<br></td>
+                            
+                            {%if counter == 4%}
+                                </tr><tr>
+                                {% set counter = 0 %}   
+                            {% endif %}
+                        {% endif %}
+                    {%endfor %}
+            {%endfor%}
+            </tr></table>
+ 
+        {% endif %}
+     
+  </div></div></div>
+
+
+    
+    
+    {% if message is defined %}
+        <a style="color:red">{{ message }}</a>
+    {% endif %}
+
+
+ {% endblock %}
 
   

@@ -1,4 +1,4 @@
-{% extends "::modele2.html.twig" %}
+{#{% extends "::modele2.html.twig" %}
 
 
 {%block body%}
@@ -8,4 +8,46 @@
         <input type='submit' value='Connexion' name='connexion'/>    
    </form>
 
- {%endblock%}
+ {%endblock%}#}
+
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Connexion
+{% endblock %}
+    
+    
+{% block content %}
+  
+    <div class="span4 offset4">
+        <form method="POST" class="connexion form-horizontal well" action="" onsubmit="return check('');">
+            <legend>Identification</legend>
+   
+            <div class="control-group">
+                <label class="control-label">Identifiant : </label>
+                <div class="controls">
+                    <input type="text" name="identifiant" />
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label required">Mot de passe : </label>
+                <div class="controls">
+                    <input type="password" name="password" />
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="form-buttons">
+                        <input class="btn" type="submit" value="Connexion" name="connexion"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    
+    {% if message is defined %}
+        <a style="color:red">{{ message }}</a>
+    {% endif %}
+    
+   </div>
+{% endblock %}

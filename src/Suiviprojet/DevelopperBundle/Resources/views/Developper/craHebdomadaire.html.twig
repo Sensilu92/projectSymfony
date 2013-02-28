@@ -1,0 +1,94 @@
+{#{% extends "::modele2.html.twig" %}
+
+{% block menu %}{{parent()}}CRA<br /><br />{% endblock %}
+
+{% block content %} 
+ 
+<script src = "http://code.jquery.com/jquery-1.9.1.js" > </script>
+<script src = "http://code.jquery.com/ui/1.10.1/jquery-ui.js" > </script>
+<link rel = "stylesheet" href = "http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+<link rel = "stylesheet" href = "/resources/demos/style.css"/>
+
+    <form method="post" action="">
+                 
+       
+         <input type='submit' value='Nouveau cra' name='nouveau'/> <br /><br />
+      
+          <table width="85%" height="85%" cellpadding="0" cellspacing="0" border="1"><tr><td></td><td>Developpeur</td><td>Date de début</td><td>Date de fin</td><td>Détails</td></tr>
+            {% if cra is defined %}
+                {% for theCra in cra%}
+                    <tr>
+                        <td><a href="{{ path('suivi_projet_developper_cra_individuel', {'idcraHebdomadaire': theCra.idcraHebdomadaire}) }}"><b>Consulter</b></a><br></td>
+                        <td>{{theCra.developperdevelopper[0].nom}}</td>
+                        <td>{{theCra.dateDebut | date ("d / m / Y")}}</td>
+                        <td>{{theCra.dateFin | date ("d / m / Y")}}</td>
+                        <td><textarea name="detail" rows="3" cols="50" style="border:solid 1px black; font-family:tahoma;"></textarea></td>
+                    </tr>
+                {% endfor %}
+            {% endif%}
+         </table><br />
+    </form>
+
+{% endblock %}#}
+
+   
+
+
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Connexion
+{% endblock %}
+    
+    {% block emplacement %}
+    Cra hebdo
+{% endblock %}
+    
+{% block content %}
+    
+    <script src = "http://code.jquery.com/jquery-1.9.1.js" > </script>
+<script src = "http://code.jquery.com/ui/1.10.1/jquery-ui.js" > </script>
+<link rel = "stylesheet" href = "http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+<link rel = "stylesheet" href = "/resources/demos/style.css"/>
+
+  <div class="container-fluid">
+    <form method="post" action="">
+                 
+        
+         <input type='submit' value='Nouveau cra' name='nouveau'/> <br /><br />
+      
+          <table width="85%" height="85%" cellpadding="0" cellspacing="0" border="1"><tr><td>Developpeur</td><td>Date de début</td><td>Date de fin</td><td>Détails</td></tr>
+            {% if cra is defined %}
+                {% for theCra in cra%}
+                    <tr>
+                        <td><a href="{{ path('suivi_projet_developper_cra_individuel', {'idcraHebdomadaire': theCra.idcraHebdomadaire}) }}"><b>Consulter</b></a><br></td>
+                        <td>{{theCra.developperdevelopper[0].nom}}</td>
+                        <td>{{theCra.dateDebut | date ("d / m / Y")}}</td>
+                        <td>{{theCra.dateFin | date ("d / m / Y")}}</td>
+                        <td><textarea name="detail" rows="3" cols="50" style="border:solid 1px black; font-family:tahoma;"></textarea></td>
+                    </tr>
+                {% endfor %}
+            {% endif%}
+         </table><br />
+    </form>
+     
+  </div>
+
+
+    
+    
+    {% if message is defined %}
+        <a style="color:red">{{ message }}</a>
+    {% endif %}
+
+
+ {% endblock %}
+
+  
+
+
+
+
+  
+
+

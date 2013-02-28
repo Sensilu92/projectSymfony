@@ -1,0 +1,30 @@
+.Identifiantlabel {
+    float: left;
+    width: 60%;
+    margin: auto;
+    background-color: #F5F5F5;
+    border: 1px solid #E3E3E3;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 1 0px 0px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 0px;
+    min-height: 10px;
+    padding: 0px;
+}
+
+.Identifiantlabel p {
+    margin: 0px;
+    padding: 1px 1px 1px 1px;
+    text-align: center;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 15px;
+    color: #333333;
+    margin-left: -50px;
+    width: 60%;
+
+}
+
+.Identifiant {
+    float: left;
+    width: 100%;
+}

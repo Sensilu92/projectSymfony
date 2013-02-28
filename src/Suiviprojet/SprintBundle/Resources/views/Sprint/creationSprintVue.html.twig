@@ -1,0 +1,191 @@
+{#{% extends "::modele.html.twig" %}
+
+{% block menu %}{{parent()}}Création sprint <br /><br />{% endblock %}
+
+{% block contentLeft %}
+     {% if app.session.get('role') == 'admin' %}
+    <script src = "http://code.jquery.com/jquery-1.9.1.js" > </script>
+    <script src = "http://code.jquery.com/ui/1.10.1/jquery-ui.js" > </script>
+    <link rel = "stylesheet" href = "http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+    <link rel = "stylesheet" href = "/resources/demos/style.css"/>
+
+    <form method="post" action="">
+   
+
+        <fieldset {#{% if app.session.get('role') != 'user' %} disabled="disabled" {%endif%}#}{#> 
+       {#     <legend>Informations sprint</legend></br></br>
+           
+            <label>Nom : </label><input type='text'  name='nom' id='nom'/> <br /><br />
+            <label>Nb difficulté max : </label><input type='text'  name='nbDifficulte' id='nbDifficulte'/> <br /><br />
+            <label>Début de début : </label><script>
+            $( function () {
+                $("#dateD").datepicker();
+            });
+         </script>
+         <input type = "text" name="date" id = "dateD" /><br /><br />
+         <label>Début de fin : </label><script>
+            $( function () {
+                $("#dateF").datepicker();
+            });
+         </script>
+         <input type = "text" name="date" id = "dateF" />
+                    
+        </fieldset><br /><br />
+     <input type='submit' value='Créer' name='creer'/> <br />
+     {% endif %}
+    {% endblock %}  
+
+    {% block contentRight %}  
+  {% if app.session.get('role') == 'admin' %}
+       <fieldset> 
+            <legend>Informations nouvelle équipe</legend></br></br>
+           
+                <label>Nom : <input type='text' name='nomEquipe' id='nomEquipe'/> <br /><br />
+                <table>
+                    <tr>
+                        <td>Développeur</td><td>Ajouter à l'équipe</td>
+                    </tr>
+                    {% for developpeur in developpeurs%}
+            
+                        <tr>
+                            <td>{{developpeur.nom}}</td>
+                            <td><input type='checkbox' name='ajouter{{developpeur.iddevelopper}}'/></td>
+                        </tr>   
+                    {% endfor %}
+                </table>
+                    
+        </fieldset></br></br>
+         
+         <fieldset> 
+            <legend>Sélection équipe existante</legend></br></br>
+            
+            <SELECT name='equipe'>
+                <OPTION name="" value="">
+                    {% if equipes is defined %}
+                        {% for equipe in equipes%}
+                            {% if currentEquipe is defined %}
+                                {%if equipe.nom == currentEquipe.nom%}
+                                    <OPTION selected="selected">{{equipe.nom}}
+                                {%else%}
+                                    <OPTION>{{equipe.nom}}
+                                {%endif%}
+                            {% else %}
+                                <OPTION>{{equipe.nom}}        
+                            {% endif %}
+                        {%endfor%}
+                    {% endif %}
+            </SELECT> 
+        </fieldset> </form>
+    {%endif%}{% endblock %}#}
+        
+ 
+        
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Connexion
+{% endblock %}
+
+    {% block emplacement %}
+    Création sprint
+{% endblock %}
+    
+{% block content %}
+    
+    
+    <div class="span4 offset1">
+        {% if app.session.get('role') == 'admin' %}
+            
+            <script src = "http://code.jquery.com/jquery-1.9.1.js" > </script>
+    <script src = "http://code.jquery.com/ui/1.10.1/jquery-ui.js" > </script>
+    <link rel = "stylesheet" href = "http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+    <link rel = "stylesheet" href = "/resources/demos/style.css"/>
+    <form method="post" action="" class="well">
+   
+
+        <fieldset {#{% if app.session.get('role') != 'user' %} disabled="disabled" {%endif%}#}> 
+            <legend>Informations sprint</legend>
+           
+            <label>Nom : </label><input type='text'  name='nom' id='nom'/> <br /><br />
+            <label>Nb difficulté max : </label><input type='text'  name='nbDifficulte' id='nbDifficulte'/> <br /><br />
+            <label>Début de début : </label><script>
+            $( function () {
+                $("#dateD").datepicker();
+            });
+         </script>
+         <input type = "text" name="date" id = "dateD" /><br /><br />
+         <label>Début de fin : </label><script>
+            $( function () {
+                $("#dateF").datepicker();
+            });
+         </script>
+         <input type = "text" name="date" id = "dateF" />
+                    
+        </fieldset><br /><br />
+     <input type='submit' value='Créer' name='creer'/> <br />
+     {% endif %}
+    </div>
+    <div class="span4 offset2">
+        <div class="row well">
+          {#  {% if app.session.get('role') == 'admin' %}#}
+       
+            <legend>Informations nouvelle équipe</legend>
+           
+            <label>Nom : </label><input type='text' name='nomEquipe' id='nomEquipe'/> <br /><br />
+                    <table>
+                        <tr>
+                        <td>Développeur</td><td>Ajouter à l'équipe</td>
+                    </tr>
+                    {% for developpeur in developpeurs%}
+            
+                        <tr>
+                            <td>{{developpeur.nom}}</td>
+                            <td><input type='checkbox' name='ajouter{{developpeur.iddevelopper}}'/></td>
+                        </tr>   
+                    {% endfor %}
+                </table>
+                    
+        </br></br>
+         
+         
+        </div>
+        <div class="row well">
+         
+            <legend>Sélection équipe existante</legend></br></br>
+            
+            <SELECT name='equipe'>
+                <OPTION name="" value="">
+                    {% if equipes is defined %}
+                        {% for equipe in equipes%}
+                            {% if currentEquipe is defined %}
+                                {%if equipe.nom == currentEquipe.nom%}
+                                    <OPTION selected="selected">{{equipe.nom}}
+                                {%else%}
+                                    <OPTION>{{equipe.nom}}
+                                {%endif%}
+                            {% else %}
+                                <OPTION>{{equipe.nom}}        
+                            {% endif %}
+                        {%endfor%}
+                    {% endif %}
+            </SELECT> 
+      </form>
+        </div>
+    </div>
+
+    
+    
+    {% if message is defined %}
+        <a style="color:red">{{ message }}</a>
+    {% endif %}
+
+
+ {% endblock %}
+
+
+
+
+
+
+  
+

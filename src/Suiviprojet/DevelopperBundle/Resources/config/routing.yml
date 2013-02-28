@@ -1,7 +1,15 @@
 suivi_projet_developper_cra:
     pattern:  /compte_rendu_dactivite
-    defaults: { _controller: suiviProjetDevelopperBundle:Developper:afficheCraVue }
+    defaults: { _controller: suiviProjetDevelopperBundle:Developper:afficheCraHebdomadaireVue }
     
 suivi_projet_developper_cra_individuel:
     pattern:  /compte_rendu_dactivite_individuel
     defaults: { _controller: suiviProjetDevelopperBundle:Developper:afficheCraIndividuelVue }
+    
+suivi_projet_developper_creation_notice:
+    pattern:  /creation_notice_dutilisation
+    defaults: { _controller: suiviProjetDevelopperBundle:Developper:afficheCreationNoticeVue }
+    
+suivi_projet_developper_consulte_notice:
+    pattern:  /consultation_notice_dutilisation/{idNotice}
+    defaults: { _controller: suiviProjetDevelopperBundle:Developper:afficheConsultationNoticeVue }

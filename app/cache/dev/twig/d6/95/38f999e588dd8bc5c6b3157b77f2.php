@@ -7,17 +7,17 @@ class __TwigTemplate_d69538f999e588dd8bc5c6b3157b77f2 extends Twig_Template
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("::modele2.html.twig");
+        $this->parent = $this->env->loadTemplate("::base.html.twig");
 
         $this->blocks = array(
-            'menu' => array($this, 'block_menu'),
+            'title' => array($this, 'block_title'),
             'content' => array($this, 'block_content'),
         );
     }
 
     protected function doGetParent(array $context)
     {
-        return "::modele2.html.twig";
+        return "::base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -25,30 +25,52 @@ class __TwigTemplate_d69538f999e588dd8bc5c6b3157b77f2 extends Twig_Template
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 3
-    public function block_menu($context, array $blocks = array())
+    // line 15
+    public function block_title($context, array $blocks = array())
     {
-        $this->displayParentBlock("menu", $context, $blocks);
-        echo "Ajout de client<br /><br />";
+        // line 16
+        echo "    ";
+        $this->displayParentBlock("title", $context, $blocks);
+        echo " - Connexion
+";
     }
 
-    // line 5
+    // line 20
     public function block_content($context, array $blocks = array())
     {
-        echo " 
-<form action=\"";
-        // line 6
+        // line 21
+        echo "  
+    <div class=\"span4 offset4\">
+        <form class=\"well\" action=\"";
+        // line 23
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_creation_compte_client"), "html", null, true);
-        echo "\" method=\"post\" ";
+        echo "\" method=\"POST\"  ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getContext($context, "form"), 'enctype');
-        echo ">
+        echo " onsubmit=\"return check('');\">
+           <legend >Ajout de client</legend>
+   
+            
     ";
-        // line 7
+        // line 27
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getContext($context, "form"), 'widget');
         echo "
 
-    <input type=\"submit\" />
+           <input type=\"submit\" value=\"Créer\"/>
 </form>
+            </div>
+    
+    ";
+        // line 33
+        if (array_key_exists("message", $context)) {
+            // line 34
+            echo "        <a style=\"color:red\">";
+            echo twig_escape_filter($this->env, $this->getContext($context, "message"), "html", null, true);
+            echo "</a>
+    ";
+        }
+        // line 36
+        echo "    
+   </div>
 ";
     }
 
@@ -64,6 +86,6 @@ class __TwigTemplate_d69538f999e588dd8bc5c6b3157b77f2 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  47 => 7,  41 => 6,  36 => 5,  29 => 3,);
+        return array (  72 => 36,  66 => 34,  64 => 33,  55 => 27,  46 => 23,  42 => 21,  39 => 20,  32 => 16,  29 => 15,);
     }
 }

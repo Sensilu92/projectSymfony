@@ -4,8 +4,9 @@
     <id name="idnotice" type="integer" column="idnotice">
       <generator strategy="IDENTITY"/>
     </id>
+    <field name="titre" type="string" column="titre" length="45" nullable="false"/>
     <field name="fonctionnalite" type="string" column="fonctionnalite" length="45" nullable="false"/>
-    <field name="explication" type="string" column="explication" length="45" nullable="false"/>
+    <field name="explication" type="text" column="explication" nullable="false"/>
     <many-to-one field="projetprojet" target-entity="Projet">
       <join-columns>
         <join-column name="projet_idprojet" referenced-column-name="idprojet"/>

@@ -1,63 +1,71 @@
-{% extends "::modele2.html.twig" %}
+{#{% extends "::modele2.html.twig" %}
 
  {% block menu %}{{parent()}}Tableau de bord<br /><br />{% endblock %}
 
  {% block content %}
  
     <form method="post" action=""> {# pas besoin de mettre le nom si c'est la meme route#}
-                 
-        <label>Projet : </label><SELECT name='projet'>
-        {% if id is defined %}
-            {% for p in projet%}
-                {%for t in id%}
-                    {%if p.idProjet == t.idProjet%}
-                        <OPTION selected="selected">{{p.nom}}
-                             {%else%}
-                        <OPTION>{{p.nom}}
-                    {% endif %}
+        
+       {# <label>Sprint : </label><SELECT name='sprint'>
+            {% if sprint is defined %}
+                {% for s in sprint %}
+                    {% if currentSprint is defined %}
+                        {%if s.nom == currentSprint %}
+                            <OPTION selected="selected">{{s.nom}}
+                                {%else%}
+                            <OPTION>{{s.nom}}
+                        {% endif %}
+                     {% else%}
+                        <OPTION>{{s.nom}}
+                     {% endif %}
                 {%endfor%}
-            {%endfor%}
-        {%else%}
-            {% for p in projet%}
-                <OPTION>{{p.nom}}
-            {%endfor%}
-        {% endif %}
+            {%else%}
+                {% for s in sprint%}
+                    <OPTION>{{s.nom}}
+                {%endfor%}
+            {% endif %}
         </SELECT> 
         
-        <label>Sprint : </label><SELECT name='sprint'>
-        {% if sprint is defined %}
-            {% for s in sprint%}
-                <OPTION>{{s.idsprint}}
-            {%endfor%}
-         {% endif %}
-        </SELECT> 
-        
+        <label>Projet : </label><input type='text'  name='projet' id='projet' value="{% if projet is defined %}{{projet[0].nom}}{% endif%}" disabled="disabled"/>
         <input type='submit' value='Charger' name='charger'/> <br /> <br /> 
-    {#</form>#}
  
     {% set counter = 0 %} 
         
     {% if userStories is defined %}
  
-        <table style="border-collapse: collapse; border: solid; text-align: left"><tr>
+        <table style="border: solid; text-align: left;"><tr>
            
-            <td> A faire </td><td> En cours </td><td> A valider </td><td> Valider </td></tr>
+            <td> Développeur </td><td> A faire </td><td> En cours </td><td> A valider </td><td> Valider </td></tr>
         
             {% for userStory in userStories%}
             
                 <tr>
                     <td>
-                        {%if userStory.statutstatut.intitule == 'à faire'%}
+                        <SELECT name='dev'>
+                            <OPTION name='' value="">
+                            {% if listDev is defined %}
+                                {% for dev in listDev %}
+                                     {#{% SI LE LOGIN DU DEV EST DEFINI%}
+                                        {{on selectionne le nom qui correspond}}
+                                        SINON ON AFFICHE UN CHAMP VIDE
+                                      {% else %}#}
+                                 {#   <OPTION>{{dev.nom}}
+                                {%endfor%}
+                            {% endif %}
+                        </SELECT> 
+                    </td>
+                    <td>
+                        {%if userStory.statutSprintstatutSprint.intitule == 'à faire'%}
                             
                            {# <td style=" width:25%; background-color:{{couleur.couleur}}">#}
-                            <a name="{{userStory.idUserStorie}}" href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStory.idUserStorie}) }}"><b>#{{userStory.idUserStorie}}</b></a><br> 
+                          {#  <a name="{{userStory.idUserStorie}}" href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStory.idUserStorie}) }}"><b>#{{userStory.idUserStorie}}</b></a><br> 
                             <b name="fonctionnalite">Fonctionnalité : </b>{{userStory.fonctionnalite}}<br>
                             <b>Action : </b>{{userStory.action}}<br>
                             <b>DétailTechnique : </b> Afficher les userstories tech<br>
                         {% endif %}
                       </td>
                       <td>
-                        {%if userStory.statutstatut.intitule == 'en cours'%}
+                        {%if userStory.statutSprintstatutSprint.intitule == 'en cours'%}
                            
                             <a href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStory.idUserStorie}) }}"><b>#{{userStory.idUserStorie}}</b></a><br> 
                             <b>Fonctionnalité : </b>{{userStory.fonctionnalite}}<br>
@@ -67,7 +75,7 @@
                         {% endif %}
                        </td>
                         <td>
-                        {%if userStory.statutstatut.intitule == 'à valider'%}
+                        {%if userStory.statutSprintstatutSprint.intitule == 'à valider'%}
                             
                             <a href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStory.idUserStorie}) }}"><b>#{{userStory.idUserStorie}}</b></a><br> 
                             <b>Fonctionnalité : </b>{{userStory.fonctionnalite}}<br>
@@ -76,7 +84,135 @@
                         {% endif %}
                        </td>
                         <td>
-                        {%if userStory.statutstatut.intitule == 'terminé'%}
+                        {%if userStory.statutSprintstatutSprint.intitule == 'terminé'%}
+                            
+                            <a href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStory.idUserStorie}) }}"><b>#{{userStory.idUserStorie}}</b></a><br> 
+                            <b>Fonctionnalité : </b>{{userStory.fonctionnalite}}<br>
+                            <b>Action : </b>{{userStory.action}}<br>
+                            <b>DétailTechnique : </b> <br>
+                            Changer le statut en " En cours "<input type='checkbox' name='afaire{{userStory.idUserStorie}}'/>
+                        {% endif %}
+                       </td>
+ 
+                    {#<td><input {% if userStory.statutstatut.intitule == 'terminé' %} checked="checked" {%endif%} type="radio" name="{{ userStory.idUserStorie }}" {% if app.session.get('role') != 'user' %} disabled="disabled" {%endif%}/></td>#}
+               {# </tr>
+
+                {#{% set counter = counter + 1 %}
+          
+                {%if counter == 4%}
+                    </tr><tr>
+                    {% set counter = 0 %}   
+                {% endif %}#}
+            {#{%endfor %} 
+            </tr></table><br /> 
+        <input type='submit' value='Enregistrer' name='enregistrer'/> <br /> <br /> 
+         </form>
+    {% endif %}
+ 
+ {% endblock %}#}
+
+
+
+
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Tableau de bord
+{% endblock %}
+    
+{% block emplacement %}
+    Tableau de bord
+{% endblock %}
+    
+{% block content %}
+    
+        <div class="row-fluid">
+            <form method="post" action=""> {# pas besoin de mettre le nom si c'est la meme route#}
+        
+        <label>Sprint : </label><SELECT name='sprint'>
+            {% if sprint is defined %}
+                {% for s in sprint %}
+                    {% if currentSprint is defined %}
+                        {%if s.nom == currentSprint %}
+                            <OPTION selected="selected">{{s.nom}}
+                                {%else%}
+                            <OPTION>{{s.nom}}
+                        {% endif %}
+                     {% else%}
+                        <OPTION>{{s.nom}}
+                     {% endif %}
+                {%endfor%}
+            {%else%}
+                {% for s in sprint%}
+                    <OPTION>{{s.nom}}
+                {%endfor%}
+            {% endif %}
+        </SELECT> 
+        
+        <label>Projet : </label><input type='text'  name='projet' id='projet' value="{% if projet is defined %}{{projet[0].nom}}{% endif%}" disabled="disabled"/>
+        <input type='submit' value='Charger' name='charger'/> <br /> <br /> 
+ 
+        
+        </div>
+            
+    <div class="row-fluid ">
+        <div class=" span9 offset1">
+         {% set counter = 0 %} 
+        
+    {% if userStories is defined %}
+ 
+        <table style="border: solid; text-align: left;"><tr>
+           
+            <td> Développeur </td><td> A faire </td><td> En cours </td><td> A valider </td><td> Valider </td></tr>
+        
+            {% for userStory in userStories%}
+            
+                <tr>
+                    <td>
+                        <SELECT name='dev'>
+                            <OPTION name='' value="">
+                            {% if listDev is defined %}
+                                {% for dev in listDev %}
+                                     {#{% SI LE LOGIN DU DEV EST DEFINI%}
+                                        {{on selectionne le nom qui correspond}}
+                                        SINON ON AFFICHE UN CHAMP VIDE
+                                      {% else %}#}
+                                    <OPTION>{{dev.nom}}
+                                {%endfor%}
+                            {% endif %}
+                        </SELECT> 
+                    </td>
+                    <td>
+                        {%if userStory.statutSprintstatutSprint.intitule == 'à faire'%}
+                            
+                           {# <td style=" width:25%; background-color:{{couleur.couleur}}">#}
+                            <a name="{{userStory.idUserStorie}}" href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStory.idUserStorie}) }}"><b>#{{userStory.idUserStorie}}</b></a><br> 
+                            <b name="fonctionnalite">Fonctionnalité : </b>{{userStory.fonctionnalite}}<br>
+                            <b>Action : </b>{{userStory.action}}<br>
+                            <b>DétailTechnique : </b> Afficher les userstories tech<br>
+                        {% endif %}
+                      </td>
+                      <td>
+                        {%if userStory.statutSprintstatutSprint.intitule == 'en cours'%}
+                           
+                            <a href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStory.idUserStorie}) }}"><b>#{{userStory.idUserStorie}}</b></a><br> 
+                            <b>Fonctionnalité : </b>{{userStory.fonctionnalite}}<br>
+                            <b>Action : </b>{{userStory.action}}<br>
+                            <b>DétailTechnique : </b> <br>
+                            Changer le statut en " Valider "<input type='checkbox' name='valider{{userStory.idUserStorie}}'/>
+                        {% endif %}
+                       </td>
+                        <td>
+                        {%if userStory.statutSprintstatutSprint.intitule == 'à valider'%}
+                            
+                            <a href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStory.idUserStorie}) }}"><b>#{{userStory.idUserStorie}}</b></a><br> 
+                            <b>Fonctionnalité : </b>{{userStory.fonctionnalite}}<br>
+                            <b>Action : </b>{{userStory.action}}<br>
+                            <b>DétailTechnique : </b> <br>
+                        {% endif %}
+                       </td>
+                        <td>
+                        {%if userStory.statutSprintstatutSprint.intitule == 'terminé'%}
                             
                             <a href="{{ path('blacklog_product_creation_userstories_technique', {'idUserStorie': userStory.idUserStorie}) }}"><b>#{{userStory.idUserStorie}}</b></a><br> 
                             <b>Fonctionnalité : </b>{{userStory.fonctionnalite}}<br>
@@ -97,14 +233,33 @@
                 {% endif %}#}
             {%endfor %} 
             </tr></table><br /> 
+          {% endif %}</div>
+        </div>
+            
+    <div class="row-fluid">
+        
+       
+            
         <input type='submit' value='Enregistrer' name='enregistrer'/> <br /> <br /> 
          </form>
+  
+            
+    </div>
+    
+    
+    {% if message is defined %}
+        <a style="color:red">{{ message }}</a>
     {% endif %}
- 
+
+
  {% endblock %}
 
+  
 
 
+
+
+  
 
 
 

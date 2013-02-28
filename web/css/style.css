@@ -1,0 +1,38 @@
+.form-buttons { 
+    padding-left: 0px;
+}
+
+
+form.connexion .control-label {
+    width: 125px;
+}
+
+form.connexion .controls {
+    margin-left: 50px;
+}
+
+form.connexion input, form.connexion textarea, form.connexion .uneditable-input {
+    width: 50%;
+}
+
+form.connexion .control-group {
+    margin-bottom: 5px;
+}
+form.connexion.well {
+    background-color: #F5F5F5;
+    border: 1px solid #E3E3E3;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 0px;
+    min-height: 20px;
+    padding: 19px;
+}
+form.connexion .control-group .controls input[type=checkbox] {
+    width: 20px;
+}
+form.connexion .controls {
+    margin-left: 135px;
+}
+.form-horizontal .controls {
+    margin-left: 180px;
+}

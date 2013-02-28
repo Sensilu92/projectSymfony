@@ -1,3 +1,11 @@
 sprint_tableau_de_bord_sprint:
     pattern:  /tableau_de_bord_sprint
     defaults: { _controller: SprintBundle:Sprint:afficheTableauDeBordSprintVue }
+    
+sprint_assignation_user_stories:
+    pattern:  /assignation_user_stories
+    defaults: { _controller: SprintBundle:Sprint:afficheAssignationUserStoriesVue }
+    
+sprint_creation:
+    pattern:  /creation_sprint
+    defaults: { _controller: SprintBundle:Sprint:afficheCreationSprintVue }

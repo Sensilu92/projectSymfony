@@ -1,11 +1,10 @@
-{% extends "::modele.html.twig" %}
+{#{% extends "::modele.html.twig" %}
 
  {% block menu %}{{parent()}}Création user stories Tech{% endblock %}
 
     {% block contentLeft %}
             
-        <form method="post" action="{{idUserStory}}"> 
-            {{app.session.get('role')}}
+        <form method="post" action="{{idUserStory}}">
             <fieldset  {% if app.session.get('role') != 'admin' %} disabled="disabled" {%endif%} style="height: 350px;"> <legend>Nouveau détail technique</legend>
                 <br><label>Description :</label><br>
                 <textarea rows="10" cols="50" name="description"></textarea> <br /><br />
@@ -37,6 +36,64 @@
         {%endfor%}
             </tr></table>
     
-    {% endblock %}
-       
+    {% endblock %}#}
+     
+
+
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Connexion
+{% endblock %}
+    
+{% block emplacement %}
+    User stories technique
+{% endblock %}
+    
+{% block content %}
+  <div class="container-fluid">
+     <div class="row-fluid">
+       <div class="span3 offset1">
+           <form method="post" action="{{idUserStory}}" class="well">
+            <fieldset  {% if app.session.get('role') != 'admin' %} disabled="disabled" {%endif%} style="height: 350px;"> <legend>Nouveau détail technique</legend>
+                <br><label>Description :</label><br>
+                <textarea rows="10" cols="50" name="description"></textarea> <br /><br />
+                <input type='submit' value='Ajouter' name='ajoutDetailTechnique'/>
+             </fieldset>
+        </form>
+           </div>
+  
+  <div class="span7">
+       <table><tr>
+        {% set counter = 0 %}
+        {% for userStory in userStoriesTechnique %}
+
+            {% set counter = counter + 1 %}
+
+            <td>#{{userStory.userStorieUserStorie.idUserStorie}}.{{userStory.idUserStoriesTechnique}}<br>
+                    Fonctionnalité : {{userStory.userStorieUserStorie.fonctionnalite}} <br>
+                    Description : {{userStory.descriptionTechnique}} <br>
+               
+           </td >
+
+          {%if counter == 4%}
+            </tr><tr>
+            {% set counter = 0 %}   
+          {% endif %}
+   
+        {%endfor%}
+            </tr></table>
+    
+      </div></div></div>
+    
+
+    
+    
+    {% if message is defined %}
+        <a style="color:red">{{ message }}</a>
+    {% endif %}
+
+
+ {% endblock %}
+
   

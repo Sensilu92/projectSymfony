@@ -1,0 +1,90 @@
+{% extends "::modele2.html.twig" %}
+
+ {% block menu %}{{parent()}}Assignation user stories<br /><br />{% endblock %}
+
+ {% block content %}
+ 
+    <form method="post" action=""> 
+        
+        <label>Sprint : </label><SELECT name='sprint'>
+            {% if sprint is defined %}
+                {% for s in sprint %}
+                    {% if currentSprint is defined %}
+                        {%if s.nom == currentSprint %}
+                            <OPTION selected="selected">{{s.nom}}
+                                {%else%}
+                            <OPTION>{{s.nom}}
+                        {% endif %}
+                     {% else%}
+                        <OPTION>{{s.nom}}
+                     {% endif %}
+                {%endfor%}
+            {% endif %}
+        </SELECT> 
+        <label>Projet : </label><SELECT name='projet'>
+            {% if projet is defined %}
+                {% for p in projet %}
+                    {% if currentProjet is defined %}
+                        {%if p.nom == currentProjet %}
+                            <OPTION selected="selected">{{p.nom}}
+                                {%else%}
+                            <OPTION>{{p.nom}}
+                        {% endif %}
+                     {% else%}
+                        <OPTION>{{p.nom}}
+                     {% endif %}
+                {%endfor%}
+            {% endif %}
+        </SELECT>
+        
+        <input type='submit' value='Charger' name='charger'/> <br /> <br /> 
+ 
+    {% set counter = 0 %} 
+        
+    {% if userStories is defined %}
+ 
+        <table style="border-collapse: collapse; border: solid; text-align: left"><tr>
+           
+            <td> User stories </td><td> A assigner à </td><td> Ajouter au sprint </td></tr>
+        
+            {% for userStory in userStories%}
+            
+                <tr>
+                    <td>
+                        <b name="{{userStory.idUserStorie}}" >#{{userStory.idUserStorie}}</b><br> 
+                        <b name="fonctionnalite">Fonctionnalité : </b>{{userStory.fonctionnalite}}<br>
+                    </td>
+                    <td>
+                        <SELECT name='dev{{userStory.idUserStorie}}'>
+                            <OPTION name='' value="">
+                            {% if listDev is defined %}
+                                {% for dev in listDev %}
+                                     {#{% SI LE LOGIN DU DEV EST DEFINI%}
+                                        {{on selectionne le nom qui correspond}}
+                                        SINON ON AFFICHE UN CHAMP VIDE
+                                      {% else %}#}
+                                    <OPTION>{{dev.nom}}
+                                {%endfor%}
+                            {% endif %}
+                        </SELECT> 
+                    </td>
+                    <td>
+                        <input type='checkbox' name='ajout{{userStory.idUserStorie}}'/>
+                    </td>
+                </tr>
+            {%endfor %} 
+            </tr></table><br /> 
+        <input type='submit' value='Valider' name='valider'/> <br /> <br /> 
+         </form>
+    {% endif %}
+ 
+ {% endblock %}
+
+
+
+
+
+
+
+  
+

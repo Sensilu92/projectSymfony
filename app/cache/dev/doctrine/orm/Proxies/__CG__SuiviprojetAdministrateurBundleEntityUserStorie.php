@@ -111,6 +111,24 @@ class UserStorie extends \Suiviprojet\AdministrateurBundle\Entity\UserStorie imp
         return parent::getPoints();
     }
 
+    public function addDevelopperdevelopper(\Suiviprojet\AdministrateurBundle\Entity\Developper $developperdevelopper)
+    {
+        $this->__load();
+        return parent::addDevelopperdevelopper($developperdevelopper);
+    }
+
+    public function removeDevelopperdevelopper(\Suiviprojet\AdministrateurBundle\Entity\Developper $developperdevelopper)
+    {
+        $this->__load();
+        return parent::removeDevelopperdevelopper($developperdevelopper);
+    }
+
+    public function getDevelopperdevelopper()
+    {
+        $this->__load();
+        return parent::getDevelopperdevelopper();
+    }
+
     public function addSprintsprint(\Suiviprojet\AdministrateurBundle\Entity\Sprint $sprintsprint)
     {
         $this->__load();
@@ -129,18 +147,6 @@ class UserStorie extends \Suiviprojet\AdministrateurBundle\Entity\UserStorie imp
         return parent::getSprintsprint();
     }
 
-    public function setIdprojet(\Suiviprojet\AdministrateurBundle\Entity\Projet $idprojet = NULL)
-    {
-        $this->__load();
-        return parent::setIdprojet($idprojet);
-    }
-
-    public function getIdprojet()
-    {
-        $this->__load();
-        return parent::getIdprojet();
-    }
-
     public function setPrioritepriorite(\Suiviprojet\AdministrateurBundle\Entity\Priorite $prioritepriorite = NULL)
     {
         $this->__load();
@@ -153,22 +159,46 @@ class UserStorie extends \Suiviprojet\AdministrateurBundle\Entity\UserStorie imp
         return parent::getPrioritepriorite();
     }
 
-    public function setStatutstatut(\Suiviprojet\AdministrateurBundle\Entity\Statut $statutstatut = NULL)
+    public function setStatutBacklogstatutBacklog(\Suiviprojet\AdministrateurBundle\Entity\StatutBacklog $statutBacklogstatutBacklog = NULL)
     {
         $this->__load();
-        return parent::setStatutstatut($statutstatut);
+        return parent::setStatutBacklogstatutBacklog($statutBacklogstatutBacklog);
     }
 
-    public function getStatutstatut()
+    public function getStatutBacklogstatutBacklog()
     {
         $this->__load();
-        return parent::getStatutstatut();
+        return parent::getStatutBacklogstatutBacklog();
+    }
+
+    public function setStatutSprintstatutSprint(\Suiviprojet\AdministrateurBundle\Entity\StatutSprint $statutSprintstatutSprint = NULL)
+    {
+        $this->__load();
+        return parent::setStatutSprintstatutSprint($statutSprintstatutSprint);
+    }
+
+    public function getStatutSprintstatutSprint()
+    {
+        $this->__load();
+        return parent::getStatutSprintstatutSprint();
+    }
+
+    public function setIdprojet(\Suiviprojet\AdministrateurBundle\Entity\Projet $idprojet = NULL)
+    {
+        $this->__load();
+        return parent::setIdprojet($idprojet);
+    }
+
+    public function getIdprojet()
+    {
+        $this->__load();
+        return parent::getIdprojet();
     }
 
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'idUserStorie', 'fonctionnalite', 'role', 'action', 'but', 'points', 'sprintsprint', 'idprojet', 'prioritepriorite', 'statutstatut');
+        return array('__isInitialized__', 'idUserStorie', 'fonctionnalite', 'role', 'action', 'but', 'points', 'developperdevelopper', 'sprintsprint', 'prioritepriorite', 'statutBacklogstatutBacklog', 'statutSprintstatutSprint', 'idprojet');
     }
 
     public function __clone()

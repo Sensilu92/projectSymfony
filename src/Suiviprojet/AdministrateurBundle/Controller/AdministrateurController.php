@@ -12,51 +12,60 @@ class AdministrateurController extends Controller {
 
     public function creationProjetAction() {
        
-        $projet = new Projet();
-        //creatForm() utilise le composant Form pour construire un formulaire à partir du ProjetType passé en argument
-        $form = $this->createForm(new ProjetType, $projet);
-        // récupération la requête
-        $request = $this->get('request');
-       
-        // vérifie qu'elle est de type POST
-        if ($request->getMethod() == 'POST') { 
+        if($this->getRequest()->getSession()->get('identifiant') != ''){
             
-            $form->bind($request);
+            $projet = new Projet();
+            //creatForm() utilise le composant Form pour construire un formulaire à partir du ProjetType passé en argument
+            $form = $this->createForm(new ProjetType, $projet);
+            // récupération la requête
+            $request = $this->get('request');
+       
+            // vérifie qu'elle est de type POST
+            if ($request->getMethod() == 'POST') { 
+            
+                $form->bind($request);
 
-            if ($form->isvalid()) {
+                if ($form->isvalid()) {
 
-                //enregistrement de l'objet $Projet dans la base de données
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($projet);
-                $entityManager->flush();
+                    //enregistrement de l'objet $Projet dans la base de données
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($projet);
+                    $entityManager->flush();
+                }
             }
+            return $this->render('SuiviprojetAdministrateurBundle:Admin:creationProjet.html.twig', array('form' => $form->createView()));
+        
+        } else {
+            return $this->redirect($this->generateUrl('suiviprojet_administrateur_connexion'));
         }
-        return $this->render('SuiviprojetAdministrateurBundle:Admin:creationProjet.html.twig', array('form' => $form->createView(),
-                ));
     }
 
     public function creationCompteClientAction() {
 
-        $client = new Client();
-        $form = $this->createForm(new ClientType, $client);
-        $request = $this->get('request');
+        if($this->getRequest()->getSession()->get('identifiant') != ''){
+            
+            $client = new Client();
+            $form = $this->createForm(new ClientType, $client);
+            $request = $this->get('request');
 
-        if ($request->getMethod() == 'POST') {
-            var_dump($client);
-            $form->bind($request);
-            if ($form->isvalid()) {
-
+            if ($request->getMethod() == 'POST') {
+            
+                $form->bind($request);
+                if ($form->isvalid()) {
                 
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($client);
-                $entityManager->flush();
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($client);
+                    $entityManager->flush();
 
-                // redirige vers la page de visualisation du client nouvellement créé
-                //  return $this->redirect($this->generateUrl('client_succes'));
+                    // redirige vers la page de visualisation du client nouvellement créé
+                    //  return $this->redirect($this->generateUrl('client_succes'));
+                }
             }
+            return $this->render('SuiviprojetAdministrateurBundle:Admin:creationCompteClient.html.twig', array('form' => $form->createView()));
+        
+        } else {
+            return $this->redirect($this->generateUrl('suiviprojet_administrateur_connexion'));
         }
-        return $this->render('SuiviprojetAdministrateurBundle:Admin:creationCompteClient.html.twig', array('form' => $form->createView(),
-                ));
     }
 
     public function afficheConnexionVueAction() {
@@ -64,18 +73,18 @@ class AdministrateurController extends Controller {
         $request = $this->getRequest();
         $connexion = $request->get('connexion');
 
-
-        //Si on clique pour charger un autre projet
+        //Si on clique sur le bouton connexion
         if ($connexion) {
 
             $client = $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Client")->findBy(array('identifiantconnection' => $request->get('identifiant'), 'passwordconnection' => $request->get('password')));
-
-            if (empty($client)) {
+            $session = $this->get('request')->getSession();
+            
+            if(empty($client)) {
 
                 $developpeur = $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Developper")->findBy(array('login' => $request->get('identifiant'), 'password' => $request->get('password')));
 
                 if (!empty($developpeur)) {
-                    $session = $this->get('request')->getSession();
+                    
                     $session->set('identifiant', $request->get('identifiant'));
                     $session->set('id', $developpeur[0]->getIddevelopper());
 
@@ -85,20 +94,20 @@ class AdministrateurController extends Controller {
                         $session->set('role','dev');
                     }
                 }
+                
             } else {
-                $session = $this->get('request')->getSession();
                 $session->set('identifiant', $request->get('identifiant'));
                 $session->set('id', $client[0]->getIdclient());
                 $session->set('role', 'user');
             }
 
             if (!empty($client) || !empty($developpeur)) {
-                return $this->render('SuiviprojetAdministrateurBundle:Admin:accueilVue.html.twig', array());
+                return $this->render('SuiviprojetAdministrateurBundle:Admin:accueilVue.html.twig');
             } else {
-                echo 'Revoir les identifiants <br/><br/>';
+                return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig', array('message'=>'Les identifiants sont incorrects'));
             }
         }
-        return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig', array());
+        return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig');
     }
     
     public function afficheDeconnexionVueAction() {
@@ -108,11 +117,18 @@ class AdministrateurController extends Controller {
         $session->set('id', '');
         $session->set('role', '');
         
-        // redirige vers la page de visualisation du client nouvellement créé
+        // redirige vers la page de connexion
         return $this->redirect($this->generateUrl('suiviprojet_administrateur_connexion'));
-        //return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig', array());
     }
+    
+    public function afficheAccueilVueAction() {
 
+         if($this->getRequest()->getSession()->get('identifiant') != ''){
+            return $this->render('SuiviprojetAdministrateurBundle:Admin:accueilVue.html.twig');
+         } else {
+            return $this->redirect($this->generateUrl('suiviprojet_administrateur_connexion'));
+         }
+    }
 }
 ?>
 

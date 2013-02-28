@@ -14,6 +14,7 @@ class ProjetType extends AbstractType {
                 ->add('clientclient', 'entity', array('class' => 'SuiviprojetAdministrateurBundle:Client', 'property' => 'societe'))
                 ->add('dateDebut', 'date')
                 ->add('dateFin', 'date')
+                ->add('description', 'textarea')
         ;
     }
 

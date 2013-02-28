@@ -5,6 +5,7 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="date" type="date" column="date" nullable="false"/>
+    <field name="projet" type="string" column="projet" length="45" nullable="false"/>
     <field name="client" type="string" column="client" length="45" nullable="false"/>
     <field name="tache" type="string" column="tache" length="45" nullable="false"/>
     <field name="statut" type="string" column="statut" length="45" nullable="false"/>

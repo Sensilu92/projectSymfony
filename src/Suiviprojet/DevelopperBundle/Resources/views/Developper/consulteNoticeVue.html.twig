@@ -1,0 +1,20 @@
+{% extends "::modele2.html.twig" %}
+
+ {% block menu %}{{parent()}}Consultation des notices <br /><br />{% endblock %}
+
+ {% block content %}
+    {% if theNotice is defined %}
+        <html>{{theNotice.explication}}</html>
+    {% endif %}
+ {% endblock %}
+ 
+ 
+
+
+
+
+
+
+
+
+  

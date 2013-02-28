@@ -46,12 +46,12 @@ class __TwigTemplate_61460eb660955afb1551db4e2f39b489 extends Twig_Template
         ";
         // line 12
         $this->displayBlock('body', $context, $blocks);
-        // line 36
+        // line 38
         echo "        
         ";
-        // line 37
+        // line 39
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 38
+        // line 40
         echo "        
     </body>
     
@@ -73,64 +73,77 @@ class __TwigTemplate_61460eb660955afb1551db4e2f39b489 extends Twig_Template
     public function block_body($context, array $blocks = array())
     {
         echo "  
-        
             ";
-        // line 14
+        // line 13
         $this->displayBlock('menu', $context, $blocks);
-        // line 34
+        // line 36
         echo "           
         ";
     }
 
-    // line 14
+    // line 13
     public function block_menu($context, array $blocks = array())
     {
         echo " 
                 <div class=\"menu\">
                         
                     ";
-        // line 18
-        echo "                        <a href=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_creation_compte_client"), "html", null, true);
-        echo "\">Création compte client</a>
+        // line 16
+        if (($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "get", array(0 => "role"), "method") == "admin")) {
+            // line 17
+            echo "                        <a href=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_creation_compte_client"), "html", null, true);
+            echo "\">Création compte client</a>
                         <a href=\"";
-        // line 19
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_creation_projet"), "html", null, true);
-        echo "\">Création projet</a>
+            // line 18
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_creation_projet"), "html", null, true);
+            echo "\">Création projet</a>
+                        <a href=\"";
+            // line 19
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sprint_assignation_user_stories"), "html", null, true);
+            echo "\">Assignation user stories</a>
+                        <a href=\"";
+            // line 20
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sprint_creation"), "html", null, true);
+            echo "\">Création sprint</a>
+                    ";
+        }
+        // line 21
+        echo " 
                         
+                        <a href=\"";
+        // line 23
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suivi_projet_developper_creation_notice"), "html", null, true);
+        echo "\">Création notice d'utilisation</a>
                    ";
-        // line 22
+        // line 25
         echo "                        <a href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suivi_projet_developper_cra"), "html", null, true);
         echo "\">CRA</a>
                         <a href=\"";
-        // line 23
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suivi_projet_developper_cra_individuel"), "html", null, true);
-        echo "\">CRA individuel</a>
-                        <a href=\"";
-        // line 24
+        // line 26
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sprint_tableau_de_bord_sprint"), "html", null, true);
         echo "\">Tableau de bord sprint</a>
                         
                     ";
-        // line 27
+        // line 29
         echo "                        
                     <a href=\"";
-        // line 28
+        // line 30
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("blacklog_product_creation_userstories"), "html", null, true);
         echo "\">User storie</a>
                     <a href=\"";
-        // line 29
+        // line 31
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("suiviprojet_administrateur_deconnexion"), "html", null, true);
         echo "\">Deconnexion</a>
                     ";
-        // line 31
+        // line 33
         echo "                        
                 </div> 
             ";
     }
 
-    // line 37
+    // line 39
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -147,6 +160,6 @@ class __TwigTemplate_61460eb660955afb1551db4e2f39b489 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  134 => 37,  128 => 31,  124 => 29,  120 => 28,  117 => 27,  112 => 24,  108 => 23,  103 => 22,  98 => 19,  93 => 18,  86 => 14,  81 => 34,  79 => 14,  73 => 12,  68 => 6,  62 => 5,  55 => 38,  53 => 37,  50 => 36,  48 => 12,  41 => 8,  36 => 7,  34 => 6,  30 => 5,  24 => 1,);
+        return array (  147 => 39,  141 => 33,  137 => 31,  133 => 30,  130 => 29,  125 => 26,  120 => 25,  116 => 23,  112 => 21,  107 => 20,  103 => 19,  99 => 18,  94 => 17,  92 => 16,  85 => 13,  80 => 36,  78 => 13,  73 => 12,  68 => 6,  62 => 5,  55 => 40,  53 => 39,  50 => 38,  48 => 12,  41 => 8,  36 => 7,  34 => 6,  30 => 5,  24 => 1,);
     }
 }

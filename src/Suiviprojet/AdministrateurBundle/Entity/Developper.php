@@ -71,12 +71,20 @@ class Developper
     private $equipeequipe;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="UserStorie", mappedBy="developperdevelopper")
+     */
+    private $userStorieUserStorie;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->craHebdomadairecraHebdomadaire = new \Doctrine\Common\Collections\ArrayCollection();
         $this->equipeequipe = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userStorieUserStorie = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
 
@@ -269,5 +277,38 @@ class Developper
     public function getEquipeequipe()
     {
         return $this->equipeequipe;
+    }
+
+    /**
+     * Add userStorieUserStorie
+     *
+     * @param \Suiviprojet\AdministrateurBundle\Entity\UserStorie $userStorieUserStorie
+     * @return Developper
+     */
+    public function addUserStorieUserStorie(\Suiviprojet\AdministrateurBundle\Entity\UserStorie $userStorieUserStorie)
+    {
+        $this->userStorieUserStorie[] = $userStorieUserStorie;
+    
+        return $this;
+    }
+
+    /**
+     * Remove userStorieUserStorie
+     *
+     * @param \Suiviprojet\AdministrateurBundle\Entity\UserStorie $userStorieUserStorie
+     */
+    public function removeUserStorieUserStorie(\Suiviprojet\AdministrateurBundle\Entity\UserStorie $userStorieUserStorie)
+    {
+        $this->userStorieUserStorie->removeElement($userStorieUserStorie);
+    }
+
+    /**
+     * Get userStorieUserStorie
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserStorieUserStorie()
+    {
+        return $this->userStorieUserStorie;
     }
 }

@@ -3,22 +3,17 @@
 namespace Suiviprojet\BlacklogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Suiviprojet\AdministrateurBundle\Entity;
-/**
- * Description of BlacklogProductController
- *
- * @author admin
- */
+
 class BlacklogProductController extends Controller{
  
     public function afficheUserStoriesVueAction(){
 
         if($this->getRequest()->getSession()->get('identifiant') != ''){
 
-        $request = $this->getRequest();
-        $charger=$request->get('charger'); 
-        $enregistrer=$request->get('enregistrer');
-        $projet=$this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Projet")->findAll();
+            $request = $this->getRequest();
+            $charger=$request->get('charger'); 
+            $enregistrer=$request->get('enregistrer');
+            $projet=$this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Projet")->findAll();
         
         if($this->getRequest()->getSession()->get('role') == 'user'){
             
@@ -49,10 +44,11 @@ class BlacklogProductController extends Controller{
             $userStory->setBut($request->get('but'));
             $prioriteTmp =  $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Priorite")->findBy(array('nom'=>$request->get('priorite')));
             $userStory->setPrioritepriorite($prioriteTmp[0]);
-            //Créer un statut non assigné par défaut
-            $statutTmp =  $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Statut")->findBy(array('intitule'=>"à faire"));
-            //$stat=$statutTmp[0];
-            $userStory->setStatutstatut($statutTmp[0]);
+            //Créer un statut 'non assigné' par défaut pour statutbacklog et 'à faire' pour statut sprint
+            $statutBacklog =  $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:StatutBacklog")->findBy(array('intitule'=>"non assigné"));
+            $userStory->setStatutBacklogstatutBacklog($statutBacklog[0]);
+            $statutSprint =  $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:StatutSprint")->findBy(array('intitule'=>"à faire"));
+            $userStory->setStatutSprintstatutSprint($statutSprint[0]);
             $userStory->setPoints(0);
             
             $this->getDoctrine()->getManager()->persist($userStory);
@@ -87,7 +83,7 @@ class BlacklogProductController extends Controller{
          
             //Ajout dans la db
             $userStoryTech = new \Suiviprojet\AdministrateurBundle\Entity\UserStoriesTechnique();
-            $userStory = $this->getDoctrine()->getRepository("suiviprojetAdministrateurBundle:UserStorie")->find($idUserStorie);
+            $userStory = $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:UserStorie")->find($idUserStorie);
             $userStoryTech->setUserStorieUserStorie($userStory);
             $userStoryTech->setDescriptionTechnique($request->get('description'));
             
@@ -96,12 +92,12 @@ class BlacklogProductController extends Controller{
             $this->getDoctrine()->getManager()->flush();
         } 
         
-         $userStoriesTechnique = $this->getDoctrine()->getRepository("Suiviprojet\AdministrateurBundle\Entity\UserStoriesTechnique")->findBy(array('userStorieUserStorie' => $idUserStorie));
+         $userStoriesTechnique = $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:UserStoriesTechnique")->findBy(array('userStorieUserStorie' => $idUserStorie));
          
         return $this->render('blacklogProductBundle:Blacklog:creationUserStoriesTechnique.html.twig', 
                               array('userStoriesTechnique'=>$userStoriesTechnique,'idUserStory' => $idUserStorie));
      }else{
-                 // redirige vers la page de visualisation du client nouvellement créé
+        // redirige vers la page de visualisation du client nouvellement créé
         return $this->redirect($this->generateUrl('suiviprojet_administrateur_connexion'));
            // return $this->render('SuiviprojetAdministrateurBundle:Admin:connexionVue.html.twig', array());
         }  

@@ -51,6 +51,18 @@ class Equipe extends \Suiviprojet\AdministrateurBundle\Entity\Equipe implements 
         return parent::getIdequipe();
     }
 
+    public function setNom($nom)
+    {
+        $this->__load();
+        return parent::setNom($nom);
+    }
+
+    public function getNom()
+    {
+        $this->__load();
+        return parent::getNom();
+    }
+
     public function setNbdifficulte($nbdifficulte)
     {
         $this->__load();
@@ -84,7 +96,7 @@ class Equipe extends \Suiviprojet\AdministrateurBundle\Entity\Equipe implements 
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'idequipe', 'nbdifficulte', 'developperdevelopper');
+        return array('__isInitialized__', 'idequipe', 'nom', 'nbdifficulte', 'developperdevelopper');
     }
 
     public function __clone()

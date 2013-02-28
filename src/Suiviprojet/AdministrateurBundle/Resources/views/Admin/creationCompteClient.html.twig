@@ -1,4 +1,4 @@
-{% extends "::modele2.html.twig" %}
+{#{% extends "::modele2.html.twig" %}
 
 {% block menu %}{{parent()}}Ajout de client<br /><br />{% endblock %}
 
@@ -8,4 +8,31 @@
 
     <input type="submit" />
 </form>
+{% endblock %}#}
+
+{% extends "::base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - Connexion
+{% endblock %}
+    
+    
+{% block content %}
+  
+    <div class="span4 offset4">
+        <form class="well" action="{{ path('suiviprojet_administrateur_creation_compte_client') }}" method="POST"  {{ form_enctype(form) }} onsubmit="return check('');">
+           <legend >Ajout de client</legend>
+   
+            
+    {{ form_widget(form) }}
+
+           <input type="submit" value="Créer"/>
+</form>
+            </div>
+    
+    {% if message is defined %}
+        <a style="color:red">{{ message }}</a>
+    {% endif %}
+    
+   </div>
 {% endblock %}

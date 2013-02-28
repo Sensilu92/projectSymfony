@@ -59,6 +59,21 @@ class UserStorie
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
+     * @ORM\ManyToMany(targetEntity="Developper", inversedBy="userStorieUserStorie")
+     * @ORM\JoinTable(name="user_storie_has_developper",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="user_storie_id_user_storie", referencedColumnName="id_user_storie")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="developper_idDevelopper", referencedColumnName="idDevelopper")
+     *   }
+     * )
+     */
+    private $developperdevelopper;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
      * @ORM\ManyToMany(targetEntity="Sprint", inversedBy="userStorieUserStorie")
      * @ORM\JoinTable(name="user_storie_has_sprint",
      *   joinColumns={
@@ -72,16 +87,6 @@ class UserStorie
     private $sprintsprint;
 
     /**
-     * @var \Projet
-     *
-     * @ORM\ManyToOne(targetEntity="Projet")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idProjet", referencedColumnName="idprojet")
-     * })
-     */
-    private $idprojet;
-
-    /**
      * @var \Priorite
      *
      * @ORM\ManyToOne(targetEntity="Priorite")
@@ -90,16 +95,6 @@ class UserStorie
      * })
      */
     private $prioritepriorite;
-
-    /**
-     * @var \StatutSprint
-     *
-     * @ORM\ManyToOne(targetEntity="StatutSprint")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="statut_sprint_idstatut_sprint", referencedColumnName="idstatut_sprint")
-     * })
-     */
-    private $statutSprintstatutSprint;
 
     /**
      * @var \StatutBacklog
@@ -112,10 +107,31 @@ class UserStorie
     private $statutBacklogstatutBacklog;
 
     /**
+     * @var \StatutSprint
+     *
+     * @ORM\ManyToOne(targetEntity="StatutSprint")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="statut_sprint_idstatut_sprint", referencedColumnName="idstatut_sprint")
+     * })
+     */
+    private $statutSprintstatutSprint;
+
+    /**
+     * @var \Projet
+     *
+     * @ORM\ManyToOne(targetEntity="Projet")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idProjet", referencedColumnName="idprojet")
+     * })
+     */
+    private $idprojet;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
+        $this->developperdevelopper = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sprintsprint = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -246,6 +262,39 @@ class UserStorie
     }
 
     /**
+     * Add developperdevelopper
+     *
+     * @param \Suiviprojet\AdministrateurBundle\Entity\Developper $developperdevelopper
+     * @return UserStorie
+     */
+    public function addDevelopperdevelopper(\Suiviprojet\AdministrateurBundle\Entity\Developper $developperdevelopper)
+    {
+        $this->developperdevelopper[] = $developperdevelopper;
+    
+        return $this;
+    }
+
+    /**
+     * Remove developperdevelopper
+     *
+     * @param \Suiviprojet\AdministrateurBundle\Entity\Developper $developperdevelopper
+     */
+    public function removeDevelopperdevelopper(\Suiviprojet\AdministrateurBundle\Entity\Developper $developperdevelopper)
+    {
+        $this->developperdevelopper->removeElement($developperdevelopper);
+    }
+
+    /**
+     * Get developperdevelopper
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDevelopperdevelopper()
+    {
+        return $this->developperdevelopper;
+    }
+
+    /**
      * Add sprintsprint
      *
      * @param \Suiviprojet\AdministrateurBundle\Entity\Sprint $sprintsprint
@@ -279,29 +328,6 @@ class UserStorie
     }
 
     /**
-     * Set idprojet
-     *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\Projet $idprojet
-     * @return UserStorie
-     */
-    public function setIdprojet(\Suiviprojet\AdministrateurBundle\Entity\Projet $idprojet = null)
-    {
-        $this->idprojet = $idprojet;
-    
-        return $this;
-    }
-
-    /**
-     * Get idprojet
-     *
-     * @return \Suiviprojet\AdministrateurBundle\Entity\Projet 
-     */
-    public function getIdprojet()
-    {
-        return $this->idprojet;
-    }
-
-    /**
      * Set prioritepriorite
      *
      * @param \Suiviprojet\AdministrateurBundle\Entity\Priorite $prioritepriorite
@@ -322,6 +348,29 @@ class UserStorie
     public function getPrioritepriorite()
     {
         return $this->prioritepriorite;
+    }
+
+    /**
+     * Set statutBacklogstatutBacklog
+     *
+     * @param \Suiviprojet\AdministrateurBundle\Entity\StatutBacklog $statutBacklogstatutBacklog
+     * @return UserStorie
+     */
+    public function setStatutBacklogstatutBacklog(\Suiviprojet\AdministrateurBundle\Entity\StatutBacklog $statutBacklogstatutBacklog = null)
+    {
+        $this->statutBacklogstatutBacklog = $statutBacklogstatutBacklog;
+    
+        return $this;
+    }
+
+    /**
+     * Get statutBacklogstatutBacklog
+     *
+     * @return \Suiviprojet\AdministrateurBundle\Entity\StatutBacklog 
+     */
+    public function getStatutBacklogstatutBacklog()
+    {
+        return $this->statutBacklogstatutBacklog;
     }
 
     /**
@@ -348,25 +397,25 @@ class UserStorie
     }
 
     /**
-     * Set statutBacklogstatutBacklog
+     * Set idprojet
      *
-     * @param \Suiviprojet\AdministrateurBundle\Entity\StatutBacklog $statutBacklogstatutBacklog
+     * @param \Suiviprojet\AdministrateurBundle\Entity\Projet $idprojet
      * @return UserStorie
      */
-    public function setStatutBacklogstatutBacklog(\Suiviprojet\AdministrateurBundle\Entity\StatutBacklog $statutBacklogstatutBacklog = null)
+    public function setIdprojet(\Suiviprojet\AdministrateurBundle\Entity\Projet $idprojet = null)
     {
-        $this->statutBacklogstatutBacklog = $statutBacklogstatutBacklog;
+        $this->idprojet = $idprojet;
     
         return $this;
     }
 
     /**
-     * Get statutBacklogstatutBacklog
+     * Get idprojet
      *
-     * @return \Suiviprojet\AdministrateurBundle\Entity\StatutBacklog 
+     * @return \Suiviprojet\AdministrateurBundle\Entity\Projet 
      */
-    public function getStatutBacklogstatutBacklog()
+    public function getIdprojet()
     {
-        return $this->statutBacklogstatutBacklog;
+        return $this->idprojet;
     }
 }

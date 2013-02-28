@@ -24,6 +24,13 @@ class Notice
     /**
      * @var string
      *
+     * @ORM\Column(name="titre", type="string", length=45, nullable=false)
+     */
+    private $titre;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="fonctionnalite", type="string", length=45, nullable=false)
      */
     private $fonctionnalite;
@@ -31,7 +38,7 @@ class Notice
     /**
      * @var string
      *
-     * @ORM\Column(name="explication", type="string", length=45, nullable=false)
+     * @ORM\Column(name="explication", type="text", nullable=false)
      */
     private $explication;
 
@@ -55,6 +62,29 @@ class Notice
     public function getIdnotice()
     {
         return $this->idnotice;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     * @return Notice
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+    
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string 
+     */
+    public function getTitre()
+    {
+        return $this->titre;
     }
 
     /**

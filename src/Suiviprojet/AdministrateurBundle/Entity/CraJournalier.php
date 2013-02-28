@@ -31,6 +31,13 @@ class CraJournalier
     /**
      * @var string
      *
+     * @ORM\Column(name="projet", type="string", length=45, nullable=false)
+     */
+    private $projet;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="client", type="string", length=45, nullable=false)
      */
     private $client;
@@ -103,6 +110,29 @@ class CraJournalier
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set projet
+     *
+     * @param string $projet
+     * @return CraJournalier
+     */
+    public function setProjet($projet)
+    {
+        $this->projet = $projet;
+    
+        return $this;
+    }
+
+    /**
+     * Get projet
+     *
+     * @return string 
+     */
+    public function getProjet()
+    {
+        return $this->projet;
     }
 
     /**

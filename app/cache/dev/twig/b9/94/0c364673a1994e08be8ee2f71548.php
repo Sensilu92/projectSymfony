@@ -7,16 +7,17 @@ class __TwigTemplate_b9940c364673a1994e08be8ee2f71548 extends Twig_Template
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("::modele2.html.twig");
+        $this->parent = $this->env->loadTemplate("::base.html.twig");
 
         $this->blocks = array(
-            'body' => array($this, 'block_body'),
+            'title' => array($this, 'block_title'),
+            'content' => array($this, 'block_content'),
         );
     }
 
     protected function doGetParent(array $context)
     {
-        return "::modele2.html.twig";
+        return "::base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -24,17 +25,60 @@ class __TwigTemplate_b9940c364673a1994e08be8ee2f71548 extends Twig_Template
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 4
-    public function block_body($context, array $blocks = array())
+    // line 15
+    public function block_title($context, array $blocks = array())
     {
-        // line 5
-        echo "    <form method=\"post\" action=\"\">
-        <label>Identifiant : <input type='text'  name='identifiant' id='identifiant' size=\"20px\" /> <br /><br />
-        <label>Mot de passe : <input type='password'  name='password' id='password' size=\"20px\" /> <br /><br />
-        <input type='submit' value='Connexion' name='connexion'/>    
-   </form>
+        // line 16
+        echo "    ";
+        $this->displayParentBlock("title", $context, $blocks);
+        echo " - Connexion
+";
+    }
 
- ";
+    // line 20
+    public function block_content($context, array $blocks = array())
+    {
+        // line 21
+        echo "  
+    <div class=\"span4 offset4\">
+        <form method=\"POST\" class=\"connexion form-horizontal well\" action=\"\" onsubmit=\"return check('');\">
+            <legend>Identification</legend>
+   
+            <div class=\"control-group\">
+                <label class=\"control-label\">Identifiant : </label>
+                <div class=\"controls\">
+                    <input type=\"text\" name=\"identifiant\" />
+                </div>
+            </div>
+            
+            <div class=\"control-group\">
+                <label class=\"control-label required\">Mot de passe : </label>
+                <div class=\"controls\">
+                    <input type=\"password\" name=\"password\" />
+                </div>
+            </div>
+            <div class=\"control-group\">
+                <div class=\"controls\">
+                    <div class=\"form-buttons\">
+                        <input class=\"btn\" type=\"submit\" value=\"Connexion\" name=\"connexion\"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    
+    ";
+        // line 48
+        if (array_key_exists("message", $context)) {
+            // line 49
+            echo "        <a style=\"color:red\">";
+            echo twig_escape_filter($this->env, $this->getContext($context, "message"), "html", null, true);
+            echo "</a>
+    ";
+        }
+        // line 51
+        echo "    
+   </div>
+";
     }
 
     public function getTemplateName()
@@ -49,6 +93,6 @@ class __TwigTemplate_b9940c364673a1994e08be8ee2f71548 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  31 => 5,  28 => 4,);
+        return array (  79 => 51,  73 => 49,  71 => 48,  42 => 21,  39 => 20,  32 => 16,  29 => 15,);
     }
 }
