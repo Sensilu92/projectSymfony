@@ -10,11 +10,11 @@ class ProjetType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('nom', 'text')
-                ->add('clientclient', 'entity', array('class' => 'SuiviprojetAdministrateurBundle:Client', 'property' => 'societe'))
-                ->add('dateDebut', 'date')
-                ->add('dateFin', 'date')
-                ->add('description', 'textarea')
+                ->add('nom', 'text',array('label'=>'nom :'))
+                ->add('clientclient', 'entity', array('label'=>'client :', 'class' => 'SuiviprojetAdministrateurBundle:Client', 'property' => 'societe'))
+                ->add('dateDebut', 'date',array('label'=>'Début :'))
+                ->add('dateFin', 'date',array ('label'=>'Fin :'))
+                ->add('description', 'textarea',array('label'=>'Description :'))
         ;
     }
 

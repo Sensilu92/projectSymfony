@@ -9,14 +9,14 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ClientType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    {   //construit les champs des formulaires
         $builder
-            ->add('societe', 'text')
-            ->add('nomContact', 'text')
-            ->add('prenomContact', 'text')
-            ->add('telephoneContact', null)
-            ->add('identifiantconnection', 'text')
-            ->add('passwordconnection', 'password')
+            ->add('societe', 'text',array('label'=> 'societé :'))
+            ->add('nomContact', 'text',array('label'=> 'nom :'))
+            ->add('prenomContact', 'text',array('label'=> 'prénom :'))
+            ->add('telephoneContact', null,array('label'=> 'téléphone :'))
+            ->add('identifiantconnection', 'text',array('label'=> 'identifiant :'))
+            ->add('passwordconnection', 'password',array('label'=> 'mot de passe :'))
         ;
     }
 
