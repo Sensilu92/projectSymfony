@@ -11,11 +11,29 @@
 
     <form method="post" action="compte_rendu_dactivite_individuel"> {# pas besoin de mettre le nom si c'est la meme route#}
 
-       {# <table width="50%" height="85%" cellpadding="0" cellspacing="0" border="1"><tr><td>Jours</td><td>Date</td><td>Client</td><td>Tâche</td><td>Statut</td><td>Explications</td></tr>
+{#<label>Début de début: </label><script>
+            $( function () {
+                $("#dateD").datepicker();
+            });
+         </script>
+         <input type = "text" name="dateD" id ="dateD" {% if currentDate is defined %}value="{{currentDate}}{%endif%}"/><br /><br />
+          {# <label>Début de fin: </label><script>
+                    $( function () {
+                $("#dateF").datepicker()
+            });
+         </script>
+         <input type="datetime" name="dateF" id="dateF" />#}
+        {# <input type='submit' value='Générer cra journalier' name='generer'/> <br />
+         
+        <table width="50%" height="85%" cellpadding="0" cellspacing="0" border="1"><tr><td>Jours</td><td>Date</td><td>Projet</td><td>Client</td><td>Tâche</td><td>Statut</td><td>Explications</td><td>Creer</td></tr>
         {% for i in 0..4%}
             
         <tr>
             <td>
+                {%if craJournalier[i] is defined %}
+                    <label name="id{{i}}"></label>
+                    
+                    {% endif%}
                 {% if i == 0%}
                     LUNDI
                 {% elseif i == 1%}
@@ -29,22 +47,35 @@
                 {% endif %}
             </td>
             <td>
-                {#{%if craJournalier is defined %}#}
-                 {#   {%if craJournalier[i] is defined %}
+                {#{%if craJournalier is defined %}#}{#
+<label name="date{{i}}">
+                {#    {%if craJournalier[i] is defined %}
                         {{craJournalier[i].date | date('d/m/Y')}}
-                    {% else %}
-                        {# <script>
-                    $( function () {
-                        $("#datepicker{{i}}").datepicker();
-                    });
-                </script>
-              
-                <input type="datetime" name="date{{i}}" id = "datepicker{{i}}"/>#}
-                 {#   {{listDate[i]}}
-                    {% endif%}
+                    {% elseif listDate is defined%}
+                      {{listDate[i]}}
+                    {% endif%}</label>
                 
             </td>
              <td>
+                {%if projet is defined%}
+                <SELECT name='projet{{i}}'> 
+                    <OPTION name='' value="">
+                    {% for theprojet in projet%}
+                        {% if craJournalier[i].projet is defined %}
+                            {% if craJournalier[i].projet == theprojet.nom %}
+                                <OPTION selected="selected">{{craJournalier[i].projet}}
+                            {% else %}
+                                <OPTION >{{theprojet.nom}}
+                            {% endif %}
+                        {% else %}
+                            <OPTION >{{theprojet.nom}}
+                        {% endif %}
+                    {%endfor%}
+                </SELECT>
+                    {% endif%}
+             </td>
+             <td>
+                 {% if client is defined %}
                 <SELECT name='client{{i}}'> 
                     <OPTION name='' value="">
                     {% for theclient in client%}
@@ -58,9 +89,9 @@
                             <OPTION >{{theclient.societe}}
                         {% endif %}
                     {%endfor%}
-                </SELECT>
+                </SELECT>{% endif%}
              </td>
-             <td>
+             <td>{%if tache is defined%}
                 <SELECT name='tache{{i}}'> 
                     <OPTION name='' value="">
                     {% for thetache in tache%}
@@ -74,9 +105,10 @@
                             <OPTION >{{thetache.fonctionnalite}}
                         {% endif %}
                     {%endfor%}
-                </SELECT>
+                </SELECT>{%endif%}
              </td>
              <td>
+                 {% if statut is defined%}
                 <SELECT name='statut{{i}}'> 
                     <OPTION name='' value="">
                     {% for thestatut in statut%}
@@ -90,20 +122,21 @@
                             <OPTION >{{thestatut.intitule}}
                         {% endif %}
                     {%endfor%}
-                </SELECT>
+                </SELECT>{%endif%}
              </td>
              <td><textarea name="action" rows="2" cols="50" style="border:solid 1px black; font-family:tahoma;"></textarea></td>
-                </tr>
+              <td><input type='checkbox' name='ajouter{{i}}'/></td>  
+             </tr>
                 {% endfor %}
             </table><br />
 
-            <input type='submit' value='Enregistrer' name='enregistrer'/> <br />
+            <input type='submit' value='Créer' name='creer'/> <br />
+            <input type='submit' value='Enregistrer les modifications' name='modifier'/> <br />
     </form>
-        
+               {% if message is defined %}
+        <a style="color:red">{{ message }}</a>
+    {% endif %}
     {% endblock %}#}
-
-   
-
    
 
 
@@ -119,29 +152,17 @@
     
 {% block content %}
     
-    <script src = "http://code.jquery.com/jquery-1.9.1.js" > </script>
+<script src = "http://code.jquery.com/jquery-1.9.1.js" > </script>
 <script src = "http://code.jquery.com/ui/1.10.1/jquery-ui.js" > </script>
 <link rel = "stylesheet" href = "http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+<script src="{{ asset('datepicker/datepicker/js/bootstrap-datepicker.js') }}" type="text/javascript"> </script>
+<link rel = "stylesheet" src ="{{ asset('datepicker/datepicker/css/datepicker.css') }}" />
 <link rel = "stylesheet" href = "/resources/demos/style.css"/>
 
   <div class="container-fluid">
       <form method="post" action=""> {# pas besoin de mettre le nom si c'est la meme route#}
-
-           <label>Début de début: </label><script>
-            $( function () {
-                $("#dateD").datepicker();
-            });
-         </script>
-         <input class="datetime" type="datetime" name="dateD" id ="dateD" />
-           <label>Début de fin: </label><script>
-                    $('.datepicker').datepicker(){#$( function () {
-                $("#dateF").datepicker()#};
-            });
-         </script>
-         <input type="datetime" name="dateF" id="dateF" />
-         <input type='submit' value='Générer cra journalier' name='generer'/> <br />
           
-          <table width="50%" height="85%" cellpadding="0" cellspacing="0" border="1"><tr><td>Jours</td><td>Date</td><td>Projet</td><td>Client</td><td>Tâche</td><td>Statut</td><td>Explications</td></tr>
+         <table width="50%" height="85%" cellpadding="0" cellspacing="0" border="1"><tr><td>Jours</td><td>Date</td><td>Projet</td><td>Client</td><td>Tâche</td><td>Statut</td><td>Explications</td><td>Creer</td></tr>
         {% for i in 0..4%}
             
         <tr>
@@ -159,8 +180,7 @@
                 {% endif %}
             </td>
             <td>
-                {#{%if craJournalier is defined %}#}
-                    {%if craJournalier[i] is defined %}
+                   {%if craJournalier[i] is defined %}
                         {{craJournalier[i].date | date('d/m/Y')}}
                     {% elseif listDate is defined%}
                       {{listDate[i]}}
@@ -234,24 +254,23 @@
                     {%endfor%}
                 </SELECT>{%endif%}
              </td>
-             <td><textarea name="action" rows="2" cols="50" style="border:solid 1px black; font-family:tahoma;"></textarea></td>
+             <td><textarea name="commentaire{{i}}" rows="2" cols="50" style="border:solid 1px black; font-family:tahoma;">{% if craJournalier[i].commentaire is defined %}{{craJournalier[i].commentaire}}{%endif%}</textarea></td>
+             <td><input type='checkbox' name='ajouter{{i}}'/></td>
                 </tr>
                 {% endfor %}
             </table><br />
-
-            <input type='submit' value='Créer' name='creer'/> <br />
-            <input type='submit' value='Enregistrer les modifications' name='modifier'/> <br />
+            
+            <input type='submit' value='Enregistrer + retour' name='enregistrer'/> <br />
     </form>
      
   </div></div>
 
-
+</div>
     
     
     {% if message is defined %}
         <a style="color:red">{{ message }}</a>
     {% endif %}
-
 
  {% endblock %}
 

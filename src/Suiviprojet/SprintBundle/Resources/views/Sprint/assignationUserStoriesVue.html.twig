@@ -1,10 +1,18 @@
-{% extends "::modele2.html.twig" %}
+{% extends "::base.html.twig" %}
 
- {% block menu %}{{parent()}}Assignation user stories<br /><br />{% endblock %}
+{% block title %}
+    {{ parent() }} - Assignation user stories
+{% endblock %}
 
- {% block content %}
- 
-    <form method="post" action=""> 
+    {% block emplacement %}
+        Assignation user stories
+    {% endblock %}
+    
+{% block content %}
+        <div class="row">
+    <div class="span4 offset1">
+     
+         <form method="post" action=""> 
         
         <label>Sprint : </label><SELECT name='sprint'>
             {% if sprint is defined %}
@@ -38,10 +46,12 @@
         </SELECT>
         
         <input type='submit' value='Charger' name='charger'/> <br /> <br /> 
- 
-    {% set counter = 0 %} 
         
-    {% if userStories is defined %}
+            </div></div>
+        <div class="row">
+    <div class="span10 offset2">
+        
+        {% if userStories is defined %}
  
         <table style="border-collapse: collapse; border: solid; text-align: left"><tr>
            
@@ -77,8 +87,25 @@
         <input type='submit' value='Valider' name='valider'/> <br /> <br /> 
          </form>
     {% endif %}
- 
+        
+            </div></div>
+
+    
+    {% if message is defined %}
+        <a style="color:red">{{ message }}</a>
+    {% endif %}
+
+
  {% endblock %}
+
+
+
+
+
+
+  
+
+
 
 
 

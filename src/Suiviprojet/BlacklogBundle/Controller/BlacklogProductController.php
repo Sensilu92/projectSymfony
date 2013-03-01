@@ -23,7 +23,7 @@ class BlacklogProductController extends Controller{
         $priorite = $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Priorite")->findAll();
       
         //Si on clique pour charger un autre projet
-        if($charger){ //if (isset($charger))
+        if($charger){ 
             
             $projetTmp =  $this->getDoctrine()->getRepository("SuiviprojetAdministrateurBundle:Projet")->findBy(array('nom'=>$request->get('projet')));
             $userStories = $this->getDoctrine()->getRepository('Suiviprojet\AdministrateurBundle\Entity\UserStorie')->findBy(array('idprojet'=>$projetTmp));

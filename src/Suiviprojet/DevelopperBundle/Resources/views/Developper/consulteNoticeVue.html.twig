@@ -1,15 +1,24 @@
-{% extends "::modele2.html.twig" %}
+{% extends "::base.html.twig" %}
 
- {% block menu %}{{parent()}}Consultation des notices <br /><br />{% endblock %}
-
- {% block content %}
+{% block title %}
+    {{ parent() }} - Consultation des notices
+{% endblock %}
+   
+{% block emplacement %}
+   Consultation des notices
+{% endblock %}
+    
+{% block content %}
+   <div class="span4 offset4">
     {% if theNotice is defined %}
         <html>{{theNotice.explication}}</html>
     {% endif %}
- {% endblock %}
- 
- 
+       </div> 
+    {% if message is defined %}
+        <a style="color:red">{{ message }}</a>
+    {% endif %}
 
+ {% endblock %}
 
 
 

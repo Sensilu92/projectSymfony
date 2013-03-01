@@ -7,17 +7,18 @@ class __TwigTemplate_5ef8de66121636d549fd98bb4f12e19c extends Twig_Template
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("::modele2.html.twig");
+        $this->parent = $this->env->loadTemplate("::base.html.twig");
 
         $this->blocks = array(
-            'menu' => array($this, 'block_menu'),
+            'title' => array($this, 'block_title'),
+            'emplacement' => array($this, 'block_emplacement'),
             'content' => array($this, 'block_content'),
         );
     }
 
     protected function doGetParent(array $context)
     {
-        return "::modele2.html.twig";
+        return "::base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -26,167 +27,179 @@ class __TwigTemplate_5ef8de66121636d549fd98bb4f12e19c extends Twig_Template
     }
 
     // line 3
-    public function block_menu($context, array $blocks = array())
+    public function block_title($context, array $blocks = array())
     {
-        $this->displayParentBlock("menu", $context, $blocks);
-        echo "Assignation user stories<br /><br />";
+        // line 4
+        echo "    ";
+        $this->displayParentBlock("title", $context, $blocks);
+        echo " - Assignation user stories
+";
     }
 
-    // line 5
+    // line 7
+    public function block_emplacement($context, array $blocks = array())
+    {
+        // line 8
+        echo "        Assignation user stories
+    ";
+    }
+
+    // line 11
     public function block_content($context, array $blocks = array())
     {
-        // line 6
-        echo " 
-    <form method=\"post\" action=\"\"> 
+        // line 12
+        echo "        <div class=\"row\">
+    <div class=\"span4 offset1\">
+     
+         <form method=\"post\" action=\"\"> 
         
         <label>Sprint : </label><SELECT name='sprint'>
             ";
-        // line 10
+        // line 18
         if (array_key_exists("sprint", $context)) {
-            // line 11
+            // line 19
             echo "                ";
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getContext($context, "sprint"));
             foreach ($context['_seq'] as $context["_key"] => $context["s"]) {
-                // line 12
+                // line 20
                 echo "                    ";
                 if (array_key_exists("currentSprint", $context)) {
-                    // line 13
+                    // line 21
                     echo "                        ";
                     if (($this->getAttribute($this->getContext($context, "s"), "nom") == $this->getContext($context, "currentSprint"))) {
-                        // line 14
+                        // line 22
                         echo "                            <OPTION selected=\"selected\">";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "s"), "nom"), "html", null, true);
                         echo "
                                 ";
                     } else {
-                        // line 16
+                        // line 24
                         echo "                            <OPTION>";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "s"), "nom"), "html", null, true);
                         echo "
                         ";
                     }
-                    // line 18
+                    // line 26
                     echo "                     ";
                 } else {
-                    // line 19
+                    // line 27
                     echo "                        <OPTION>";
                     echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "s"), "nom"), "html", null, true);
                     echo "
                      ";
                 }
-                // line 21
+                // line 29
                 echo "                ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['s'], $context['_parent'], $context['loop']);
             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 22
+            // line 30
             echo "            ";
         }
-        // line 23
+        // line 31
         echo "        </SELECT> 
         <label>Projet : </label><SELECT name='projet'>
             ";
-        // line 25
+        // line 33
         if (array_key_exists("projet", $context)) {
-            // line 26
+            // line 34
             echo "                ";
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getContext($context, "projet"));
             foreach ($context['_seq'] as $context["_key"] => $context["p"]) {
-                // line 27
+                // line 35
                 echo "                    ";
                 if (array_key_exists("currentProjet", $context)) {
-                    // line 28
+                    // line 36
                     echo "                        ";
                     if (($this->getAttribute($this->getContext($context, "p"), "nom") == $this->getContext($context, "currentProjet"))) {
-                        // line 29
+                        // line 37
                         echo "                            <OPTION selected=\"selected\">";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "p"), "nom"), "html", null, true);
                         echo "
                                 ";
                     } else {
-                        // line 31
+                        // line 39
                         echo "                            <OPTION>";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "p"), "nom"), "html", null, true);
                         echo "
                         ";
                     }
-                    // line 33
+                    // line 41
                     echo "                     ";
                 } else {
-                    // line 34
+                    // line 42
                     echo "                        <OPTION>";
                     echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "p"), "nom"), "html", null, true);
                     echo "
                      ";
                 }
-                // line 36
+                // line 44
                 echo "                ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 37
+            // line 45
             echo "            ";
         }
-        // line 38
+        // line 46
         echo "        </SELECT>
         
         <input type='submit' value='Charger' name='charger'/> <br /> <br /> 
- 
-    ";
-        // line 42
-        $context["counter"] = 0;
-        echo " 
         
-    ";
-        // line 44
+            </div></div>
+        <div class=\"row\">
+    <div class=\"span10 offset2\">
+        
+        ";
+        // line 54
         if (array_key_exists("userStories", $context)) {
-            // line 45
+            // line 55
             echo " 
         <table style=\"border-collapse: collapse; border: solid; text-align: left\"><tr>
            
             <td> User stories </td><td> A assigner à </td><td> Ajouter au sprint </td></tr>
         
             ";
-            // line 50
+            // line 60
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getContext($context, "userStories"));
             foreach ($context['_seq'] as $context["_key"] => $context["userStory"]) {
-                // line 51
+                // line 61
                 echo "            
                 <tr>
                     <td>
                         <b name=\"";
-                // line 54
+                // line 64
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"), "html", null, true);
                 echo "\" >#";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"), "html", null, true);
                 echo "</b><br> 
                         <b name=\"fonctionnalite\">Fonctionnalité : </b>";
-                // line 55
+                // line 65
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "fonctionnalite"), "html", null, true);
                 echo "<br>
                     </td>
                     <td>
                         <SELECT name='dev";
-                // line 58
+                // line 68
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"), "html", null, true);
                 echo "'>
                             <OPTION name='' value=\"\">
                             ";
-                // line 60
+                // line 70
                 if (array_key_exists("listDev", $context)) {
-                    // line 61
+                    // line 71
                     echo "                                ";
                     $context['_parent'] = (array) $context;
                     $context['_seq'] = twig_ensure_traversable($this->getContext($context, "listDev"));
                     foreach ($context['_seq'] as $context["_key"] => $context["dev"]) {
-                        // line 62
+                        // line 72
                         echo "                                     ";
-                        // line 66
+                        // line 76
                         echo "                                    <OPTION>";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "dev"), "nom"), "html", null, true);
                         echo "
@@ -195,15 +208,15 @@ class __TwigTemplate_5ef8de66121636d549fd98bb4f12e19c extends Twig_Template
                     $_parent = $context['_parent'];
                     unset($context['_seq'], $context['_iterated'], $context['_key'], $context['dev'], $context['_parent'], $context['loop']);
                     $context = array_merge($_parent, array_intersect_key($context, $_parent));
-                    // line 68
+                    // line 78
                     echo "                            ";
                 }
-                // line 69
+                // line 79
                 echo "                        </SELECT> 
                     </td>
                     <td>
                         <input type='checkbox' name='ajout";
-                // line 72
+                // line 82
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "userStory"), "idUserStorie"), "html", null, true);
                 echo "'/>
                     </td>
@@ -213,15 +226,30 @@ class __TwigTemplate_5ef8de66121636d549fd98bb4f12e19c extends Twig_Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['userStory'], $context['_parent'], $context['loop']);
             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 75
+            // line 85
             echo " 
             </tr></table><br /> 
         <input type='submit' value='Valider' name='valider'/> <br /> <br /> 
          </form>
     ";
         }
-        // line 80
-        echo " 
+        // line 90
+        echo "        
+            </div></div>
+
+    
+    ";
+        // line 94
+        if (array_key_exists("message", $context)) {
+            // line 95
+            echo "        <a style=\"color:red\">";
+            echo twig_escape_filter($this->env, $this->getContext($context, "message"), "html", null, true);
+            echo "</a>
+    ";
+        }
+        // line 97
+        echo "
+
  ";
     }
 
@@ -237,6 +265,6 @@ class __TwigTemplate_5ef8de66121636d549fd98bb4f12e19c extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  224 => 80,  217 => 75,  207 => 72,  202 => 69,  199 => 68,  190 => 66,  188 => 62,  183 => 61,  181 => 60,  176 => 58,  170 => 55,  164 => 54,  159 => 51,  155 => 50,  148 => 45,  146 => 44,  141 => 42,  135 => 38,  132 => 37,  126 => 36,  120 => 34,  117 => 33,  111 => 31,  105 => 29,  102 => 28,  99 => 27,  94 => 26,  92 => 25,  88 => 23,  85 => 22,  79 => 21,  73 => 19,  70 => 18,  64 => 16,  58 => 14,  55 => 13,  52 => 12,  47 => 11,  45 => 10,  39 => 6,  36 => 5,  29 => 3,);
+        return array (  251 => 97,  245 => 95,  243 => 94,  237 => 90,  230 => 85,  220 => 82,  215 => 79,  212 => 78,  203 => 76,  201 => 72,  196 => 71,  194 => 70,  189 => 68,  183 => 65,  177 => 64,  172 => 61,  168 => 60,  161 => 55,  159 => 54,  149 => 46,  146 => 45,  140 => 44,  134 => 42,  131 => 41,  125 => 39,  119 => 37,  116 => 36,  113 => 35,  108 => 34,  106 => 33,  102 => 31,  99 => 30,  93 => 29,  87 => 27,  84 => 26,  78 => 24,  72 => 22,  69 => 21,  66 => 20,  61 => 19,  59 => 18,  51 => 12,  48 => 11,  43 => 8,  40 => 7,  33 => 4,  30 => 3,);
     }
 }

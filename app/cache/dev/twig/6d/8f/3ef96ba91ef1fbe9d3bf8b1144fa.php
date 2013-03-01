@@ -26,346 +26,347 @@ class __TwigTemplate_6d8f3ef96ba91ef1fbe9d3bf8b1144fa extends Twig_Template
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 112
+    // line 145
     public function block_title($context, array $blocks = array())
     {
-        // line 113
+        // line 146
         echo "    ";
         $this->displayParentBlock("title", $context, $blocks);
         echo " - Connexion
 ";
     }
 
-    // line 116
+    // line 149
     public function block_emplacement($context, array $blocks = array())
     {
-        // line 117
+        // line 150
         echo "    Cra
 ";
     }
 
-    // line 120
+    // line 153
     public function block_content($context, array $blocks = array())
     {
-        // line 121
+        // line 154
         echo "    
-    <script src = \"http://code.jquery.com/jquery-1.9.1.js\" > </script>
+<script src = \"http://code.jquery.com/jquery-1.9.1.js\" > </script>
 <script src = \"http://code.jquery.com/ui/1.10.1/jquery-ui.js\" > </script>
 <link rel = \"stylesheet\" href = \"http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css\" />
+<script src=\"";
+        // line 158
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("datepicker/datepicker/js/bootstrap-datepicker.js"), "html", null, true);
+        echo "\" type=\"text/javascript\"> </script>
+<link rel = \"stylesheet\" src =\"";
+        // line 159
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("datepicker/datepicker/css/datepicker.css"), "html", null, true);
+        echo "\" />
 <link rel = \"stylesheet\" href = \"/resources/demos/style.css\"/>
 
   <div class=\"container-fluid\">
       <form method=\"post\" action=\"\"> ";
-        // line 129
-        echo "
-           <label>Début de début: </label><script>
-            \$( function () {
-                \$(\"#dateD\").datepicker();
-            });
-         </script>
-         <input class=\"datetime\" type=\"datetime\" name=\"dateD\" id =\"dateD\" />
-           <label>Début de fin: </label><script>
-                    \$('.datepicker').datepicker()";
-        // line 138
-        echo ";
-            });
-         </script>
-         <input type=\"datetime\" name=\"dateF\" id=\"dateF\" />
-         <input type='submit' value='Générer cra journalier' name='generer'/> <br />
-          
-          <table width=\"50%\" height=\"85%\" cellpadding=\"0\" cellspacing=\"0\" border=\"1\"><tr><td>Jours</td><td>Date</td><td>Projet</td><td>Client</td><td>Tâche</td><td>Statut</td><td>Explications</td></tr>
+        // line 164
+        echo "          
+         <table width=\"50%\" height=\"85%\" cellpadding=\"0\" cellspacing=\"0\" border=\"1\"><tr><td>Jours</td><td>Date</td><td>Projet</td><td>Client</td><td>Tâche</td><td>Statut</td><td>Explications</td><td>Creer</td></tr>
         ";
-        // line 145
+        // line 166
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable(range(0, 4));
         foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-            // line 146
+            // line 167
             echo "            
         <tr>
             <td>
                 ";
-            // line 149
+            // line 170
             if (($this->getContext($context, "i") == 0)) {
-                // line 150
+                // line 171
                 echo "                    LUNDI
                 ";
             } elseif (($this->getContext($context, "i") == 1)) {
-                // line 152
+                // line 173
                 echo "                    MARDI
                 ";
             } elseif (($this->getContext($context, "i") == 2)) {
-                // line 154
+                // line 175
                 echo "                    MERCREDI
                 ";
             } elseif (($this->getContext($context, "i") == 3)) {
-                // line 156
+                // line 177
                 echo "                    JEUDI
                 ";
             } else {
-                // line 158
+                // line 179
                 echo "                    VENDREDI
                 ";
             }
-            // line 160
+            // line 181
             echo "            </td>
             <td>
-                ";
-            // line 163
-            echo "                    ";
+                   ";
+            // line 183
             if ($this->getAttribute($this->getContext($context, "craJournalier", true), $this->getContext($context, "i"), array(), "array", true, true)) {
-                // line 164
+                // line 184
                 echo "                        ";
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "craJournalier"), $this->getContext($context, "i"), array(), "array"), "date"), "d/m/Y"), "html", null, true);
                 echo "
                     ";
             } elseif (array_key_exists("listDate", $context)) {
-                // line 166
+                // line 186
                 echo "                      ";
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "listDate"), $this->getContext($context, "i"), array(), "array"), "html", null, true);
                 echo "
                     ";
             }
-            // line 168
+            // line 188
             echo "                
             </td>
             <td>";
-            // line 170
+            // line 190
             if (array_key_exists("projet", $context)) {
-                // line 171
+                // line 191
                 echo "                <SELECT name='projet";
                 echo twig_escape_filter($this->env, $this->getContext($context, "i"), "html", null, true);
                 echo "'> 
                     <OPTION name='' value=\"\">
                     ";
-                // line 173
+                // line 193
                 $context['_parent'] = (array) $context;
                 $context['_seq'] = twig_ensure_traversable($this->getContext($context, "projet"));
                 foreach ($context['_seq'] as $context["_key"] => $context["theprojet"]) {
-                    // line 174
+                    // line 194
                     echo "                        ";
                     if ($this->getAttribute($this->getAttribute($this->getContext($context, "craJournalier", true), $this->getContext($context, "i"), array(), "array", false, true), "projet", array(), "any", true, true)) {
-                        // line 175
+                        // line 195
                         echo "                            ";
                         if (($this->getAttribute($this->getAttribute($this->getContext($context, "craJournalier"), $this->getContext($context, "i"), array(), "array"), "projet") == $this->getAttribute($this->getContext($context, "theprojet"), "nom"))) {
-                            // line 176
+                            // line 196
                             echo "                                <OPTION selected=\"selected\">";
                             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "craJournalier"), $this->getContext($context, "i"), array(), "array"), "projet"), "html", null, true);
                             echo "
                             ";
                         } else {
-                            // line 178
+                            // line 198
                             echo "                                <OPTION >";
                             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "theprojet"), "nom"), "html", null, true);
                             echo "
                             ";
                         }
-                        // line 180
+                        // line 200
                         echo "                        ";
                     } else {
-                        // line 181
+                        // line 201
                         echo "                            <OPTION >";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "theprojet"), "nom"), "html", null, true);
                         echo "
                         ";
                     }
-                    // line 183
+                    // line 203
                     echo "                    ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['theprojet'], $context['_parent'], $context['loop']);
                 $context = array_merge($_parent, array_intersect_key($context, $_parent));
-                // line 184
+                // line 204
                 echo "                </SELECT>
                     ";
             }
-            // line 186
+            // line 206
             echo "             </td>
              <td>
                  ";
-            // line 188
+            // line 208
             if (array_key_exists("client", $context)) {
-                // line 189
+                // line 209
                 echo "                <SELECT name='client";
                 echo twig_escape_filter($this->env, $this->getContext($context, "i"), "html", null, true);
                 echo "'> 
                     <OPTION name='' value=\"\">
                     ";
-                // line 191
+                // line 211
                 $context['_parent'] = (array) $context;
                 $context['_seq'] = twig_ensure_traversable($this->getContext($context, "client"));
                 foreach ($context['_seq'] as $context["_key"] => $context["theclient"]) {
-                    // line 192
+                    // line 212
                     echo "                        ";
                     if ($this->getAttribute($this->getAttribute($this->getContext($context, "craJournalier", true), $this->getContext($context, "i"), array(), "array", false, true), "client", array(), "any", true, true)) {
-                        // line 193
+                        // line 213
                         echo "                            ";
                         if (($this->getAttribute($this->getAttribute($this->getContext($context, "craJournalier"), $this->getContext($context, "i"), array(), "array"), "client") == $this->getAttribute($this->getContext($context, "theclient"), "societe"))) {
-                            // line 194
+                            // line 214
                             echo "                                <OPTION selected=\"selected\">";
                             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "craJournalier"), $this->getContext($context, "i"), array(), "array"), "client"), "html", null, true);
                             echo "
                             ";
                         } else {
-                            // line 196
+                            // line 216
                             echo "                                <OPTION >";
                             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "theclient"), "societe"), "html", null, true);
                             echo "
                             ";
                         }
-                        // line 198
+                        // line 218
                         echo "                        ";
                     } else {
-                        // line 199
+                        // line 219
                         echo "                            <OPTION >";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "theclient"), "societe"), "html", null, true);
                         echo "
                         ";
                     }
-                    // line 201
+                    // line 221
                     echo "                    ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['theclient'], $context['_parent'], $context['loop']);
                 $context = array_merge($_parent, array_intersect_key($context, $_parent));
-                // line 202
+                // line 222
                 echo "                </SELECT>";
             }
-            // line 203
+            // line 223
             echo "             </td>
              <td>";
-            // line 204
+            // line 224
             if (array_key_exists("tache", $context)) {
-                // line 205
+                // line 225
                 echo "                <SELECT name='tache";
                 echo twig_escape_filter($this->env, $this->getContext($context, "i"), "html", null, true);
                 echo "'> 
                     <OPTION name='' value=\"\">
                     ";
-                // line 207
+                // line 227
                 $context['_parent'] = (array) $context;
                 $context['_seq'] = twig_ensure_traversable($this->getContext($context, "tache"));
                 foreach ($context['_seq'] as $context["_key"] => $context["thetache"]) {
-                    // line 208
+                    // line 228
                     echo "                        ";
                     if ($this->getAttribute($this->getAttribute($this->getContext($context, "craJournalier", true), $this->getContext($context, "i"), array(), "array", false, true), "tache", array(), "any", true, true)) {
-                        // line 209
+                        // line 229
                         echo "                            ";
                         if (($this->getAttribute($this->getAttribute($this->getContext($context, "craJournalier"), $this->getContext($context, "i"), array(), "array"), "tache") == $this->getAttribute($this->getContext($context, "thetache"), "fonctionnalite"))) {
-                            // line 210
+                            // line 230
                             echo "                                <OPTION selected=\"selected\">";
                             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "craJournalier"), $this->getContext($context, "i"), array(), "array"), "tache"), "html", null, true);
                             echo "
                             ";
                         } else {
-                            // line 212
+                            // line 232
                             echo "                                <OPTION >";
                             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "thetache"), "fonctionnalite"), "html", null, true);
                             echo "
                             ";
                         }
-                        // line 214
+                        // line 234
                         echo "                        ";
                     } else {
-                        // line 215
+                        // line 235
                         echo "                            <OPTION >";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "thetache"), "fonctionnalite"), "html", null, true);
                         echo "
                         ";
                     }
-                    // line 217
+                    // line 237
                     echo "                    ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['thetache'], $context['_parent'], $context['loop']);
                 $context = array_merge($_parent, array_intersect_key($context, $_parent));
-                // line 218
+                // line 238
                 echo "                </SELECT>";
             }
-            // line 219
+            // line 239
             echo "             </td>
              <td>
                  ";
-            // line 221
+            // line 241
             if (array_key_exists("statut", $context)) {
-                // line 222
+                // line 242
                 echo "                <SELECT name='statut";
                 echo twig_escape_filter($this->env, $this->getContext($context, "i"), "html", null, true);
                 echo "'> 
                     <OPTION name='' value=\"\">
                     ";
-                // line 224
+                // line 244
                 $context['_parent'] = (array) $context;
                 $context['_seq'] = twig_ensure_traversable($this->getContext($context, "statut"));
                 foreach ($context['_seq'] as $context["_key"] => $context["thestatut"]) {
-                    // line 225
+                    // line 245
                     echo "                        ";
                     if ($this->getAttribute($this->getAttribute($this->getContext($context, "craJournalier", true), $this->getContext($context, "i"), array(), "array", false, true), "statut", array(), "any", true, true)) {
-                        // line 226
+                        // line 246
                         echo "                            ";
                         if (($this->getAttribute($this->getAttribute($this->getContext($context, "craJournalier"), $this->getContext($context, "i"), array(), "array"), "statut") == $this->getAttribute($this->getContext($context, "thestatut"), "intitule"))) {
-                            // line 227
+                            // line 247
                             echo "                                <OPTION selected=\"selected\">";
                             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "craJournalier"), $this->getContext($context, "i"), array(), "array"), "statut"), "html", null, true);
                             echo "
                             ";
                         } else {
-                            // line 229
+                            // line 249
                             echo "                                <OPTION >";
                             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "thestatut"), "intitule"), "html", null, true);
                             echo "
                             ";
                         }
-                        // line 231
+                        // line 251
                         echo "                        ";
                     } else {
-                        // line 232
+                        // line 252
                         echo "                            <OPTION >";
                         echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "thestatut"), "intitule"), "html", null, true);
                         echo "
                         ";
                     }
-                    // line 234
+                    // line 254
                     echo "                    ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['thestatut'], $context['_parent'], $context['loop']);
                 $context = array_merge($_parent, array_intersect_key($context, $_parent));
-                // line 235
+                // line 255
                 echo "                </SELECT>";
             }
-            // line 236
+            // line 256
             echo "             </td>
-             <td><textarea name=\"action\" rows=\"2\" cols=\"50\" style=\"border:solid 1px black; font-family:tahoma;\"></textarea></td>
+             <td><textarea name=\"commentaire";
+            // line 257
+            echo twig_escape_filter($this->env, $this->getContext($context, "i"), "html", null, true);
+            echo "\" rows=\"2\" cols=\"50\" style=\"border:solid 1px black; font-family:tahoma;\">";
+            if ($this->getAttribute($this->getAttribute($this->getContext($context, "craJournalier", true), $this->getContext($context, "i"), array(), "array", false, true), "commentaire", array(), "any", true, true)) {
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "craJournalier"), $this->getContext($context, "i"), array(), "array"), "commentaire"), "html", null, true);
+            }
+            echo "</textarea></td>
+             <td><input type='checkbox' name='ajouter";
+            // line 258
+            echo twig_escape_filter($this->env, $this->getContext($context, "i"), "html", null, true);
+            echo "'/></td>
                 </tr>
                 ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 240
+        // line 261
         echo "            </table><br />
-
-            <input type='submit' value='Créer' name='creer'/> <br />
-            <input type='submit' value='Enregistrer les modifications' name='modifier'/> <br />
+            
+            <input type='submit' value='Enregistrer + retour' name='enregistrer'/> <br />
     </form>
      
   </div></div>
 
-
+</div>
     
     
     ";
-        // line 251
+        // line 271
         if (array_key_exists("message", $context)) {
-            // line 252
+            // line 272
             echo "        <a style=\"color:red\">";
             echo twig_escape_filter($this->env, $this->getContext($context, "message"), "html", null, true);
             echo "</a>
     ";
         }
-        // line 254
+        // line 274
         echo "
-
  ";
     }
 
@@ -381,6 +382,6 @@ class __TwigTemplate_6d8f3ef96ba91ef1fbe9d3bf8b1144fa extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  367 => 254,  361 => 252,  359 => 251,  346 => 240,  337 => 236,  334 => 235,  328 => 234,  322 => 232,  319 => 231,  313 => 229,  307 => 227,  304 => 226,  301 => 225,  297 => 224,  291 => 222,  289 => 221,  285 => 219,  282 => 218,  276 => 217,  270 => 215,  267 => 214,  261 => 212,  255 => 210,  252 => 209,  249 => 208,  245 => 207,  239 => 205,  237 => 204,  234 => 203,  231 => 202,  225 => 201,  219 => 199,  216 => 198,  210 => 196,  204 => 194,  201 => 193,  198 => 192,  194 => 191,  188 => 189,  186 => 188,  182 => 186,  178 => 184,  172 => 183,  166 => 181,  163 => 180,  157 => 178,  151 => 176,  148 => 175,  145 => 174,  141 => 173,  135 => 171,  133 => 170,  129 => 168,  123 => 166,  117 => 164,  114 => 163,  110 => 160,  106 => 158,  102 => 156,  98 => 154,  94 => 152,  90 => 150,  88 => 149,  83 => 146,  79 => 145,  70 => 138,  60 => 129,  51 => 121,  48 => 120,  43 => 117,  40 => 116,  33 => 113,  30 => 112,);
+        return array (  369 => 274,  363 => 272,  361 => 271,  349 => 261,  340 => 258,  332 => 257,  329 => 256,  326 => 255,  320 => 254,  314 => 252,  311 => 251,  305 => 249,  299 => 247,  296 => 246,  293 => 245,  289 => 244,  283 => 242,  281 => 241,  277 => 239,  274 => 238,  268 => 237,  262 => 235,  259 => 234,  253 => 232,  247 => 230,  244 => 229,  241 => 228,  237 => 227,  231 => 225,  229 => 224,  226 => 223,  223 => 222,  217 => 221,  211 => 219,  208 => 218,  202 => 216,  196 => 214,  193 => 213,  190 => 212,  186 => 211,  180 => 209,  178 => 208,  174 => 206,  170 => 204,  164 => 203,  158 => 201,  155 => 200,  149 => 198,  143 => 196,  140 => 195,  137 => 194,  133 => 193,  127 => 191,  125 => 190,  121 => 188,  115 => 186,  109 => 184,  107 => 183,  103 => 181,  99 => 179,  95 => 177,  91 => 175,  87 => 173,  83 => 171,  81 => 170,  76 => 167,  72 => 166,  68 => 164,  61 => 159,  57 => 158,  51 => 154,  48 => 153,  43 => 150,  40 => 149,  33 => 146,  30 => 145,);
     }
 }
